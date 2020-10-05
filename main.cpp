@@ -1,14 +1,32 @@
-
+#include <iostream>
+#include <string>
+#include <bitset>
 
 #include "includes/Application.hpp"
+#include "includes/Logger.hpp"
+#include "includes/Command.hpp"
+#include "includes/Option.hpp"
 
 using namespace DAF;
 
 class MyApp : public Application {
 
     public:
-    
-    void run() override;
+
+    void commandTestCallback() {
+        
+    };
+
+    void config() override {
+        this->setLoggingLevels(std::bitset<Logger::numberOfLevels>(std::string(Logger::numberOfLevels, '1')));
+        this->addCommand(Command("test", "Just for testing"));
+    };
+
+    void run() override {
+        for(const std::string &arg: this->argv()) {
+            std::cout << arg << std::endl;
+        }
+    };
 
 };
 

@@ -14,12 +14,14 @@ class Logger {
 
     private:
 
-    std::bitset<9> activeLevels;
-    AbstractLoggingChannel *channel;
+    std::bitset<9> _activeLevels;
+    AbstractLoggingChannel *_channel;
 
-    bool usingDefaultChannel;
+    bool _usingDefaultChannel;
 
     public:
+
+    static const int numberOfLevels = 9;
 
     enum Level {
         NONE = 0,
@@ -34,7 +36,9 @@ class Logger {
     };
 
     Logger();
+    Logger(std::bitset<9> activeLevels);
     Logger(AbstractLoggingChannel *c);
+    Logger(AbstractLoggingChannel *c, std::bitset<9> activeLevels);
     ~Logger();
 
     void activate(int level);

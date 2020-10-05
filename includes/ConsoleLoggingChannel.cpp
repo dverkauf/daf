@@ -50,7 +50,7 @@ void ConsoleLoggingChannel::debug(std::string text) {
 
 void ConsoleLoggingChannel::trace(std::string text) {
     std::cout
-        << ConsoleLoggingChannel::BOLD << ConsoleLoggingChannel::COLOR_FG_YELLOW << ConsoleLoggingChannel::COLOR_BG_YELLOW
+        << ConsoleLoggingChannel::BOLD << ConsoleLoggingChannel::COLOR_FG_RED << ConsoleLoggingChannel::COLOR_BG_YELLOW
         << "TRACE: " << text << ConsoleLoggingChannel::RESET << std::endl;
 };
 
