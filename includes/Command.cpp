@@ -2,16 +2,14 @@
 
 namespace DAF {
 
-Command::Command(std::string name, std::string description) : _name{name}, _description{description}, _callback{Command::genericCallBack} {};
-Command::Command(std::string name, std::string description, std::function<void()> callback) : _name{name}, _description{description}, _callback{callback} {};
+Command::Command(const std::string &name, const std::string &description) : _name{name}, _description{description} {};
 
-Command &Command::need(Option &option) {
-
+void Command::bind(const Application *app) {
+    this->_app = app;
 };
 
-Command &Command::callback(std::function<void()> callback) {
-    _callback = callback;
-    return *this;
+Command &Command::need(Option &option) {
+    this->_options.push_back(option);
 };
 
 Command &Command::help(std::string text) {
@@ -19,10 +17,9 @@ Command &Command::help(std::string text) {
     return *this;
 };
 
-void Command::run() {
-    this->_callback();
+template<class C>
+Command &Command::callback( C *object, void (C::*func)() ) {
+    object->*func();
 };
-
-void Command::genericCallBack() {};
 
 }

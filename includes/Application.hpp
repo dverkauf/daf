@@ -14,7 +14,7 @@ namespace DAF {
 
 class Application: public DBasicClass {
 
-    private:
+    protected:
 
     std::vector<std::string> _argv;
     std::bitset<Logger::numberOfLevels> _loggingLevels;
@@ -29,11 +29,12 @@ class Application: public DBasicClass {
     void init(const int &argc, char *argv[]);
     const std::vector<std::string> &argv();
     Application &addCommand(const Command &command);
-    Application &addCommand(const Command *command);
 
 };
 
 }
+
+#define CALLBACK(func) this, func
 
 #define LETS_DO_IT(CLASS) \
 int main(int argc, char *argv[]) { \

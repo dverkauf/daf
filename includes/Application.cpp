@@ -21,6 +21,8 @@ void Application::setLoggingLevels(std::bitset<Logger::numberOfLevels> loggingLe
 };
 
 Application &Application::addCommand(const Command &command) {
+    
+    //command.bind(this);
     this->_commands.push_back(command);
     return *this;
 };

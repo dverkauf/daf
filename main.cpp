@@ -13,19 +13,20 @@ class MyApp : public Application {
 
     public:
 
-    void commandTestCallback() {
-        
+    void handleTest() {
+
     };
 
     void config() override {
         this->setLoggingLevels(std::bitset<Logger::numberOfLevels>(std::string(Logger::numberOfLevels, '1')));
-        this->addCommand(Command("test", "Just for testing"));
+        this->addCommand(Command("test", "A test command").callback<MyApp>(CALLBACK(MyApp::handleTest)));
     };
 
     void run() override {
         for(const std::string &arg: this->argv()) {
             std::cout << arg << std::endl;
         }
+        //_commands[0].run();
     };
 
 };
