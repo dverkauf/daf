@@ -25,6 +25,7 @@ class Option {
     std::string value();
     void value(std::string value);
     void fish(std::string line);
+    bool is(std::string name) { return name == _short || name == _long; };
 
 };
 

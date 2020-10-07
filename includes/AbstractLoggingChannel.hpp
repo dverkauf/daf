@@ -28,6 +28,8 @@ struct AbstractLoggingChannel {
     virtual void debug(std::exception &ex) = 0;
     virtual void trace(std::exception &ex) = 0;
 
+    virtual ~AbstractLoggingChannel() = default;
+
 };
 
 }

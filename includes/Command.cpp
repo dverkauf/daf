@@ -4,12 +4,13 @@ namespace DAF {
 
 Command::Command(const std::string &name, const std::string &description) : _name{name}, _description{description} {};
 
-void Command::bind(const Application *app) {
+void Command::bind(Application *app) {
     this->_app = app;
 };
 
 Command &Command::need(Option &option) {
     this->_options.push_back(option);
+    return *this;
 };
 
 Command &Command::help(std::string text) {
@@ -17,9 +18,13 @@ Command &Command::help(std::string text) {
     return *this;
 };
 
-template<class C>
-Command &Command::callback( C *object, void (C::*func)() ) {
-    object->*func();
+Command &Command::callback(Callback callback) {
+    this->_callback = callback;
+    return *this;
+};
+
+void Command::invoke() {
+    this->_callback();
 };
 
 }

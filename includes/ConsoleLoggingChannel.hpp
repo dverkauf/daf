@@ -33,6 +33,8 @@ class ConsoleLoggingChannel : public AbstractLoggingChannel {
     void debug(std::exception &ex) override;
     void trace(std::exception &ex) override;
 
+    ~ConsoleLoggingChannel() {};
+
     static constexpr const char* CLEAR_LINE_TO_END      = "\033[0K";
     static constexpr const char* CLEAR_LINE_TO_START    = "\033[1K";
     static constexpr const char* CLEAR_LINE             = "\033[2K";

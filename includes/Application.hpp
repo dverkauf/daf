@@ -3,12 +3,14 @@
 
 #include <vector>
 #include <string>
+#include <functional>
 
 #include "DBasicClass.hpp"
 #include "Logger.hpp"
 #include "ConsoleLoggingChannel.hpp"
 #include "Command.hpp"
 #include "Option.hpp"
+#include "Interactor.hpp"
 
 namespace DAF {
 
@@ -16,6 +18,8 @@ class Application: public DBasicClass {
 
     protected:
 
+    std::string _name;
+    std::string _command;
     std::vector<std::string> _argv;
     std::bitset<Logger::numberOfLevels> _loggingLevels;
     std::vector<Command> _commands;
@@ -34,7 +38,7 @@ class Application: public DBasicClass {
 
 }
 
-#define CALLBACK(func) this, func
+#define CALLBACK(method) std::bind(&method, this)
 
 #define LETS_DO_IT(CLASS) \
 int main(int argc, char *argv[]) { \

@@ -14,19 +14,37 @@ class MyApp : public Application {
     public:
 
     void handleTest() {
-
+        Interactor::warn("TEST!!!");
     };
 
     void config() override {
         this->setLoggingLevels(std::bitset<Logger::numberOfLevels>(std::string(Logger::numberOfLevels, '1')));
-        this->addCommand(Command("test", "A test command").callback<MyApp>(CALLBACK(MyApp::handleTest)));
+        this->addCommand(Command("test", "A test command")
+            .callback(CALLBACK(MyApp::handleTest))
+        );
     };
 
     void run() override {
         for(const std::string &arg: this->argv()) {
             std::cout << arg << std::endl;
         }
-        //_commands[0].run();
+        // get my name
+        _name = _argv.front();
+        _argv.erase(_argv.begin());
+        // get the command to run
+        _command = _argv.front();
+        _argv.erase(_argv.begin());
+        // get that command`s arguments
+        for(const std::string &arg: _argv) {
+            if(arg[0] == '-') {
+                
+            }
+        }
+        for(Command &command: _commands) {
+            if(command.is(_command)) {
+                command.invoke();
+            }
+        }
     };
 
 };

@@ -45,19 +45,19 @@ Logger::~Logger() {
 };
 
 void Logger::activate(int level) {
-    if(Logger::Level::NONE <= level <= Logger::Level::TRACE) {
+    if(Logger::Level::NONE <= level && level <= (Logger::Level::TRACE + 1)) {
         _activeLevels.set(level, 1);
     }
 };
 
 void Logger::inactivate(int level) {
-    if(Logger::Level::NONE <= level <= Logger::Level::TRACE) {
+    if(Logger::Level::NONE <= level && level <= Logger::Level::TRACE) {
         _activeLevels.set(level, 0);
     }
 };
 
 bool Logger::isActive(int level) {
-    if(Logger::Level::NONE <= level <= Logger::Level::TRACE) {
+    if(Logger::Level::NONE <= level && level <= Logger::Level::TRACE) {
         return _activeLevels[level];
     }
     return false;
