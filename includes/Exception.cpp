@@ -6,7 +6,11 @@ Exception::Exception(int reason) : _reason{reason}, _info{std::string("")} {};
 Exception::Exception(int reason, std::string info) : _reason{reason}, _info{info} {};
 
 const char* Exception::what() const noexcept {
-    return getMessage().c_str();
+    std::string msg = getMessage();
+    std::size_t size = msg.length();
+    char *buffer = new char[size];
+    strncpy(buffer, msg.c_str(), size);
+    return buffer;
 };
 
 const std::string Exception::getMessage() const {

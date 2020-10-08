@@ -27,6 +27,7 @@ class Application: public DBasicClass {
     std::vector<std::string> _argv;
     std::bitset<Logger::numberOfLevels> _loggingLevels;
     std::vector<Command> _commands;
+    std::vector<Option> _options;
 
     public:
 
@@ -44,6 +45,7 @@ class Application: public DBasicClass {
     friend std::ostream& operator<<(std::ostream& os, const Application& a);
     std::string getHelp();
     void showHelp();
+    void showHelpOnCommand(std::string command);
 
 
 };

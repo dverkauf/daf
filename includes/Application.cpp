@@ -13,6 +13,7 @@ void Application::init(const int &argc, char *argv[]) {
     _commands.push_back(Command("help", "Get some help")
         .callback(CALLBACK(Application::showHelp))
     );
+    
 };
 
 const std::vector<std::string> &Application::argv() {
@@ -79,5 +80,12 @@ std::string Application::getHelp() {
 void Application::showHelp() {
     std::cout << *this;
 };
+
+void Application::showHelpOnCommand(std::string command) {
+    std::cout << "Basic usage: " << _name << " " << command << " [OPTIONS]" << std::endl << std::endl;
+    std::cout << "Options:" << std::endl;
+};
+
+
 
 }
