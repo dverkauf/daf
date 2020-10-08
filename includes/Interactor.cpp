@@ -232,3 +232,92 @@ std::size_t  Interactor::findLongestString(std::vector<std::string> strings) {
     }
     return longest;
 };
+
+void Interactor::printInColumns(const std::vector<std::vector<std::string>> &rows) {
+    Interactor::printInColumns(rows, std::vector<std::string>{}, std::cout, 0);
+};
+
+void Interactor::printInColumns(const std::vector<std::vector<std::string>> &rows, int indent) {
+    Interactor::printInColumns(rows, std::vector<std::string>{}, std::cout, indent);
+};
+
+void Interactor::printInColumns(const std::vector<std::vector<std::string>> &rows, const std::vector<std::string> &headers) {
+    Interactor::printInColumns(rows, headers, std::cout, 0);
+};
+
+void Interactor::printInColumns(const std::vector<std::vector<std::string>> &rows, const std::vector<std::string> &headers, int indent) {
+    Interactor::printInColumns(rows, headers, std::cout, indent);
+};
+
+void Interactor::printInColumns(const std::vector<std::vector<std::string>> &rows, const std::vector<std::string> &headers, std::ostream &os) {
+    Interactor::printInColumns(rows, headers, os, 0);
+};
+
+
+void Interactor::printInColumns(const std::vector<std::vector<std::string>> &rows, const std::vector<std::string> &headers, std::ostream &os, int indent) {
+    // make sure rows is not empty
+    if(rows.size() == 0) {
+        return;
+    }
+    bool haveHeaders = headers.size() > 0;
+    // make sure all rows habe the same number of columns
+    // and check for the longest string
+    std::size_t numberOfColumns = rows[0].size();
+    std::vector<std::size_t> longests(numberOfColumns);
+    for(int r = 0; r < rows.size(); r++) {
+        // check number of columns
+        if(rows[r].size() != numberOfColumns) {
+            return;
+        }
+        // check the lengths
+        for(int c = 0; c < numberOfColumns; c++) {
+            std::size_t length = rows[r][c].length();
+            if(longests[c] < length) {
+                longests[c] = length;
+            }
+        }
+    }
+    // if we have headers, do the same
+    if(haveHeaders) {
+        if(headers.size() != numberOfColumns) {
+            return;
+        }
+        for(int c = 0; c < numberOfColumns; c++) {
+            std::size_t length = headers[c].length();
+            if(longests[c] < length) {
+                longests[c] = length;
+            }
+        }
+    }
+    // now we print it
+    if(haveHeaders) {
+        os << std::left;
+        if(indent > 0) {
+            os << std::string(indent, '\t');
+        }
+        for(int h = 0; h < numberOfColumns; h++) {
+            os << Interactor::BOLD;
+            os << std::setw(longests[h]) << std::setfill(' ') << headers[h] << " ";
+            os << Interactor::RESET;
+        }
+        os << std::endl;
+        if(indent > 0) {
+            os << std::string(indent, '\t');
+        }
+        for(int h = 0; h < numberOfColumns; h++) {
+            os << std::string(longests[h], '-') << '-';
+        }
+        os << std::endl;
+    }
+    for(int r = 0; r < rows.size(); r++) {
+        os << std::left;
+        if(indent > 0) {
+            os << std::string(indent, '\t');
+        }
+        for(int h = 0; h < numberOfColumns; h++) {
+            os << std::setw(longests[h]) << std::setfill(' ') << rows[r][h] << " ";
+            os << Interactor::RESET;
+        }
+        os << std::endl;
+    }
+};

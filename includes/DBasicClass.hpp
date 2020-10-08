@@ -9,7 +9,7 @@ class DBasicClass {
 
     protected:
 
-    Logger *logger;
+    Logger *_logger;
 
 
 };

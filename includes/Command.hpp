@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <string>
+#include <sstream>
+#include <ostream>
 #include <functional>
 
 #include "Option.hpp"
@@ -37,7 +39,11 @@ class Command {
     void invoke();
     bool is(std::string name) { return _name == name; }
     bool need(std::string arg);
+    friend std::ostream& operator<<(std::ostream& os, const Command& c);
+    std::string getHelp();
     //virtual void run();
+    const std::string name() const;
+    const std::string description() const;
 
 };
 

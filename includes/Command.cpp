@@ -27,4 +27,29 @@ void Command::invoke() {
     this->_callback();
 };
 
+std::ostream& operator<<(std::ostream& os, const Command& c) {
+    os << "\t" << c._name << "\t\t" << c._description << std::endl;
+    if(c._options.size() > 0) {
+        os << "\t\tCommand options:" << std::endl;
+        for(const Option option: c._options) {
+            os << option;
+        }
+    }
+    return os;
+};
+
+std::string Command::getHelp() {
+    std::stringstream s;
+    s << *this;
+    return s.str();
+};
+
+const std::string Command::name() const {
+    return _name;
+};
+
+const std::string Command::description() const {
+    return _description;
+};
+
 }

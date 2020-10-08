@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <array>
+#include <ostream>
 #include <iostream>
 #include <iomanip>
 #include <exception>
@@ -108,6 +109,13 @@ class Interactor {
         static void info(std::string, bool);
         static void ok(std::string);
         static void warn(std::string);
+
+        static void printInColumns(const std::vector<std::vector<std::string>> &rows);
+        static void printInColumns(const std::vector<std::vector<std::string>> &rows, int indent);
+        static void printInColumns(const std::vector<std::vector<std::string>> &rows, const std::vector<std::string> &headers);
+        static void printInColumns(const std::vector<std::vector<std::string>> &rows, const std::vector<std::string> &headers, int indent = 0);
+        static void printInColumns(const std::vector<std::vector<std::string>> &rows, const std::vector<std::string> &headers, std::ostream &os);
+        static void printInColumns(const std::vector<std::vector<std::string>> &rows, const std::vector<std::string> &headers, std::ostream &os, int indent = 0);
 
         class Table {
 

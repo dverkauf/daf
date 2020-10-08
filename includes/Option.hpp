@@ -2,6 +2,8 @@
 #define _OPTION_H_
 
 #include <string>
+#include <ostream>
+#include <sstream>
 
 namespace DAF {
 
@@ -26,6 +28,8 @@ class Option {
     void value(std::string value);
     void fish(std::string line);
     bool is(std::string name) { return name == _short || name == _long; };
+    friend std::ostream& operator<<(std::ostream& os, const Option& o);
+    std::string getHelp();
 
 };
 
