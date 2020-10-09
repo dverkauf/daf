@@ -10,9 +10,13 @@ void Application::init(const int &argc, char *argv[]) {
     for(std::string &arg: _argv) {
         _logger->trace(arg);
     }
+    // default commands
     _commands.push_back(Command("help", "Get some help")
         .callback(CALLBACK(Application::showHelp))
     );
+    // default options
+    _options.push_back(Option("d", "debug"));
+    _options.push_back(Option("v", "verbose"));
     
 };
 
