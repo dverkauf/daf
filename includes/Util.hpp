@@ -8,6 +8,9 @@ namespace DAF {
 struct Util {
 
     static std::string replace(std::string subject, const std::string &from, const std::string &to);
+    bool exists();
+    template <typename T>
+    bool exists(T variable);
 
 };
 

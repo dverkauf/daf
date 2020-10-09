@@ -3,20 +3,50 @@
 namespace DAF {
 
 void Application::init(const int &argc, char *argv[]) {
+    #undef __METHOD__
+    #define __METHOD__ "init"
+    // create a default logger
     _logger = new Logger(this->_loggingLevels);
+    _logger->trace("Application::init");
+    // convert argv into vector of strings
     for(int c = 0; c < argc; c++) {
         _argv.push_back(std::string(argv[c]));
     }
-    for(std::string &arg: _argv) {
-        _logger->trace(arg);
-    }
+    // get my name
+    _name = _argv.front();
+    _argv.erase(_argv.begin());
+    _logger->trace("_name=" + _name);
     // default commands
-    _commands.push_back(Command("help", "Get some help")
-        .callback(CALLBACK(Application::showHelp))
-    );
+    if(_useDefaultCommands) {
+        _commands.push_back(Command("help", "Get some help")
+            .callback(CALLBACK(Application::showHelp))
+        );
+    }
+    if(_useCommands) {
+        // we need at least a command
+        if(_argv.size() == 0 || _argv[0][0] == '-') {
+            throw EXCEPTION(Exception::NO_COMMAND_SPECIFIED);
+        }
+        // get the command to run
+        _command = _argv.front();
+        _argv.erase(_argv.begin());
+    }
     // default options
-    _options.push_back(Option("d", "debug"));
-    _options.push_back(Option("v", "verbose"));
+    if(_useDefaultOptions) {
+        _options.push_back(Option("h", "help").feed(_argv));
+        _options.push_back(Option("d", "debug").feed(_argv));
+        _options.push_back(Option("v", "verbose").feed(_argv));
+    }
+    if(_useCommands) {
+        try {
+            Command command = getCommand(_command);
+            command.feed(_argv);
+            command.invoke();
+        } catch(const DAF::Exception &ex) {
+            _logger->fatal(ex.getMessage());
+            throw ex;
+        }
+    }
     
 };
 
@@ -88,6 +118,13 @@ void Application::showHelp() {
 void Application::showHelpOnCommand(std::string command) {
     std::cout << "Basic usage: " << _name << " " << command << " [OPTIONS]" << std::endl << std::endl;
     std::cout << "Options:" << std::endl;
+};
+
+void Application::processCommandLineArguments() {
+    for(Option &option: _options) {
+        option.feed(_argv);
+    }
+    getCommand(_command).feed(_argv);
 };
 
 

@@ -52,4 +52,10 @@ const std::string Command::description() const {
     return _description;
 };
 
+void Command::feed(std::vector<std::string> &args) {
+    for(Option &option: _options) {
+        option.feed(args);
+    }
+};
+
 }

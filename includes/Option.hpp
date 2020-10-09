@@ -5,10 +5,15 @@
 #include <ostream>
 #include <sstream>
 #include <functional>
+#include <vector>
+
+#include "DBasicClass.hpp"
+#include "Exception.hpp"
 
 namespace DAF {
 
-class Option {
+class Option : public DBasicClass{
+    #define __CLASS__ "Option"
 
     private:
 
@@ -18,10 +23,14 @@ class Option {
     bool _haveLong{false};
     bool _haveCallback{false};
     bool _takeValue{false};
+    bool _canBeRepeated{false};
+    bool _isRequired{false};
+
+    bool _wasTriggered{false};
 
     std::string _short;
     std::string _long;
-    std::string _value;
+    std::vector<std::string> _values;
     std::function<void (std::string)> _callback;
 
     public:
@@ -50,8 +59,11 @@ class Option {
     std::string short_name();
     std::string long_name();
     std::string value();
-    void value(std::string value);
-    void fish(std::string line);
+    std::vector<std::string> values();
+    Option &feed(std::vector<std::string> &args); // feed with arguments
+    Option &required();
+    bool isRequired();
+    bool triggered();
     bool is(std::string name) { return name == _short || name == _long; };
     friend std::ostream& operator<<(std::ostream& os, const Option& o);
     std::string getHelp();

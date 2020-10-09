@@ -33,6 +33,7 @@ class Command {
 
     Command(const std::string &name, const std::string &description);
     void bind(Application *app);
+    void feed(std::vector<std::string> &args); // feed with arguments
     Command &need(Option &option);
     Command &help(std::string text);
     Command &callback(Callback callback);

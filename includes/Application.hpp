@@ -18,6 +18,8 @@
 namespace DAF {
 
 class Application: public DBasicClass {
+    #undef __CLASS__
+    #define __CLASS__ "Application"
 
     protected:
 
@@ -27,7 +29,12 @@ class Application: public DBasicClass {
     std::vector<std::string> _argv;
     std::bitset<Logger::numberOfLevels> _loggingLevels;
     std::vector<Command> _commands;
+    bool _useCommands{true};
+    bool _useDefaultCommands{true};
     std::vector<Option> _options;
+    bool _useDefaultOptions{true};
+
+    void processCommandLineArguments();
 
     public:
 
@@ -46,7 +53,6 @@ class Application: public DBasicClass {
     std::string getHelp();
     void showHelp();
     void showHelpOnCommand(std::string command);
-
 
 };
 

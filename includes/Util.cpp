@@ -14,4 +14,13 @@ std::string Util::replace(std::string subject, const std::string &from, const st
     return subject;
 };
 
+bool Util::exists() {
+    return false;
+};
+
+template <typename T>
+bool Util::exists(T variable) {
+    return true;
+};
+
 }
