@@ -9,9 +9,16 @@ class DBasicClass {
 
     protected:
 
-    Logger *_logger;
+    static Logger *_logger;
     bool _debug_on{false};
     bool _verbose_on{false};
+
+    public:
+
+    bool debug();
+    void debug(bool setDebug);
+    void activateLoggingLevel(int level);
+    bool isLoggingLevelActive(int level);
 
 
 };

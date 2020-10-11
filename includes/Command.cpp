@@ -8,8 +8,8 @@ void Command::bind(Application *app) {
     this->_app = app;
 };
 
-Command &Command::need(Option &option) {
-    this->_options.push_back(option);
+Command &Command::need(const Option &option) {
+    _options.push_back(option);
     return *this;
 };
 
@@ -56,6 +56,11 @@ void Command::feed(std::vector<std::string> &args) {
     for(Option &option: _options) {
         option.feed(args);
     }
+};
+
+Command &Command::option(Option &option) {
+    _options.push_back(option);
+    return *this;
 };
 
 }

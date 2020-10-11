@@ -2,6 +2,11 @@
 
 namespace DAF {
 
+Option &Option::bind(Application *app) {
+    _app = app;
+    return *this;
+};
+
 std::ostream& operator<<(std::ostream& os, const Option& o) {
 
     return os;
@@ -35,14 +40,17 @@ bool Option::triggered() {
 Option &Option::feed(std::vector<std::string> &args) {
     #undef __METHOD__
     #define __METHOD__ "feed"
+    _logger->trace(__CLASS__ + "::"s + __METHOD__);
     // iterate through args
     for(int a = 0; a < args.size(); a++) {
+        _logger->trace(__CLASS__ + "::"s + __METHOD__ + " Checking arg (" + args[a] + ")");
         if(args[a][0] != '-') {
             throw EXCEPTION(Exception::WRONG_FORMAT_OF_PARAMETER, args[a]);
         }
         // cut the '-'
         std::string arg = args[a].substr(1);
-        if(args[a] == _short || args[a] == _long) {
+        if(args[a] == ("-" +_short) || args[a] == ("-" + _long)) {
+            _logger->trace(__CLASS__ + "::"s + __METHOD__ + " Option found (" + (args[a] == ("-" + _short) ? _short : _long) + ")");
             _wasTriggered = true;
             if(_takeValue) {
                 a++;
@@ -59,6 +67,14 @@ Option &Option::feed(std::vector<std::string> &args) {
             }
         }
     }
+    if(_wasTriggered) {
+        _callback();
+    }
+    return *this;
+};
+
+Option &Option::required() {
+    _isRequired = true;
     return *this;
 };
 

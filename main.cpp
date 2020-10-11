@@ -23,9 +23,18 @@ class MyApp : public Application {
     void config() override {
         #undef __METHOD__
         #define __METHOD__ "config"
-        this->setLoggingLevels(std::bitset<Logger::numberOfLevels>(std::string(Logger::numberOfLevels, '1')));
-        this->addCommand(Command("test", "A test command")
-            .callback(CALLBACK(MyApp::handleTest))
+        this->_useCommands = false;
+        //this->debug(true);
+        this->setLoggingLevels(std::bitset<Logger::numberOfLevels>(std::string(Logger::numberOfLevels, '0')));
+        this->addCommand(
+            Command("test", "A test command")
+                .callback(CALLBACK(MyApp::handleTest))
+                .need(
+                    Option("r", "rest")
+                        .required()
+                )
+                .need(Option("t", "test"))
+                
         );
     };
 

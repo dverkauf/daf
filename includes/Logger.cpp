@@ -39,6 +39,7 @@ Logger::Logger(AbstractLoggingChannel *c, std::bitset<9> activeLevels) : _channe
 };
 
 Logger::~Logger() {
+    trace("Logger::~Logger");
     if(_usingDefaultChannel) {
         delete(_channel);
     }
@@ -48,6 +49,7 @@ void Logger::activate(int level) {
     if(Logger::Level::NONE <= level && level <= (Logger::Level::TRACE + 1)) {
         _activeLevels.set(level, 1);
     }
+    trace("Logger::activate Levels: " + _activeLevels.to_string());
 };
 
 void Logger::inactivate(int level) {
@@ -58,9 +60,17 @@ void Logger::inactivate(int level) {
 
 bool Logger::isActive(int level) {
     if(Logger::Level::NONE <= level && level <= Logger::Level::TRACE) {
-        return _activeLevels[level];
+        return _activeLevels[level] == 1;
     }
     return false;
+};
+
+void Logger::setLevels(std::bitset<9> levels) {
+    this->_activeLevels = levels;
+};
+
+void Logger::printLevels() {
+    std::cout << "Logging levels: " << _activeLevels << std::endl;
 };
 
 } // namespace DAF

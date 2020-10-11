@@ -5,8 +5,8 @@ namespace DAF {
 void Application::init(const int &argc, char *argv[]) {
     #undef __METHOD__
     #define __METHOD__ "init"
-    // create a default logger
-    _logger = new Logger(this->_loggingLevels);
+    activateLoggingLevel(Logger::Level::TRACE);
+    
     _logger->trace("Application::init");
     // convert argv into vector of strings
     for(int c = 0; c < argc; c++) {
@@ -32,18 +32,21 @@ void Application::init(const int &argc, char *argv[]) {
         _argv.erase(_argv.begin());
     }
     // default options
+    
     if(_useDefaultOptions) {
-        _options.push_back(Option("h", "help").feed(_argv));
-        _options.push_back(Option("d", "debug").feed(_argv));
-        _options.push_back(Option("v", "verbose").feed(_argv));
+        _options.push_back(Option("h"s, "help"s).bind(this).feed(_argv));
+        _options.push_back(Option("t"s, "trace"s, [this](){this->activateLoggingLevel(Logger::Level::TRACE);}).bind(this).feed(_argv));
+        _options.push_back(Option("d"s, "debug"s, [this](){this->activateLoggingLevel(Logger::Level::DEBUG);}).bind(this).feed(_argv));
+        _options.push_back(Option("v"s, "verbose"s).feed(_argv));
     }
+    _logger->trace("debug is "s + (debug() ? "on"s : "off"s));
     if(_useCommands) {
         try {
             Command command = getCommand(_command);
             command.feed(_argv);
             command.invoke();
         } catch(const DAF::Exception &ex) {
-            _logger->fatal(ex.getMessage());
+           // _logger->fatal(ex.getMessage());
             throw ex;
         }
     }
@@ -55,7 +58,8 @@ const std::vector<std::string> &Application::argv() {
 };
 
 void Application::setLoggingLevels(std::bitset<Logger::numberOfLevels> loggingLevels) {
-    this->_loggingLevels = loggingLevels;
+    //this->_loggingLevels = loggingLevels;
+    _logger->setLevels(loggingLevels);
 };
 
 void Application::setDescription(std::stringstream description) {
@@ -74,12 +78,15 @@ Application &Application::addCommand(const Command &command) {
 };
 
 Command &Application::getCommand(std::string name) {
+    #undef __METHOD__
+    #define __METHOD__ "getCommand"
+    _logger->trace(__CLASS__ + "::"s + __METHOD__ + " name="s + name);
     for(Command &c: _commands) {
         if(c.is(name)) {
             return c;
         }
     }
-    throw Exception(Exception::REASONS::UNKNOWN_COMMAND, name);
+    throw EXCEPTION(Exception::REASONS::UNKNOWN_COMMAND, name);
 };
 
 Logger *Application::logger() {
@@ -127,6 +134,13 @@ void Application::processCommandLineArguments() {
     getCommand(_command).feed(_argv);
 };
 
-
+bool Application::isInOptions(std::string option_name) {
+    for(Option &o: _options) {
+        if(o.is(option_name)) {
+            return true;
+        }
+    }
+    return false;
+};
 
 }

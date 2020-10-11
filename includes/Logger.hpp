@@ -44,6 +44,8 @@ class Logger {
     void activate(int level);
     void inactivate(int level);
 
+    void setLevels(std::bitset<9> levels);
+
     void fatal(std::string text);
     void critical(std::string text);
     void error(std::string text);
@@ -63,6 +65,8 @@ class Logger {
     void trace(std::exception &ex);
 
     bool isActive(int level);
+
+    void printLevels();
 
 };
 

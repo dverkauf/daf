@@ -15,6 +15,8 @@
 #include "Option.hpp"
 #include "Interactor.hpp"
 
+using namespace std::literals::string_literals;
+
 namespace DAF {
 
 class Application: public DBasicClass {
@@ -53,6 +55,7 @@ class Application: public DBasicClass {
     std::string getHelp();
     void showHelp();
     void showHelpOnCommand(std::string command);
+    bool isInOptions(std::string option_name);
 
 };
 
@@ -68,7 +71,8 @@ int main(int argc, char *argv[]) { \
         app.init(argc, argv); \
         app.run(); \
     } catch(Exception ex) { \
-        app.logger()->fatal(ex.getMessage()); \
+            app.activateLoggingLevel(Logger::Level::FATAL); \
+            app.logger()->fatal(app.debug() ? ex.getDebugMessage() : ex.getMessage()); \
         exit(EXIT_FAILURE); \
     } \
 }
