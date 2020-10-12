@@ -2,6 +2,7 @@
 #define _UTIL_H_
 
 #include <string>
+#include <vector>
 
 namespace DAF {
 
@@ -11,6 +12,8 @@ struct Util {
     bool exists();
     template <typename T>
     bool exists(T variable);
+    static std::string vector2string(std::vector<std::string> vec);
+    static std::string vector2string(std::vector<std::string> vec, std::string separator);
 
 };
 

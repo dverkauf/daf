@@ -31,7 +31,8 @@ class Exception : public std::exception {
         UNKNOWN_COMMAND = 0,
         NO_COMMAND_SPECIFIED,
         NO_VALUE_FOR_PARAMETER,
-        WRONG_FORMAT_OF_PARAMETER
+        WRONG_FORMAT_OF_PARAMETER,
+        REQUIRED_PARAMETER_MISSING
     };
     static REASONS Reason;
 
@@ -39,7 +40,8 @@ class Exception : public std::exception {
         "Unkown command (%info%)",
         "No command specified",
         "No value given for paramenter (%info%)",
-        "Wrong format of parameter (%info%)"
+        "Wrong format of parameter (%info%)",
+        "A required parameter is missing (%info%)"
     };
 
     Exception(int reason);

@@ -23,4 +23,16 @@ bool Util::exists(T variable) {
     return true;
 };
 
+std::string Util::vector2string(std::vector<std::string> vec) {
+    return Util::vector2string(vec, " ");
+};
+
+std::string Util::vector2string(std::vector<std::string> vec, std::string separator) {
+    std::string retval;
+    for(std::string &s: vec) {
+        retval += s + separator;
+    }
+    return retval;
+};
+
 }

@@ -20,7 +20,7 @@ class Option : public DBasicClass{
     #undef __CLASS__
     #define __CLASS__ "Option"
 
-    typedef std::function<void (void)> callable;
+    typedef std::function<void (void)> Callable;
 
     private:
 
@@ -40,7 +40,7 @@ class Option : public DBasicClass{
     std::string _short;
     std::string _long;
     std::vector<std::string> _values;
-    callable _callback;
+    Callable _callback;
 
     public:
 
@@ -51,7 +51,7 @@ class Option : public DBasicClass{
     Option(std::string s, bool take_value) : _short{s}, _takeValue{take_value} {
         _haveShort = true;
     };
-    Option(std::string s, bool take_value, callable callback) : _short{s}, _takeValue{take_value}, _callback{callback} {
+    Option(std::string s, bool take_value, Callable callback) : _short{s}, _takeValue{take_value}, _callback{callback} {
         _haveShort = true;
         _haveCallback = true;
     };
@@ -63,7 +63,7 @@ class Option : public DBasicClass{
         _haveShort = true;
         _haveLong = true;
     };
-    Option(std::string s, std::string l, callable callback) : _short{s}, _long{l}, _callback{callback} {
+    Option(std::string s, std::string l, Callable callback) : _short{s}, _long{l}, _callback{callback} {
         _haveShort = true;
         _haveLong = true;
     };
@@ -71,7 +71,7 @@ class Option : public DBasicClass{
         _haveShort = true;
         _haveLong = true;
     };
-    Option(std::string s, std::string l, bool take_value, callable callback) : _short{s}, _long{l}, _takeValue{take_value}, _callback{callback} {
+    Option(std::string s, std::string l, bool take_value, Callable callback) : _short{s}, _long{l}, _takeValue{take_value}, _callback{callback} {
         _haveShort = true;
         _haveLong = true;
         _haveCallback = true;
@@ -85,6 +85,7 @@ class Option : public DBasicClass{
     std::vector<std::string> values();
     Option &feed(std::vector<std::string> &args); // feed with arguments
     Option &required();
+    Option &takeValue();
     bool isRequired();
     bool triggered();
     bool is(std::string name) { return name == _short || name == _long; };

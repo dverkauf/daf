@@ -23,7 +23,7 @@ class MyApp : public Application {
     void config() override {
         #undef __METHOD__
         #define __METHOD__ "config"
-        this->_useCommands = false;
+        this->_useCommands = true;
         //this->debug(true);
         this->setLoggingLevels(std::bitset<Logger::numberOfLevels>(std::string(Logger::numberOfLevels, '0')));
         this->addCommand(
@@ -32,9 +32,11 @@ class MyApp : public Application {
                 .need(
                     Option("r", "rest")
                         .required()
+                        .takeValue()
                 )
-                .need(Option("t", "test"))
-                
+                .need(
+                    Option("t", "test")
+                )
         );
     };
 

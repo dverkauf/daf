@@ -15,5 +15,5 @@ clean:
 	rm -f *.o includes/*.o library/*.so
 
 run:
-	LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:./library ./app scan -c config.json
+	LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:./library ./app test -d
 	

@@ -3,6 +3,7 @@
 namespace DAF {
 
 Command::Command(const std::string &name, const std::string &description) : _name{name}, _description{description} {};
+Command::Command(const std::string &name, const std::string &description, Callable callback) : _name{name}, _description{description}, _callback{callback} {};
 
 void Command::bind(Application *app) {
     this->_app = app;
@@ -18,7 +19,7 @@ Command &Command::help(std::string text) {
     return *this;
 };
 
-Command &Command::callback(Callback callback) {
+Command &Command::callback(Callable callback) {
     this->_callback = callback;
     return *this;
 };

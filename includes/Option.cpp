@@ -40,20 +40,21 @@ bool Option::triggered() {
 Option &Option::feed(std::vector<std::string> &args) {
     #undef __METHOD__
     #define __METHOD__ "feed"
-    _logger->trace(__CLASS__ + "::"s + __METHOD__);
+    std::string prefix = __CLASS__ + "::"s + __METHOD__ + ": "s;
+    _logger->trace(prefix + " option = " + _short + " " + _long);
     // iterate through args
     for(int a = 0; a < args.size(); a++) {
-        _logger->trace(__CLASS__ + "::"s + __METHOD__ + " Checking arg (" + args[a] + ")");
-        if(args[a][0] != '-') {
-            throw EXCEPTION(Exception::WRONG_FORMAT_OF_PARAMETER, args[a]);
-        }
+        _logger->trace(prefix + "Checking arg (" + args[a] + ")");
+        
         // cut the '-'
-        std::string arg = args[a].substr(1);
-        if(args[a] == ("-" +_short) || args[a] == ("-" + _long)) {
-            _logger->trace(__CLASS__ + "::"s + __METHOD__ + " Option found (" + (args[a] == ("-" + _short) ? _short : _long) + ")");
+        //std::string arg = args[a].substr(1);
+        _logger->trace(prefix + "if(" + args[a] + " == (\"-" + _short + "\") || " + args[a] + " == (\"-" + _long + "\")) {");
+        if(args[a] == ("-" + _short) || args[a] == ("-" + _long)) {
+            _logger->trace(prefix + "Option found (" + (args[a] == ("-" + _short) ? _short : _long) + ")");
             _wasTriggered = true;
+            args.erase(args.begin() + a);
             if(_takeValue) {
-                a++;
+                _logger->trace(prefix + "taking parameter");
                 if(args[a][0] == '-') {
                     std::string param = _short.length() == 0 ? _long : _short;
                     throw EXCEPTION(Exception::NO_VALUE_FOR_PARAMETER, param);
@@ -63,18 +64,30 @@ Option &Option::feed(std::vector<std::string> &args) {
                 } else {
                     _values[0] = args[a];
                 }
-                
+                args.erase(args.begin() + a);
             }
+            a--;
         }
     }
-    if(_wasTriggered) {
+    if(_isRequired && !_wasTriggered) {
+        throw Exception(Exception::REQUIRED_PARAMETER_MISSING, _short + " " + _long);
+    }
+    if(_wasTriggered && _callback != NULL) {
         _callback();
+    }
+    if(!_wasTriggered) {
+        _logger->trace(prefix + "not found");
     }
     return *this;
 };
 
 Option &Option::required() {
     _isRequired = true;
+    return *this;
+};
+
+Option &Option::takeValue() {
+    _takeValue = true;
     return *this;
 };
 

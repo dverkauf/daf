@@ -5,41 +5,50 @@ namespace DAF {
 void Application::init(const int &argc, char *argv[]) {
     #undef __METHOD__
     #define __METHOD__ "init"
+    std::string prefix = __CLASS__ + "::"s + __METHOD__ + ": "s;
     activateLoggingLevel(Logger::Level::TRACE);
-    
-    _logger->trace("Application::init");
+    _logger->trace(prefix + "Application::init");
+    //std::cout << "argc=" << argc << std::endl;
     // convert argv into vector of strings
     for(int c = 0; c < argc; c++) {
+        //std::cout << "argv[" << c << "]=" << argv[c] << std::endl;
         _argv.push_back(std::string(argv[c]));
     }
     // get my name
+    //std::cout << "_argv: " << Util::vector2string(_argv, " ") << std::endl;
     _name = _argv.front();
     _argv.erase(_argv.begin());
-    _logger->trace("_name=" + _name);
+    //std::cout << "_argv: " << Util::vector2string(_argv, " ") << std::endl;
+    _logger->trace(prefix + "_name=" + _name);
     // default commands
     if(_useDefaultCommands) {
+        _logger->trace(prefix + "using default commands");
         _commands.push_back(Command("help", "Get some help")
             .callback(CALLBACK(Application::showHelp))
         );
     }
     if(_useCommands) {
+        _logger->trace(prefix + "using commands");
         // we need at least a command
         if(_argv.size() == 0 || _argv[0][0] == '-') {
+            _logger->trace(prefix + "_argv.size()="s + std::to_string(_argv.size()) + " _argv[0]="s + _argv[0]);
             throw EXCEPTION(Exception::NO_COMMAND_SPECIFIED);
         }
         // get the command to run
         _command = _argv.front();
         _argv.erase(_argv.begin());
+        _logger->trace(prefix + "found command <" + _command + ">");
     }
     // default options
     
     if(_useDefaultOptions) {
+        _logger->trace(prefix + "using default options");
         _options.push_back(Option("h"s, "help"s).bind(this).feed(_argv));
         _options.push_back(Option("t"s, "trace"s, [this](){this->activateLoggingLevel(Logger::Level::TRACE);}).bind(this).feed(_argv));
         _options.push_back(Option("d"s, "debug"s, [this](){this->activateLoggingLevel(Logger::Level::DEBUG);}).bind(this).feed(_argv));
         _options.push_back(Option("v"s, "verbose"s).feed(_argv));
     }
-    _logger->trace("debug is "s + (debug() ? "on"s : "off"s));
+    _logger->trace(prefix + "debug is "s + (debug() ? "on"s : "off"s));
     if(_useCommands) {
         try {
             Command command = getCommand(_command);
