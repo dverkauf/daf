@@ -10,9 +10,15 @@
 
 using namespace DAF;
 
+using namespace std::literals::string_literals;
+
 class MyApp : public Application {
     #undef __CLASS__
     #define __CLASS__ "MyApp"
+
+    private:
+
+    std::string _config_file_name;
 
     public:
 
@@ -24,28 +30,36 @@ class MyApp : public Application {
         #undef __METHOD__
         #define __METHOD__ "config"
         this->_useCommands = true;
+        this->_config_file_name = "";
         //this->debug(true);
         this->setLoggingLevels(std::bitset<Logger::numberOfLevels>(std::string(Logger::numberOfLevels, '0')));
         this->addCommand(
             Command("test", "A test command")
                 .callback(CALLBACK(MyApp::handleTest))
                 .need(
-                    Option("r", "rest")
+                    Option("r", "rest", "Go to rest")
                         .required()
                         .takeValue()
                 )
                 .need(
-                    Option("t", "test")
+                    Option("t", "test", "Just a test option")
+                )
+                .need(
+                    Option("c", "config", "Specify an alternative config", [this](std::string value) { this->_config_file_name = value; })
+                        .takeValue()
                 )
         );
     };
 
     void run() override {
         #undef __METHOD__
-        #define __METHOD__ "run"        
+        #define __METHOD__ "run"
+        std::string prefix = __CLASS__ + "::"s + __METHOD__ + ": "s;
+        logger()->trace(prefix);
         for(const std::string &arg: this->argv()) {
             std::cout << arg << std::endl;
         }
+        std::cout << "_config_file_name=" << _config_file_name << std::endl;
         
     };
 

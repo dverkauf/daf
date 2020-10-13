@@ -21,6 +21,7 @@ class Option : public DBasicClass{
     #define __CLASS__ "Option"
 
     typedef std::function<void (void)> Callable;
+    typedef std::function<void (std::string var)> Callable_with_value;
 
     private:
 
@@ -39,39 +40,45 @@ class Option : public DBasicClass{
 
     std::string _short;
     std::string _long;
+    std::string _description;
     std::vector<std::string> _values;
     Callable _callback;
+    Callable_with_value _callback_with_value;
 
     public:
 
-    Option() {};
-    Option(std::string s) : _short{s} {
+    //Option() {};
+    Option(std::string s, std::string description) : _short{s}, _description{description} {
         _haveShort = true;
     };
-    Option(std::string s, bool take_value) : _short{s}, _takeValue{take_value} {
+    Option(std::string s, std::string description, bool take_value) : _short{s}, _description{description}, _takeValue{take_value} {
         _haveShort = true;
     };
-    Option(std::string s, bool take_value, Callable callback) : _short{s}, _takeValue{take_value}, _callback{callback} {
+    Option(std::string s, std::string description, bool take_value, Callable callback) : _short{s}, _description{description}, _takeValue{take_value}, _callback{callback} {
         _haveShort = true;
         _haveCallback = true;
     };
-    Option(const char *s, const char *l) : _short{std::string(s)}, _long{std::string(l)} {
+    /*Option(const char *s, const char *l) : _short{std::string(s)}, _long{std::string(l)} {
+        _haveShort = true;
+        _haveLong = true;
+    };*/
+    Option(std::string s, std::string l, std::string description) : _short{s}, _long{l}, _description{description} {
         _haveShort = true;
         _haveLong = true;
     };
-    Option(std::string s, std::string l) : _short{s}, _long{l} {
+    Option(std::string s, std::string l, std::string description, Callable callback) : _short{s}, _long{l}, _description{description}, _callback{callback} {
         _haveShort = true;
         _haveLong = true;
     };
-    Option(std::string s, std::string l, Callable callback) : _short{s}, _long{l}, _callback{callback} {
+    Option(std::string s, std::string l, std::string description, Callable_with_value callback) : _short{s}, _long{l}, _description{description}, _callback_with_value{callback} {
         _haveShort = true;
         _haveLong = true;
     };
-    Option(std::string s, std::string l, bool take_value) : _short{s}, _long{l}, _takeValue{take_value} {
+    Option(std::string s, std::string l, std::string description, bool take_value) : _short{s}, _long{l}, _description{description}, _takeValue{take_value} {
         _haveShort = true;
         _haveLong = true;
     };
-    Option(std::string s, std::string l, bool take_value, Callable callback) : _short{s}, _long{l}, _takeValue{take_value}, _callback{callback} {
+    Option(std::string s, std::string l, std::string description, bool take_value, Callable callback) : _short{s}, _long{l}, _description{description}, _takeValue{take_value}, _callback{callback} {
         _haveShort = true;
         _haveLong = true;
         _haveCallback = true;

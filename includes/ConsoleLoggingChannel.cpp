@@ -11,6 +11,9 @@ void ConsoleLoggingChannel::fatal(std::string text) {
         << ConsoleLoggingChannel::COLOR_FG_RED 
         << ConsoleLoggingChannel::COLOR_BG_YELLOW 
         << "FATAL: " << text << ConsoleLoggingChannel::RESET << std::endl;
+        int fg[3] = {66, 179, 245};
+        int bg[3] = {112, 11, 11};
+    Interactor::put("FATAL: " + text, fg, bg);
 };
 
 void ConsoleLoggingChannel::critical(std::string text) {

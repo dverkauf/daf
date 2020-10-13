@@ -6,6 +6,7 @@
 #include <exception>
 
 #include "AbstractLoggingChannel.hpp"
+#include "Interactor.hpp"
 
 namespace DAF {
 

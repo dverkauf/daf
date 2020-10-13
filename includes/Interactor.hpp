@@ -85,6 +85,9 @@ class Interactor {
         static constexpr const char* COLOR_BG_WHITE     = "\033[47m";
         static constexpr const char* COLOR_BG_DEFAULT   = "\033[49m";
 
+        static constexpr const char* MULTICOLOR_FG      = "\x1b[38;2;";
+        static constexpr const char* MULTICOLOR_BG      = "\x1b[48;2;";
+
         static std::string readString();
 
         static void wait(std::string);
@@ -97,6 +100,8 @@ class Interactor {
         static void table(std::vector<std::vector<std::string>> values);
         static void table(std::vector<std::vector<std::string>> values, std::vector<std::string> headers);
 
+        static std::string rgb2color(const int rgb[3], bool fg = true);
+
         static void put(std::string);
         static void put(std::string, bool);
         static void put(std::string, const char* color);
@@ -105,6 +110,8 @@ class Interactor {
         static void put(std::string, const char* color, const char* bg, bool);
         static void put(std::string text, std::vector<const char *> styles);
         static void put(std::string text, std::vector<const char *> styles, bool);
+        static void put(const std::string &text, const int rgb[3]);
+        static void put(const std::string &text, const int rgb[3], const int rgb_bg[3]);
         static void info(std::string);
         static void info(std::string, bool);
         static void ok(std::string);

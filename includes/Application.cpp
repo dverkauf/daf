@@ -6,7 +6,7 @@ void Application::init(const int &argc, char *argv[]) {
     #undef __METHOD__
     #define __METHOD__ "init"
     std::string prefix = __CLASS__ + "::"s + __METHOD__ + ": "s;
-    activateLoggingLevel(Logger::Level::TRACE);
+    //activateLoggingLevel(Logger::Level::TRACE);
     _logger->trace(prefix + "Application::init");
     //std::cout << "argc=" << argc << std::endl;
     // convert argv into vector of strings
@@ -40,13 +40,12 @@ void Application::init(const int &argc, char *argv[]) {
         _logger->trace(prefix + "found command <" + _command + ">");
     }
     // default options
-    
     if(_useDefaultOptions) {
         _logger->trace(prefix + "using default options");
-        _options.push_back(Option("h"s, "help"s).bind(this).feed(_argv));
-        _options.push_back(Option("t"s, "trace"s, [this](){this->activateLoggingLevel(Logger::Level::TRACE);}).bind(this).feed(_argv));
-        _options.push_back(Option("d"s, "debug"s, [this](){this->activateLoggingLevel(Logger::Level::DEBUG);}).bind(this).feed(_argv));
-        _options.push_back(Option("v"s, "verbose"s).feed(_argv));
+        _options.push_back(Option("h"s, "help"s, "Show help"s).bind(this).feed(_argv));
+        _options.push_back(Option("t"s, "trace"s, "Activate trace information"s, [this](){this->activateLoggingLevel(Logger::Level::TRACE);}).bind(this).feed(_argv));
+        _options.push_back(Option("d"s, "debug"s, "Activate debug information"s, [this](){this->activateLoggingLevel(Logger::Level::DEBUG);}).bind(this).feed(_argv));
+        _options.push_back(Option("v"s, "verbose"s, "Increase verbosity"s).feed(_argv));
     }
     _logger->trace(prefix + "debug is "s + (debug() ? "on"s : "off"s));
     if(_useCommands) {

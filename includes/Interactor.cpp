@@ -321,3 +321,15 @@ void Interactor::printInColumns(const std::vector<std::vector<std::string>> &row
         os << std::endl;
     }
 };
+
+std::string Interactor::rgb2color(const int rgb[3], bool fg) {
+    return (fg ? Interactor::MULTICOLOR_FG : Interactor::MULTICOLOR_BG) + std::to_string(rgb[0]) + ";" + std::to_string(rgb[1]) + ";" + std::to_string(rgb[2]) + "m";
+};
+
+void Interactor::put(const std::string &text, const int rgb[3]) {
+    std::cout << rgb2color(rgb) << text << Interactor::RESET << std::endl;
+};
+
+void Interactor::put(const std::string &text, const int rgb[3], const int rgb_bg[3]) {
+    std::cout << rgb2color(rgb) << rgb2color(rgb_bg, false) << text << Interactor::RESET << std::endl;
+};

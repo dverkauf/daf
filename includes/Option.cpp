@@ -72,8 +72,12 @@ Option &Option::feed(std::vector<std::string> &args) {
     if(_isRequired && !_wasTriggered) {
         throw Exception(Exception::REQUIRED_PARAMETER_MISSING, _short + " " + _long);
     }
-    if(_wasTriggered && _callback != NULL) {
-        _callback();
+    if(_wasTriggered && (_callback != NULL || _callback_with_value != NULL)) {
+        if(_callback != NULL) {
+            _callback();
+        } else if(_callback_with_value != NULL) {
+            _callback_with_value(_values[0]);
+        }
     }
     if(!_wasTriggered) {
         _logger->trace(prefix + "not found");
