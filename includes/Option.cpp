@@ -95,4 +95,16 @@ Option &Option::takeValue() {
     return *this;
 };
 
+Option &Option::callback(Callable callback) {
+    _callback_with_value = NULL;
+    _callback = callback;
+    return *this;
+};
+
+Option &Option::callback(Callable_with_value callback) {
+    _callback = NULL;
+    _callback_with_value = callback;
+    return *this;
+};
+
 }

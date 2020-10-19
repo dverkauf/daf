@@ -6,6 +6,7 @@
 #include <functional>
 #include <sstream>
 #include <ostream>
+#include <cstdlib>
 
 #include "DBasicClass.hpp"
 #include "Exception.hpp"
@@ -35,6 +36,7 @@ class Application: public DBasicClass {
     bool _useDefaultCommands{true};
     std::vector<Option> _options;
     bool _useDefaultOptions{true};
+    std::string _config_file;
 
     void processCommandLineArguments();
 
@@ -48,7 +50,7 @@ class Application: public DBasicClass {
     void setDescription(std::string description);
     void init(const int &argc, char *argv[]);
     const std::vector<std::string> &argv();
-    Application &addCommand(const Command &command);
+    Application &addCommand(Command &command);
     Command &getCommand(std::string name) /* throw(Exception) */;
     Logger *logger();
     friend std::ostream& operator<<(std::ostream& os, const Application& a);
@@ -61,6 +63,8 @@ class Application: public DBasicClass {
 
 }
 
+#define TRACE(text) _logger->trace(__FILE__ + ":"s + std::to_string(__LINE__) + " "s + prefix + " "s + text);
+
 #define CALLBACK(method) std::bind(&method, this)
 
 #define LETS_DO_IT(CLASS) \
@@ -71,8 +75,8 @@ int main(int argc, char *argv[]) { \
         app.init(argc, argv); \
         app.run(); \
     } catch(Exception ex) { \
-            app.activateLoggingLevel(Logger::Level::FATAL); \
-            app.logger()->fatal(app.debug() ? ex.getDebugMessage() : ex.getMessage()); \
+        app.activateLoggingLevel(Logger::Level::FATAL); \
+        app.logger()->fatal(app.debug() ? ex.getDebugMessage() : ex.getMessage()); \
         exit(EXIT_FAILURE); \
     } \
 }

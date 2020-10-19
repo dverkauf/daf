@@ -3,22 +3,27 @@
 
 #include <cstdlib>
 #include <string>
+#include <fstream>
 
 #include "DBasicClass.hpp"
+#include "json.hpp"
+
+using namespace std::literals::string_literals;
+using json = nlohmann::json;
 
 namespace DAF {
 
 class Config : public DBasicClass {
 
-    private:
+    protected:
 
-    std::string _config_file;
+    json _config;
 
     public:
 
-    Config();
-    Config(std::string config_file);
-    void init(std::string config_file);
+    Config(const std::string &file);
+    Config(std::ifstream &file);
+    void init(std::ifstream &file);
 
 };
 

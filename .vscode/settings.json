@@ -71,6 +71,11 @@
         "fstream": "cpp",
         "map": "cpp",
         "any": "cpp",
-        "source_location": "cpp"
+        "source_location": "cpp",
+        "filesystem": "cpp",
+        "stack": "cpp",
+        "__tree": "cpp",
+        "forward_list": "cpp",
+        "valarray": "cpp"
     }
 }

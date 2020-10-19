@@ -1,6 +1,22 @@
 {
     "facilities": [
-        "RZ1",
-        "Pattensen"
+        {
+            "name": "RZ1",
+            "spots": [
+                "A01", "A32", "A64", "X64", "X32", "X01", "KK01", "KK32", "KK64"
+            ]
+        },
+        {
+            "name": "Pattensen",
+            "spots": [
+                "MD1_1", "MD1_2", "MD1_3",
+                "MD2_1", "MD2_2", "MD2_3",
+                "HD2_1", "HD2_2", "HD2_3",
+                "LD1B_1", "LD1B_2", "LD1B_3",
+                "LD1A_1", "LD1A_2", "LD1A_3",
+                "LD2_1", "LD2_2", "LD2_3",
+                "HD1_1", "HD1_2", "HD1_3"
+            ]
+        }
     ]
 }

@@ -93,6 +93,8 @@ class Option : public DBasicClass{
     Option &feed(std::vector<std::string> &args); // feed with arguments
     Option &required();
     Option &takeValue();
+    Option &callback(Callable callback);
+    Option &callback(Callable_with_value callback);
     bool isRequired();
     bool triggered();
     bool is(std::string name) { return name == _short || name == _long; };

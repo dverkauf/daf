@@ -1,0 +1,12 @@
+{
+    "facilities": [
+        "RZ1",
+        "Pattensen"
+    ],
+    "object1": {
+        "key1": "value1",
+        "key2": 2.2
+    },
+    "key1": "value1"
+}
+

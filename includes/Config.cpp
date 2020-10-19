@@ -2,16 +2,23 @@
 
 namespace DAF {
 
-Config::Config() {
-    init(std::string(std::getenv("PATH")));
+Config::Config(const std::string &file) {
+    std::string prefix = "Config::Config";
+    _logger->trace(prefix + ": file=" + file);
+    std::ifstream ifs(file);
+    init(ifs);
 };
 
-Config::Config(std::string config_file) : _config_file{config_file} {
-    init(config_file);
+Config::Config(std::ifstream &file) {
+    std::string prefix = "Config::Config";
+    _logger->trace(prefix);
+    init(file);
 };
 
-void Config::init(std::string config_file) {
-
+void Config::init(std::ifstream &file) {
+    std::string prefix = "Config::init";
+    _logger->trace(prefix);
+    _config = json::parse(file);
 };
 
 }

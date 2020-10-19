@@ -9,11 +9,6 @@ void Command::bind(Application *app) {
     this->_app = app;
 };
 
-Command &Command::need(const Option &option) {
-    _options.push_back(option);
-    return *this;
-};
-
 Command &Command::help(std::string text) {
     this->_help = text;
     return *this;
@@ -59,7 +54,15 @@ void Command::feed(std::vector<std::string> &args) {
     }
 };
 
+Command &Command::need(Option &option) {
+    return this->option(option);
+};
+Command &Command::need(Option *option) {
+    return this->option(*option);
+};
+
 Command &Command::option(Option &option) {
+    option.bind(_app);
     _options.push_back(option);
     return *this;
 };

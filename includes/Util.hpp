@@ -3,17 +3,22 @@
 
 #include <string>
 #include <vector>
+#include <unistd.h>
+#include <fstream>
+#include <filesystem>
+
+#include "json.hpp"
 
 namespace DAF {
 
 struct Util {
 
     static std::string replace(std::string subject, const std::string &from, const std::string &to);
-    bool exists();
-    template <typename T>
-    bool exists(T variable);
     static std::string vector2string(std::vector<std::string> vec);
     static std::string vector2string(std::vector<std::string> vec, std::string separator);
+    static bool fileIsReadable(const std::string &file);
+    static std::string baseName(const std::string &path);
+    static bool fileIsValidJson(const std::string &file);
 
 };
 

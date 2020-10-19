@@ -14,15 +14,6 @@ std::string Util::replace(std::string subject, const std::string &from, const st
     return subject;
 };
 
-bool Util::exists() {
-    return false;
-};
-
-template <typename T>
-bool Util::exists(T variable) {
-    return true;
-};
-
 std::string Util::vector2string(std::vector<std::string> vec) {
     return Util::vector2string(vec, " ");
 };
@@ -33,6 +24,18 @@ std::string Util::vector2string(std::vector<std::string> vec, std::string separa
         retval += s + separator;
     }
     return retval;
+};
+
+bool Util::fileIsReadable(const std::string &file) {
+    return access(file.c_str(), R_OK) == 0;
+};
+
+std::string Util::baseName(const std::string &path) {
+    return std::filesystem::path(path).filename();
+};
+
+bool Util::fileIsValidJson(const std::string &file) {
+    return nlohmann::json::accept(std::ifstream(file));
 };
 
 }

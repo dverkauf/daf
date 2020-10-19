@@ -32,7 +32,8 @@ class Exception : public std::exception {
         NO_COMMAND_SPECIFIED,
         NO_VALUE_FOR_PARAMETER,
         WRONG_FORMAT_OF_PARAMETER,
-        REQUIRED_PARAMETER_MISSING
+        REQUIRED_PARAMETER_MISSING,
+        CONFIG_JSON_EXCEPTION
     };
     static REASONS Reason;
 
@@ -41,7 +42,8 @@ class Exception : public std::exception {
         "No command specified",
         "No value given for paramenter (%info%)",
         "Wrong format of parameter (%info%)",
-        "A required parameter is missing (%info%)"
+        "A required parameter is missing (%info%)",
+        "Something went wrong while parsing your config file (%info%)"
     };
 
     Exception(int reason);

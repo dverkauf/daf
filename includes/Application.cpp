@@ -3,58 +3,81 @@
 namespace DAF {
 
 void Application::init(const int &argc, char *argv[]) {
-    #undef __METHOD__
-    #define __METHOD__ "init"
-    std::string prefix = __CLASS__ + "::"s + __METHOD__ + ": "s;
+    std::string prefix = "Application::init: ";
     //activateLoggingLevel(Logger::Level::TRACE);
-    _logger->trace(prefix + "Application::init");
-    //std::cout << "argc=" << argc << std::endl;
+    TRACE("Application::init");
     // convert argv into vector of strings
     for(int c = 0; c < argc; c++) {
-        //std::cout << "argv[" << c << "]=" << argv[c] << std::endl;
         _argv.push_back(std::string(argv[c]));
     }
     // get my name
-    //std::cout << "_argv: " << Util::vector2string(_argv, " ") << std::endl;
     _name = _argv.front();
     _argv.erase(_argv.begin());
-    //std::cout << "_argv: " << Util::vector2string(_argv, " ") << std::endl;
-    _logger->trace(prefix + "_name=" + _name);
+    TRACE("_name=" + _name);
+    if(_config_file.length() == 0) { // do we need to search for a default config file or was it overidden
+        // search a default config file
+        std::string config_file;
+        if(std::getenv("HOME") != NULL) {
+            std::string file = std::getenv("HOME");
+            TRACE("HOME=" + file);
+            file += "/." + Util::baseName(_name);
+            TRACE("searching for config file " + file + " or " + file + ".json");
+            TRACE("file " + file + " is " + (Util::fileIsReadable(file) ? "" : "not ") + "readable and is " + (Util::fileIsValidJson(file) ? "" : "not ") + "a json file");
+            TRACE("file " + file + ".json is " + (Util::fileIsReadable(file + ".json") ? "" : "not ") + "readable and is " + (Util::fileIsValidJson(file + ".json"s) ? "" : "not ") + "a json file");
+            if(Util::fileIsReadable(file) && Util::fileIsValidJson(file)) {
+                config_file = file;
+            } else if(Util::fileIsReadable(file + ".json") && Util::fileIsValidJson(file + ".json")) {
+                config_file = file + ".json";
+            }
+        }
+        if(config_file.length() == 0) { // we still did find a config file
+            std::string file = "." + Util::baseName(_name);
+            TRACE("searching for config file " + file + " or " + file + ".json");
+            TRACE("file " + file + " is " + (Util::fileIsReadable(file) ? "" : "not ") + "readable and is " + (Util::fileIsValidJson(file) ? "" : "not ") + "a json file");
+            TRACE("file " + file + ".json is " + (Util::fileIsReadable(file + ".json") ? "" : "not ") + "readable and is " + (Util::fileIsValidJson(file + ".json"s) ? "" : "not ") + "a json file");
+            if(Util::fileIsReadable(file) && Util::fileIsValidJson(file)) {
+                config_file = file;
+            } else if(Util::fileIsReadable(file + ".json") && Util::fileIsValidJson(file + ".json")) {
+                config_file = file + ".json";
+            }
+        }
+        TRACE("default config file " + (config_file.length() == 0 ? "not found" : ("found (" + config_file + ")")));
+        _config_file = config_file;
+    }
     // default commands
     if(_useDefaultCommands) {
-        _logger->trace(prefix + "using default commands");
+        TRACE("using default commands");
         _commands.push_back(Command("help", "Get some help")
             .callback(CALLBACK(Application::showHelp))
         );
     }
     if(_useCommands) {
-        _logger->trace(prefix + "using commands");
+        TRACE("using commands");
         // we need at least a command
         if(_argv.size() == 0 || _argv[0][0] == '-') {
-            _logger->trace(prefix + "_argv.size()="s + std::to_string(_argv.size()) + " _argv[0]="s + _argv[0]);
-            throw EXCEPTION(Exception::NO_COMMAND_SPECIFIED);
+            TRACE("_argv.size()="s + std::to_string(_argv.size()) + " _argv[0]="s + _argv[0]);
+            throw new Exception(Exception::NO_COMMAND_SPECIFIED);
         }
         // get the command to run
         _command = _argv.front();
         _argv.erase(_argv.begin());
-        _logger->trace(prefix + "found command <" + _command + ">");
+        TRACE("found command <" + _command + ">");
     }
     // default options
     if(_useDefaultOptions) {
-        _logger->trace(prefix + "using default options");
+        TRACE("using default options");
         _options.push_back(Option("h"s, "help"s, "Show help"s).bind(this).feed(_argv));
         _options.push_back(Option("t"s, "trace"s, "Activate trace information"s, [this](){this->activateLoggingLevel(Logger::Level::TRACE);}).bind(this).feed(_argv));
         _options.push_back(Option("d"s, "debug"s, "Activate debug information"s, [this](){this->activateLoggingLevel(Logger::Level::DEBUG);}).bind(this).feed(_argv));
         _options.push_back(Option("v"s, "verbose"s, "Increase verbosity"s).feed(_argv));
     }
-    _logger->trace(prefix + "debug is "s + (debug() ? "on"s : "off"s));
+    TRACE("debug is "s + (debug() ? "on"s : "off"s));
     if(_useCommands) {
         try {
             Command command = getCommand(_command);
             command.feed(_argv);
             command.invoke();
         } catch(const DAF::Exception &ex) {
-           // _logger->fatal(ex.getMessage());
             throw ex;
         }
     }
@@ -78,9 +101,8 @@ void Application::setDescription(std::string description) {
     _description = description;
 };
 
-Application &Application::addCommand(const Command &command) {
-    
-    //command.bind(this);
+Application &Application::addCommand(Command &command) {
+    command.bind(this);
     this->_commands.push_back(command);
     return *this;
 };
