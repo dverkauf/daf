@@ -21,9 +21,7 @@ using namespace std::literals::string_literals;
 namespace DAF {
 
 class Application: public DBasicClass {
-    #undef __CLASS__
-    #define __CLASS__ "Application"
-
+    
     protected:
 
     std::string _name;
@@ -32,32 +30,35 @@ class Application: public DBasicClass {
     std::vector<std::string> _argv;
     std::bitset<Logger::numberOfLevels> _loggingLevels;
     std::vector<Command> _commands;
+    std::vector<Option> _options;
     bool _useCommands{true};
     bool _useDefaultCommands{true};
-    std::vector<Option> _options;
     bool _useDefaultOptions{true};
     std::string _config_file;
 
-    void processCommandLineArguments();
-
     public:
 
-    virtual void run() = 0;
+    // this function must be overridden by the application in order to set the configuration before init is executed
     virtual void config() = 0;
-
+    void init(const int &argc, char *argv[]);
+    // this function can be used to run any routine that needs to run each time. It will run after running the command
+    virtual void run() = 0;
+    
     void setLoggingLevels(std::bitset<Logger::numberOfLevels> loggingLevels);
     void setDescription(std::stringstream description);
     void setDescription(std::string description);
-    void init(const int &argc, char *argv[]);
-    const std::vector<std::string> &argv();
+    
     Application &addCommand(Command &command);
     Command &getCommand(std::string name) /* throw(Exception) */;
     Logger *logger();
-    friend std::ostream& operator<<(std::ostream& os, const Application& a);
     std::string getHelp();
     void showHelp();
     void showHelpOnCommand(std::string command);
-    bool isInOptions(std::string option_name);
+    friend std::ostream& operator<<(std::ostream& os, const Application& a);
+
+    //void processCommandLineArguments();
+    //const std::vector<std::string> &argv();
+    //bool isInOptions(std::string option_name);
 
 };
 

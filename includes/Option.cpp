@@ -57,7 +57,7 @@ Option &Option::feed(std::vector<std::string> &args) {
                 _logger->trace(prefix + "taking parameter");
                 if(args[a][0] == '-') {
                     std::string param = _short.length() == 0 ? _long : _short;
-                    throw EXCEPTION(Exception::NO_VALUE_FOR_PARAMETER, param);
+                    throw Exception(Exception::NO_VALUE_FOR_PARAMETER, param);
                 }
                 if(_canBeRepeated || _values.size() == 0) {
                     _values.push_back(args[a]);

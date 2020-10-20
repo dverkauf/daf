@@ -62,6 +62,7 @@ class Exception : public std::exception {
 
 }
 
+/*
 #define EXCEPTION_0 Exception()
 
 #define EXCEPTION_1(reason) \
@@ -80,6 +81,7 @@ class Exception : public std::exception {
 #define NO_ARG_EXPANDER() ,,EXCEPTION_0
 #define MACRO_CHOOSER(...) CHOOSE_FROM_ARG_COUNT(NO_ARG_EXPANDER __VA_ARGS__ ())
 #define EXCEPTION(...) MACRO_CHOOSER(__VA_ARGS__)(__VA_ARGS__)
+*/
 
 /*
 #define EXCEPTION_1(reason, info) \

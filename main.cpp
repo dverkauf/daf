@@ -55,15 +55,25 @@ class MyApp : public Application {
     public:
 
     void handleTest() {
+        std::string prefix = "MyApp::handleTest";
         Interactor::warn("TEST!!!");
+        _logger->trace(prefix + " using config file " + _config_file);
+        _config = new MyConfig(_config_file);
+        for(const auto &facility: _config->getFacilities()) {
+            std::cout << facility.name << std::endl;
+            for(const auto &spot: facility.spots) {
+                std::cout << "\t" << spot << std::endl;
+            }
+        }
+
     };
 
     void config() override {
         std::string prefix = "MyApp::config";
-        this->_useCommands = true;
+        _useCommands = true;
         //this->_config_file = "./config.json";
         //this->debug(true);
-        this->setLoggingLevels(std::bitset<Logger::numberOfLevels>(std::string(Logger::numberOfLevels, '1')));
+        setLoggingLevels(std::bitset<Logger::numberOfLevels>(std::string(Logger::numberOfLevels, '1')));
         Command cmdTest("test", "A test command");
         cmdTest.callback(CALLBACK(MyApp::handleTest));
         Option optRest("r", "rest", "Go to rest");
@@ -73,21 +83,13 @@ class MyApp : public Application {
         optConfig.callback([this](std::string value) { this->_config_file = value; });
         optConfig.takeValue();
         cmdTest.need(optTest).need(optRest).need(optConfig);
-        this->addCommand(cmdTest);
+        addCommand(cmdTest);
         TRACE("_config_file="s + _config_file);
         
     };
 
     void run() override {
         std::string prefix = "MyApp::run: ";
-        _logger->trace(prefix + " using config file " + _config_file);
-        _config = new MyConfig(_config_file);
-        for(const auto &facility: _config->getFacilities()) {
-            std::cout << facility.name << std::endl;
-            for(const auto &spot: facility.spots) {
-                std::cout << "\t" << spot << std::endl;
-            }
-        }
     };
 
 };

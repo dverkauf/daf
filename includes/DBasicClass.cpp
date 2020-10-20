@@ -9,6 +9,20 @@ bool DBasicClass::debug() {
 void DBasicClass::debug(bool setDebug) {
     if(setDebug) {
         _logger->activate(Logger::Level::DEBUG);
+    } else {
+        _logger->inactivate(Logger::Level::DEBUG);
+    }
+};
+
+bool DBasicClass::trace() {
+    return _logger->isActive(Logger::Level::TRACE);
+};
+
+void DBasicClass::trace(bool setTrace) {
+    if(setTrace) {
+        _logger->activate(Logger::Level::TRACE);
+    } else {
+        _logger->inactivate(Logger::Level::TRACE);
     }
 };
 

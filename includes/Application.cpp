@@ -84,10 +84,6 @@ void Application::init(const int &argc, char *argv[]) {
     
 };
 
-const std::vector<std::string> &Application::argv() {
-    return _argv;
-};
-
 void Application::setLoggingLevels(std::bitset<Logger::numberOfLevels> loggingLevels) {
     //this->_loggingLevels = loggingLevels;
     _logger->setLevels(loggingLevels);
@@ -116,7 +112,7 @@ Command &Application::getCommand(std::string name) {
             return c;
         }
     }
-    throw EXCEPTION(Exception::REASONS::UNKNOWN_COMMAND, name);
+    throw Exception(Exception::REASONS::UNKNOWN_COMMAND, name);
 };
 
 Logger *Application::logger() {
@@ -157,20 +153,24 @@ void Application::showHelpOnCommand(std::string command) {
     std::cout << "Options:" << std::endl;
 };
 
-void Application::processCommandLineArguments() {
+/*void Application::processCommandLineArguments() {
     for(Option &option: _options) {
         option.feed(_argv);
     }
     getCommand(_command).feed(_argv);
-};
+};*/
 
-bool Application::isInOptions(std::string option_name) {
+/*bool Application::isInOptions(std::string option_name) {
     for(Option &o: _options) {
         if(o.is(option_name)) {
             return true;
         }
     }
     return false;
-};
+};*/
+
+/*const std::vector<std::string> &Application::argv() {
+    return _argv;
+};*/
 
 }

@@ -66,7 +66,7 @@ class Logger {
 
     bool isActive(int level);
 
-    void printLevels();
+    //void printLevels();
 
 };
 

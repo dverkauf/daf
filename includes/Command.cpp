@@ -57,9 +57,9 @@ void Command::feed(std::vector<std::string> &args) {
 Command &Command::need(Option &option) {
     return this->option(option);
 };
-Command &Command::need(Option *option) {
+/*Command &Command::need(Option *option) {
     return this->option(*option);
-};
+};*/
 
 Command &Command::option(Option &option) {
     option.bind(_app);

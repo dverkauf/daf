@@ -69,8 +69,8 @@ void Logger::setLevels(std::bitset<9> levels) {
     this->_activeLevels = levels;
 };
 
-void Logger::printLevels() {
+/*void Logger::printLevels() {
     std::cout << "Logging levels: " << _activeLevels << std::endl;
-};
+};*/
 
 } // namespace DAF

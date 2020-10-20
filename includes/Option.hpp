@@ -98,8 +98,9 @@ class Option : public DBasicClass{
     bool isRequired();
     bool triggered();
     bool is(std::string name) { return name == _short || name == _long; };
-    friend std::ostream& operator<<(std::ostream& os, const Option& o);
     std::string getHelp();
+
+    friend std::ostream& operator<<(std::ostream& os, const Option& o);
 
 };
 
