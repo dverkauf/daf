@@ -14,6 +14,24 @@ void Application::init(const int &argc, char *argv[]) {
     _name = _argv.front();
     _argv.erase(_argv.begin());
     TRACE("_name=" + _name);
+    // get the command to run
+    if(_useCommands) {
+        TRACE("using commands");
+        // we need at least a command
+        if(_argv.size() == 0 || _argv[0][0] == '-') {
+            TRACE("_argv.size()="s + std::to_string(_argv.size()) + " _argv[0]="s + _argv[0]);
+            throw Exception(Exception::NO_COMMAND_SPECIFIED);
+        }
+    }
+    _command = _argv.front();
+    _argv.erase(_argv.begin());
+    TRACE("found command <" + _command + ">");
+    if(_command == "help") {
+        if(true) { // next word is a command -> help on specific command
+            _help_on_command = _argv.front();
+            _argv.erase(_argv.begin());
+        }
+    }
     if(_config_file.length() == 0) { // do we need to search for a default config file or was it overidden
         // search a default config file
         std::string config_file;
@@ -50,18 +68,6 @@ void Application::init(const int &argc, char *argv[]) {
         _commands.push_back(Command("help", "Get some help")
             .callback(CALLBACK(Application::showHelp))
         );
-    }
-    if(_useCommands) {
-        TRACE("using commands");
-        // we need at least a command
-        if(_argv.size() == 0 || _argv[0][0] == '-') {
-            TRACE("_argv.size()="s + std::to_string(_argv.size()) + " _argv[0]="s + _argv[0]);
-            throw new Exception(Exception::NO_COMMAND_SPECIFIED);
-        }
-        // get the command to run
-        _command = _argv.front();
-        _argv.erase(_argv.begin());
-        TRACE("found command <" + _command + ">");
     }
     // default options
     if(_useDefaultOptions) {

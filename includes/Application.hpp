@@ -27,6 +27,7 @@ class Application: public DBasicClass {
     std::string _name;
     std::string _description;
     std::string _command;
+    std::string _help_on_command;
     std::vector<std::string> _argv;
     std::bitset<Logger::numberOfLevels> _loggingLevels;
     std::vector<Command> _commands;
