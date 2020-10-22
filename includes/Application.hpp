@@ -65,8 +65,6 @@ class Application: public DBasicClass {
 
 }
 
-#define TRACE(text) _logger->trace(__FILE__ + ":"s + std::to_string(__LINE__) + " "s + prefix + " "s + text);
-
 #define CALLBACK(method) std::bind(&method, this)
 
 #define LETS_DO_IT(CLASS) \

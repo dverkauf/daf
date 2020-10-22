@@ -27,4 +27,6 @@ class DBasicClass {
 
 }
 
+#define TRACE(text) _logger->trace(__FILE__ + ":"s + std::to_string(__LINE__) + " "s + prefix + " "s + text);
+
 #endif

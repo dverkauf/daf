@@ -26,14 +26,16 @@ void Application::init(const int &argc, char *argv[]) {
     _command = _argv.front();
     _argv.erase(_argv.begin());
     TRACE("found command <" + _command + ">");
-    if(_command == "help") {
-        if(true) { // next word is a command -> help on specific command
+    if(_command == "help") { // help!!!
+        if(_argv.size() != 0 && _argv[0][0] != '-') { // next word is a command to get help for
             _help_on_command = _argv.front();
             _argv.erase(_argv.begin());
+            TRACE("help ask on command <" + _help_on_command + ">");
         }
     }
     if(_config_file.length() == 0) { // do we need to search for a default config file or was it overidden
         // search a default config file
+        TRACE("searching for default config file");
         std::string config_file;
         if(std::getenv("HOME") != NULL) {
             std::string file = std::getenv("HOME");
@@ -110,9 +112,8 @@ Application &Application::addCommand(Command &command) {
 };
 
 Command &Application::getCommand(std::string name) {
-    #undef __METHOD__
-    #define __METHOD__ "getCommand"
-    _logger->trace(__CLASS__ + "::"s + __METHOD__ + " name="s + name);
+    std::string prefix = "Application::getCommand";
+    TRACE("name="s + name);
     for(Command &c: _commands) {
         if(c.is(name)) {
             return c;
@@ -126,21 +127,46 @@ Logger *Application::logger() {
 };
 
 std::ostream& operator<<(std::ostream& os, const Application& a) {
+    // Usage
+    os << Interactor::BOLD << "Basic usage: " << Interactor::RESET << a._name << " ";
+    os << (a._help_on_command.length() == 0 ? "<COMMANAD>" : a._help_on_command) << " [OPTIONS]" << std::endl << std::endl;
     // Description, in case there is one
     if(a._description.size() != 0) {
         os << a._description << std::endl << std::endl;
     }
-    // Usage
-    os << "Basic usage: " << a._name << " <COMMAND> [OPTIONS]" << std::endl << std::endl;
-    std::vector<std::string> headers {"name      ", "description"};
-    std::vector<std::vector<std::string>> rows;
-    for(const Command &command: a._commands) {
-        std::vector<std::string> row {command.name(), command.description()};
-        rows.push_back(row);
+    // Commands
+    if(a._help_on_command.length() == 0) { 
+        os << Interactor::BOLD << Interactor::COLOR_BG_BLACK << Interactor::COLOR_FG_YELLOW << "\tAvailable commands:" << Interactor::RESET << std::endl;
+        std::vector<std::string> headers {"name      ", "description"};
+        std::vector<std::vector<std::string>> rows;
+        for(const Command &command: a._commands) {
+            std::vector<std::string> row {command.name(), command.description()};
+            rows.push_back(row);
+        }
+        Interactor::printInColumns(rows, headers, os, 1);
+        os << std::endl;
+        os << Interactor::COLOR_BG_BLACK << Interactor::COLOR_FG_YELLOW << "For help on a command try \"" << a._name << " help " << "<COMMAND>\"" << Interactor::RESET << std::endl;
+        os << std::endl;
     }
-    Interactor::printInColumns(rows, headers, os, 1);
+    // help on command
+    if(a._help_on_command.length() != 0) {
+        // Command description
+        // Command options
+        os << Interactor::BOLD << "\tCommand options:" << Interactor::RESET << std::endl;
+        for(const Command &c: a._commands) {
+            if(c.name() == a._help_on_command) {
+                for(const Option &o: c.options()) {
+                    os << "\t" << o << std::endl;
+                }
+            }
+        }
+    }
+    os << Interactor::BOLD << "\tGeneral options:" << Interactor::RESET << std::endl;
+    for(const auto &o: a._options) {
+        os << "\t" << o << std::endl;
+    }
     os << std::endl;
-    os << "For help on a command try \"" << a._name << " help " << "<COMMAND>\"" << std::endl;
+    
     return os;
 }
 
@@ -151,6 +177,9 @@ std::string Application::getHelp() {
 };
 
 void Application::showHelp() {
+    if(_help_on_command.length() != 0) {
+        
+    }
     std::cout << *this;
 };
 

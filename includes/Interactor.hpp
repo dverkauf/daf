@@ -117,6 +117,8 @@ class Interactor {
         static void ok(std::string);
         static void warn(std::string);
 
+        static void bold(std::string text, std::ostream &os);
+
         static void printInColumns(const std::vector<std::vector<std::string>> &rows);
         static void printInColumns(const std::vector<std::vector<std::string>> &rows, int indent);
         static void printInColumns(const std::vector<std::vector<std::string>> &rows, const std::vector<std::string> &headers);

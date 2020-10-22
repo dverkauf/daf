@@ -57,7 +57,7 @@ class MyApp : public Application {
     void handleTest() {
         std::string prefix = "MyApp::handleTest";
         Interactor::warn("TEST!!!");
-        _logger->trace(prefix + " using config file " + _config_file);
+        TRACE(" using config file " + _config_file);
         _config = new MyConfig(_config_file);
         for(const auto &facility: _config->getFacilities()) {
             std::cout << facility.name << std::endl;

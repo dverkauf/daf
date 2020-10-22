@@ -44,7 +44,7 @@ class Command {
     std::string getHelp();
     const std::string name() const;
     const std::string description() const;
-
+    const std::vector<Option> options() const { return _options; };
     friend std::ostream& operator<<(std::ostream& os, const Command& c);
 
     //Command &need(Option *option); // need an option with value

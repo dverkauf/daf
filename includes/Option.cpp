@@ -7,11 +7,6 @@ Option &Option::bind(Application *app) {
     return *this;
 };
 
-std::ostream& operator<<(std::ostream& os, const Option& o) {
-
-    return os;
-};
-
 std::string Option::getHelp() {
     std::stringstream s;
     s << *this;
@@ -41,20 +36,20 @@ Option &Option::feed(std::vector<std::string> &args) {
     #undef __METHOD__
     #define __METHOD__ "feed"
     std::string prefix = __CLASS__ + "::"s + __METHOD__ + ": "s;
-    _logger->trace(prefix + " option = " + _short + " " + _long);
+    TRACE(" option = " + _short + " " + _long);
     // iterate through args
     for(int a = 0; a < args.size(); a++) {
-        _logger->trace(prefix + "Checking arg (" + args[a] + ")");
+        TRACE("Checking arg (" + args[a] + ")");
         
         // cut the '-'
         //std::string arg = args[a].substr(1);
-        _logger->trace(prefix + "if(" + args[a] + " == (\"-" + _short + "\") || " + args[a] + " == (\"-" + _long + "\")) {");
+        TRACE("if(" + args[a] + " == (\"-" + _short + "\") || " + args[a] + " == (\"-" + _long + "\")) {");
         if(args[a] == ("-" + _short) || args[a] == ("-" + _long)) {
-            _logger->trace(prefix + "Option found (" + (args[a] == ("-" + _short) ? _short : _long) + ")");
+            TRACE("Option found (" + (args[a] == ("-" + _short) ? _short : _long) + ")");
             _wasTriggered = true;
             args.erase(args.begin() + a);
             if(_takeValue) {
-                _logger->trace(prefix + "taking parameter");
+                TRACE("taking parameter");
                 if(args[a][0] == '-') {
                     std::string param = _short.length() == 0 ? _long : _short;
                     throw Exception(Exception::NO_VALUE_FOR_PARAMETER, param);
@@ -80,7 +75,7 @@ Option &Option::feed(std::vector<std::string> &args) {
         }
     }
     if(!_wasTriggered) {
-        _logger->trace(prefix + "not found");
+        TRACE("not found");
     }
     return *this;
 };
@@ -105,6 +100,17 @@ Option &Option::callback(Callable_with_value callback) {
     _callback = NULL;
     _callback_with_value = callback;
     return *this;
+};
+
+std::ostream& operator<<(std::ostream& os, const Option& o) {
+    std::string s(1 + _MAX_LENGTH_SHORT_ + 1 + _MAX_LENGTH_LONG_ + 1 +_MAX_LENGTH_DECRPTION_ + 1, ' ');
+    std::string s_short = o._haveShort ? ("-"s + o._short) : "";
+    s.replace(0, 1 + _MAX_LENGTH_SHORT_, s_short);
+    std::string s_long = o._haveLong ? ("-"s + o._long.substr(0, _MAX_LENGTH_LONG_)) : "";
+    s.replace(1 + _MAX_LENGTH_SHORT_ + 1, s_long.length(), s_long);
+    s.replace(1 + _MAX_LENGTH_SHORT_ + 1 + _MAX_LENGTH_LONG_ + 1, _MAX_LENGTH_DECRPTION_, o._description);
+    os << s;
+    return os;
 };
 
 }

@@ -76,6 +76,7 @@
         "stack": "cpp",
         "__tree": "cpp",
         "forward_list": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "codecvt": "cpp"
     }
 }

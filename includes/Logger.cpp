@@ -49,7 +49,6 @@ void Logger::activate(int level) {
     if(Logger::Level::NONE <= level && level <= (Logger::Level::TRACE + 1)) {
         _activeLevels.set(level, 1);
     }
-    trace("Logger::activate Levels: " + _activeLevels.to_string());
 };
 
 void Logger::inactivate(int level) {

@@ -10,6 +10,10 @@
 #include "DBasicClass.hpp"
 #include "Exception.hpp"
 
+#define _MAX_LENGTH_SHORT_ 2
+#define _MAX_LENGTH_LONG_ 10
+#define _MAX_LENGTH_DECRPTION_ 50
+
 using namespace std::literals::string_literals;
 
 namespace DAF {
@@ -51,17 +55,12 @@ class Option : public DBasicClass{
     Option(std::string s, std::string description) : _short{s}, _description{description} {
         _haveShort = true;
     };
-    Option(std::string s, std::string description, bool take_value) : _short{s}, _description{description}, _takeValue{take_value} {
+    Option(std::string s, std::string description, Callable callback) : _short{s}, _description{description}, _callback{callback} {
         _haveShort = true;
     };
-    Option(std::string s, std::string description, bool take_value, Callable callback) : _short{s}, _description{description}, _takeValue{take_value}, _callback{callback} {
+    Option(std::string s, std::string description, Callable_with_value callback) : _short{s}, _description{description}, _callback_with_value{callback} {
         _haveShort = true;
-        _haveCallback = true;
     };
-    /*Option(const char *s, const char *l) : _short{std::string(s)}, _long{std::string(l)} {
-        _haveShort = true;
-        _haveLong = true;
-    };*/
     Option(std::string s, std::string l, std::string description) : _short{s}, _long{l}, _description{description} {
         _haveShort = true;
         _haveLong = true;
@@ -74,6 +73,20 @@ class Option : public DBasicClass{
         _haveShort = true;
         _haveLong = true;
     };
+    /*Option(std::string s, std::string description, bool take_value) : _short{s}, _description{description}, _takeValue{take_value} {
+        _haveShort = true;
+    };
+    Option(std::string s, std::string description, bool take_value, Callable callback) : _short{s}, _description{description}, _takeValue{take_value}, _callback{callback} {
+        _haveShort = true;
+        _haveCallback = true;
+    };
+    */
+    /*Option(const char *s, const char *l) : _short{std::string(s)}, _long{std::string(l)} {
+        _haveShort = true;
+        _haveLong = true;
+    };*/
+    
+    /*
     Option(std::string s, std::string l, std::string description, bool take_value) : _short{s}, _long{l}, _description{description}, _takeValue{take_value} {
         _haveShort = true;
         _haveLong = true;
@@ -83,6 +96,7 @@ class Option : public DBasicClass{
         _haveLong = true;
         _haveCallback = true;
     };
+    */
 
     Option &bind(Application *app);
 

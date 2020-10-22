@@ -333,3 +333,7 @@ void Interactor::put(const std::string &text, const int rgb[3]) {
 void Interactor::put(const std::string &text, const int rgb[3], const int rgb_bg[3]) {
     std::cout << rgb2color(rgb) << rgb2color(rgb_bg, false) << text << Interactor::RESET << std::endl;
 };
+
+void Interactor::bold(std::string text, std::ostream &os = std::cout) {
+    os << Interactor::BOLD << text << Interactor::RESET;
+};
