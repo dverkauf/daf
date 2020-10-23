@@ -39,9 +39,11 @@ class Application: public DBasicClass {
 
     public:
 
+    
+    void init(const int &argc, char *argv[]);
+    //#####----- VRTUAL - must be overriden -----######
     // this function must be overridden by the application in order to set the configuration before init is executed
     virtual void config() = 0;
-    void init(const int &argc, char *argv[]);
     // this function can be used to run any routine that needs to run each time. It will run after running the command
     virtual void run() = 0;
     
@@ -74,8 +76,8 @@ int main(int argc, char *argv[]) { \
         app.config(); \
         app.init(argc, argv); \
         app.run(); \
-    } catch(Exception ex) { \
-        app.activateLoggingLevel(Logger::Level::FATAL); \
+    } catch(DAF::Exception ex) { \
+        app.activateLoggingLevel(DAF::Logger::Level::FATAL); \
         app.logger()->fatal(app.debug() ? ex.getDebugMessage() : ex.getMessage()); \
         exit(EXIT_FAILURE); \
     } \
