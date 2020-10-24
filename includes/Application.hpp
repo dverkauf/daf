@@ -38,7 +38,6 @@ class Application: public DBasicClass {
     std::string _config_file;
 
     public:
-
     
     void init(const int &argc, char *argv[]);
     //#####----- VRTUAL - must be overriden -----######
@@ -80,6 +79,25 @@ int main(int argc, char *argv[]) { \
         app.activateLoggingLevel(DAF::Logger::Level::FATAL); \
         app.logger()->fatal(app.debug() ? ex.getDebugMessage() : ex.getMessage()); \
         exit(EXIT_FAILURE); \
+    } catch(...) { \
+        app.logger()->fatal("Unknown exception!"); \
+    } \
+}
+
+#define LETS_TRACE_IT(CLASS) \
+int main(int argc, char *argv[]) { \
+    CLASS app; \
+    app.activateLoggingLevel(DAF::Logger::Level::TRACE); \
+    try { \
+        app.config(); \
+        app.init(argc, argv); \
+        app.run(); \
+    } catch(DAF::Exception ex) { \
+        app.activateLoggingLevel(DAF::Logger::Level::FATAL); \
+        app.logger()->fatal(app.debug() ? ex.getDebugMessage() : ex.getMessage()); \
+        exit(EXIT_FAILURE); \
+    } catch(...) { \
+        app.logger()->fatal("Unknown exception!"); \
     } \
 }
 

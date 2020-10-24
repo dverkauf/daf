@@ -45,4 +45,12 @@ const int Exception::reason() const {
     return _reason;
 };
 
+void Exception::throwMe(int reason) {
+    throw Exception(reason);
+};
+
+void Exception::throwMe(int reason, std::string info) {
+    throw Exception(reason, info);
+};
+    
 }

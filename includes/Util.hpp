@@ -19,6 +19,24 @@ struct Util {
     static bool fileIsReadable(const std::string &file);
     static std::string baseName(const std::string &path);
     static bool fileIsValidJson(const std::string &file);
+    enum OS {
+        UNKNOWN = 0,
+        LINUX,
+        MACOS,
+        WINDOWS
+    };
+
+    static int getOS() {
+        #if defined(__linux__)
+        return OS::LINUX;
+        #elif defined(__APPLE__)
+        return OS::MACOS;
+        #elif defined(_WIN32)
+        return OS::WINDOWS
+        #elif defined(_WIN64)
+        return OS::WINDOWS;
+        #endif
+    };
 
 };
 

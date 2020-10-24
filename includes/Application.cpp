@@ -22,15 +22,15 @@ void Application::init(const int &argc, char *argv[]) {
             TRACE("_argv.size()="s + std::to_string(_argv.size()) + " _argv[0]="s + _argv[0]);
             throw Exception(Exception::NO_COMMAND_SPECIFIED);
         }
-    }
-    _command = _argv.front();
-    _argv.erase(_argv.begin());
-    TRACE("found command <" + _command + ">");
-    if(_command == "help") { // help!!!
-        if(_argv.size() != 0 && _argv[0][0] != '-') { // next word is a command to get help for
-            _help_on_command = _argv.front();
-            _argv.erase(_argv.begin());
-            TRACE("help ask on command <" + _help_on_command + ">");
+        _command = _argv.front();
+        _argv.erase(_argv.begin());
+        TRACE("found command <" + _command + ">");
+        if(_command == "help") { // help!!!
+            if(_argv.size() != 0 && _argv[0][0] != '-') { // next word is a command to get help for
+                _help_on_command = _argv.front();
+                _argv.erase(_argv.begin());
+                TRACE("help ask on command <" + _help_on_command + ">");
+            }
         }
     }
     if(_config_file.length() == 0) { // do we need to search for a default config file or was it overidden

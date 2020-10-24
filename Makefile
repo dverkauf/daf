@@ -19,3 +19,6 @@ run:
 
 test: library
 	g++ test.cpp -L./library -ldaf -o test -std=c++17
+
+wlanscan: library
+	g++ wlanscan.cpp -L./library -ldaf -o wlanscan -std=c++17

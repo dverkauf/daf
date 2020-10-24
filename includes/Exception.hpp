@@ -57,6 +57,9 @@ class Exception : public std::exception {
     const std::string getInfo() const;
     const int reason() const;
 
+    static void throwMe(int reason);
+    static void throwMe(int reason, std::string info);
+
 
 };
 

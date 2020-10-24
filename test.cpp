@@ -1,14 +1,8 @@
-#include <string>
-#include <iostream>
-#include <fstream>
-#include <vector>
-//#include <source_location>
-
-#include "includes/Util.hpp"
-
-using namespace DAF;
+#include <stdio.h>
 
 int main(int argc, char *argv[]) {
-    
+    #ifdef __APPLE__
+    printf("APPLE\n");
+    #endif
     
 }
