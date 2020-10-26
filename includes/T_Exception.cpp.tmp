@@ -1,0 +1,73 @@
+#include "Exception.hpp"
+
+namespace DAF{
+
+Exception::Exception(int reason) : _reason{reason}, _info{std::string("")}, _file_name{NULL}, _line_number{0}, _class_name{NULL}, _method_name{NULL} { init(); };
+Exception::Exception(int reason, std::string info) : _reason{reason}, _info{info}, _file_name{NULL}, _line_number{0}, _class_name{NULL}, _method_name{NULL} { init(); };
+Exception::Exception(int reason, std::string info, const char *file_name, int line_number, const char *class_name, const char *method_name) 
+    : _reason{reason}, _info{info}, _file_name{file_name}, _line_number{line_number}, _class_name{class_name}, _method_name{method_name} { init(); };
+
+void Exception::init() {
+    _reasons.push_back(REASON(Exception::REASONS::UNKNOWN_COMMAND, "Unkown command (%info%))"));
+    _reasons.push_back(REASON(Exception::REASONS::NO_COMMAND_SPECIFIED, "No command specified"));
+    _reasons.push_back(REASON(Exception::REASONS::NO_VALUE_FOR_PARAMETER, "No value given for paramenter (%info%)"));
+    _reasons.push_back(REASON(Exception::REASONS::WRONG_FORMAT_OF_PARAMETER, "Wrong format of parameter (%info%)"));
+    _reasons.push_back(REASON(Exception::REASONS::REQUIRED_PARAMETER_MISSING, "A required parameter is missing (%info%)"));
+    _reasons.push_back(REASON(Exception::REASONS::CONFIG_JSON_EXCEPTION, "Something went wrong while parsing your config file (%info%)"));
+};
+
+const char* Exception::what() const noexcept {
+    std::string msg = getMessage();
+    std::size_t size = msg.length();
+    char *buffer = new char[size];
+    strncpy(buffer, msg.c_str(), size);
+    return buffer;
+};
+
+const std::string Exception::getMessage() const {
+    std::string msg;
+    for(auto &r: _reasons) {
+        std::cout << "first=" << r.first << " second=" << r.second << std::endl;
+        if(r.first == _reason) {
+            msg = r.second;
+            break;
+        }
+    }
+    std::cout << "_reason=" << _reason << " " << msg << std::endl;
+    return Util::replace(msg, "%info%", _info);
+};
+
+const std::string Exception::getDebugMessage() const {
+    std::stringstream msg;
+    if(_file_name != NULL) {
+        msg << _file_name << ":" << _line_number;
+    }
+    if(_class_name != NULL) {
+        msg << " (" << _class_name;
+        if(_method_name != NULL) {
+            msg << "::" << _method_name;
+        }
+        msg << "): ";
+    }
+    //std::string msg = Messages[_reason];
+    msg << getMessage();
+    return msg.str();
+};
+
+const std::string Exception::getInfo() const {
+    return _info;
+};
+
+const int Exception::reason() const {
+    return _reason;
+};
+
+void Exception::throwMe(int reason) {
+    throw Exception(reason);
+};
+
+void Exception::throwMe(int reason, std::string info) {
+    throw Exception(reason, info);
+};
+    
+}

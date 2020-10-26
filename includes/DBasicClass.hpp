@@ -10,9 +10,7 @@ class DBasicClass {
     protected:
 
     static Logger *_logger;
-    bool _debug_on{false};
-    bool _verbose_on{false};
-
+    
     public:
 
     bool debug(); // is debug active?

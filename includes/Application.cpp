@@ -71,19 +71,43 @@ void Application::init(const int &argc, char *argv[]) {
             .callback(CALLBACK(Application::showHelp))
         );
     }
+    std::string opts;
+    std::vector<option> long_opts;
     // default options
     if(_useDefaultOptions) {
         TRACE("using default options");
-        _options.push_back(Option("h"s, "help"s, "Show help"s).bind(this).feed(_argv));
-        _options.push_back(Option("t"s, "trace"s, "Activate trace information"s, [this](){this->activateLoggingLevel(Logger::Level::TRACE);}).bind(this).feed(_argv));
-        _options.push_back(Option("d"s, "debug"s, "Activate debug information"s, [this](){this->activateLoggingLevel(Logger::Level::DEBUG);}).bind(this).feed(_argv));
-        _options.push_back(Option("v"s, "verbose"s, "Increase verbosity"s).feed(_argv));
+        /*
+        _options.push_back(Option('h', "help"s,     "Show help"s,                   &_help_on));
+        _options.push_back(Option('t', "trace"s,    "Activate trace information"s,  &_trace_on));
+        _options.push_back(Option('d', "debug"s,    "Activate debug information"s,  &_debug_on));
+        _options.push_back(Option('v', "verbose"s,  "Increase verbosity"s,          &_verbose_on));
+        */
+        opts = "htdv";
+        long_opts.push_back(option{"help", no_argument, &_help_on, 1});
+        long_opts.push_back(option{"trace", no_argument, &_trace_on, 1});
+        long_opts.push_back(option{"debug", no_argument, &_debug_on, 1});
+        long_opts.push_back(option{"verbose", no_argument, &_verbose_on, 1});
     }
     TRACE("debug is "s + (debug() ? "on"s : "off"s));
     if(_useCommands) {
         try {
+            std::string opts;
+            std::vector<option> long_opts;
             Command command = getCommand(_command);
-            command.feed(_argv);
+            /*
+            if(_useDefaultOptions) {
+                for(auto &o: _options) {
+                    opts += o.short_name();
+                    long_opts.push_back(option{o.long_name().c_str(), o.isTakingValue() ? required_argument : no_argument, o.flag(), 1});
+                }
+            }
+            */
+            std::vector<Option> command_options = command.options();
+            
+            
+            
+
+            //command.feed(_argv);
             command.invoke();
         } catch(const DAF::Exception &ex) {
             throw ex;
@@ -106,6 +130,7 @@ void Application::setDescription(std::string description) {
 };
 
 Application &Application::addCommand(Command &command) {
+    _useCommands = true;
     command.bind(this);
     this->_commands.push_back(command);
     return *this;

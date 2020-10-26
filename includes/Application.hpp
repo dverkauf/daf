@@ -7,6 +7,7 @@
 #include <sstream>
 #include <ostream>
 #include <cstdlib>
+#include <getopt.h>
 
 #include "DBasicClass.hpp"
 #include "Exception.hpp"
@@ -19,6 +20,36 @@
 using namespace std::literals::string_literals;
 
 namespace DAF {
+
+struct Opt {
+    char letter;
+    std::string name;
+    bool has_arg;
+    std::string value;
+};
+
+struct  Opts {
+    std::vector<Opt> opts;
+    const char *getOptString() {
+        std::string s;
+        for(const auto &o: opts) {
+            s += o.letter;
+            if(o.has_arg) {
+                s += ':';
+            }
+        }
+        return s.c_str();
+    };
+    const option *getLongOpts() {
+        //option *options = malloc(sizeof(option) * opts.size());
+        std::vector<option> options;
+        for(const auto &o: opts) {
+            options.push_back(option{o.name.c_str(), (o.has_arg ? required_argument : no_argument), NULL, o.letter});
+        }
+        return options.data();
+    };
+};
+
 
 class Application: public DBasicClass {
     
@@ -36,6 +67,12 @@ class Application: public DBasicClass {
     bool _useDefaultCommands{true};
     bool _useDefaultOptions{true};
     std::string _config_file;
+
+    int _trace_on = 0;
+    int _debug_on = 0;
+    int _verbose_on = 0;
+    int _help_on = 0;
+
 
     public:
     
@@ -92,9 +129,9 @@ int main(int argc, char *argv[]) { \
         app.config(); \
         app.init(argc, argv); \
         app.run(); \
-    } catch(DAF::Exception ex) { \
+    } catch(DAF::BasicException ex) { \
         app.activateLoggingLevel(DAF::Logger::Level::FATAL); \
-        app.logger()->fatal(app.debug() ? ex.getDebugMessage() : ex.getMessage()); \
+        app.logger()->fatal(ex.what()); \
         exit(EXIT_FAILURE); \
     } catch(...) { \
         app.logger()->fatal("Unknown exception!"); \

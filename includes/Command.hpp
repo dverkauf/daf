@@ -7,13 +7,14 @@
 #include <ostream>
 #include <functional>
 
+#include "DBasicClass.hpp"
 #include "Option.hpp"
 
 namespace DAF {
 
 class Application;
 
-class Command {
+class Command : public DBasicClass {
 
     private:
 
@@ -33,17 +34,18 @@ class Command {
 
     Command(const std::string &name, const std::string &description);
     Command(const std::string &name, const std::string &description, Callable callback);
-    void bind(Application *app);
-    void feed(std::vector<std::string> &args); // feed with arguments
-    Command &need(Option &option); // need an option with value
+    //void bind(Application *app);
+    //void feed(std::vector<std::string> &args); // feed with arguments
+    Command &need(Option &option) { return this->option(option); }; // need an option with value
     Command &option(Option &option); // need an option with value
     Command &help(std::string text);
     Command &callback(Callable callback);
     bool is(std::string name) { return _name == name; }
-    void invoke();
+    void invoke() { _callback(); };
     std::string getHelp();
-    const std::string name() const;
-    const std::string description() const;
+    const std::string name() const { return _name; };
+    const std::string description() const { return _description; };
+    //Option &option(std::string name); // find a certain option
     const std::vector<Option> options() const { return _options; };
     friend std::ostream& operator<<(std::ostream& os, const Command& c);
 

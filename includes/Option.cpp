@@ -2,10 +2,10 @@
 
 namespace DAF {
 
-Option &Option::bind(Application *app) {
+/*Option &Option::bind(Application *app) {
     _app = app;
     return *this;
-};
+};*/
 
 std::string Option::getHelp() {
     std::stringstream s;
@@ -13,30 +13,38 @@ std::string Option::getHelp() {
     return s.str();
 };
 
+/*
 std::string Option::value() {
-    #undef __METHOD__
-    #define __METHOD__ "value"
+    std::string prefix = "Option::value";
+    TRACE("name=" + _short + " _value=" + _value);
+    return _value;
+    /*
+    /*
     if(_values.size() > 0) {
         return _values[0];
     }
-    return NULL;
+    TRACE("option=" + _short + " _values.size()=" + std::to_string(_values.size()));
+    throw Exception(Exception::REASONS::NO_VALUE_FOR_PARAMETER, _short);
+    */
+    /*
 };
-
+*/
+/*
 std::vector<std::string> Option::values() {
-    #undef __METHOD__
-    #define __METHOD__ "values"
     return _values;
 };
+*/
 
+/*
 bool Option::triggered() {
     return _wasTriggered;
 };
+*/
 
+/*
 Option &Option::feed(std::vector<std::string> &args) {
-    #undef __METHOD__
-    #define __METHOD__ "feed"
-    std::string prefix = __CLASS__ + "::"s + __METHOD__ + ": "s;
-    TRACE(" option = " + _short + " " + _long);
+    std::string prefix = "Option::feed";
+    TRACE("option = " + _short + " " + _long);
     // iterate through args
     for(int a = 0; a < args.size(); a++) {
         TRACE("Checking arg (" + args[a] + ")");
@@ -54,12 +62,19 @@ Option &Option::feed(std::vector<std::string> &args) {
                     std::string param = _short.length() == 0 ? _long : _short;
                     throw Exception(Exception::NO_VALUE_FOR_PARAMETER, param);
                 }
+                */
+                /*
                 if(_canBeRepeated || _values.size() == 0) {
                     _values.push_back(args[a]);
                 } else {
                     _values[0] = args[a];
                 }
+                */
+               /*
+                TRACE("option=" + _short + " setting _value=" + args[a]);
+                _value = args[a];
                 args.erase(args.begin() + a);
+                TRACE("parameter value=" + _value);
             }
             a--;
         }
@@ -79,6 +94,7 @@ Option &Option::feed(std::vector<std::string> &args) {
     }
     return *this;
 };
+*/
 
 Option &Option::required() {
     _isRequired = true;
@@ -90,6 +106,7 @@ Option &Option::takeValue() {
     return *this;
 };
 
+/*
 Option &Option::callback(Callable callback) {
     _callback_with_value = NULL;
     _callback = callback;
@@ -101,6 +118,7 @@ Option &Option::callback(Callable_with_value callback) {
     _callback_with_value = callback;
     return *this;
 };
+*/
 
 std::ostream& operator<<(std::ostream& os, const Option& o) {
     std::string s(1 + _MAX_LENGTH_SHORT_ + 1 + _MAX_LENGTH_LONG_ + 1 +_MAX_LENGTH_DECRPTION_ + 1, ' ');

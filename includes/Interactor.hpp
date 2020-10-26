@@ -9,11 +9,6 @@
 #include <iomanip>
 #include <exception>
 
-// Use g++ -c Interactor.cpp -D__LOGGER__='"WLANSCANNER"' to activate logging
-#ifdef __LOGGER__
-#include <Poco/Logger.h>
-#endif
-
 class Interactor {
 
     private:
