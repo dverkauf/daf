@@ -45,8 +45,10 @@ class Command : public DBasicClass {
     std::string getHelp();
     const std::string name() const { return _name; };
     const std::string description() const { return _description; };
-    //Option &option(std::string name); // find a certain option
-    const std::vector<Option> options() const { return _options; };
+    Option &option(std::string name); // find a certain option
+    Option &option(char name); // find a certain option
+    std::vector<Option> &options() { return _options; };
+    const void streamHelpOnOptions(std::ostream &os) const;
     friend std::ostream& operator<<(std::ostream& os, const Command& c);
 
     //Command &need(Option *option); // need an option with value

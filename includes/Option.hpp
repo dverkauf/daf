@@ -10,7 +10,7 @@
 #include "DBasicClass.hpp"
 #include "Exception.hpp"
 
-#define _MAX_LENGTH_SHORT_ 2
+#define _MAX_LENGTH_SHORT_ 1
 #define _MAX_LENGTH_LONG_ 10
 #define _MAX_LENGTH_DECRPTION_ 50
 
@@ -29,23 +29,18 @@ class Option : public DBasicClass{
 
     private:
 
-    Application *_app;
+    //Application *_app;
 
     // flags
     /*
     bool _haveShort{false};
     bool _haveLong{false};
     bool _haveCallback{false};
+    bool _canBeRepeated{false};    
     */
     bool _takeValue{false};
-    /*
-    bool _canBeRepeated{false};
-    */
     bool _isRequired{false};
-
-    /*
     bool _wasTriggered{false};
-    */
     char _short;
     std::string _long;
     std::string _description;
@@ -98,7 +93,9 @@ class Option : public DBasicClass{
     //Option &callback(Callable_with_value callback);
     bool isRequired() { return _isRequired; };
     bool isTakingValue() { return _takeValue; };
-    //bool triggered();
+    bool isTriggered() { return _wasTriggered; };
+    void trigger() { _wasTriggered = true; };
+
     //bool is(std::string name) { return name == _short || name == _long; };
     std::string getHelp();
 

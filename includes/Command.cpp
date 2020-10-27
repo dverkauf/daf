@@ -21,17 +21,33 @@ Command &Command::option(Option &option) {
     return *this;
 };
 
-/*
-void Command::bind(Application *app) {
-    this->_app = app;
+Option &Command::option(std::string name) {
+    std::string prefix = "Command::option";
+    for(Option &o: _options) {
+        if(o.long_name() == name) {
+            TRACE("command name=" + _name + " value=" + o.value());
+            return o;
+        }
+    }
+    throw Exception(Exception::REASONS::UNKNOWN_OPTION, name);
 };
-*/
 
-/*
-void Command::invoke() {
-    _callback();
+Option &Command::option(char name) {
+    std::string prefix = "Command::option";
+    for(Option &o: _options) {
+        if(o.short_name() == name) {
+            TRACE("command name=" + _name + " value=" + o.value());
+            return o;
+        }
+    }
+    throw Exception(Exception::REASONS::UNKNOWN_OPTION, std::to_string(name));
 };
-/*
+
+const void Command::streamHelpOnOptions(std::ostream &os) const {
+    for(const Option option: _options) {
+        os << option << std::endl;
+    }
+};
 
 std::ostream& operator<<(std::ostream& os, const Command& c) {
     os << "\t" << c._name << "\t\t" << c._description << std::endl;
@@ -43,6 +59,18 @@ std::ostream& operator<<(std::ostream& os, const Command& c) {
     }
     return os;
 };
+
+
+/*
+void Command::bind(Application *app) {
+    this->_app = app;
+};
+
+void Command::invoke() {
+    _callback();
+};
+
+
 
 std::string Command::getHelp() {
     std::stringstream s;
@@ -58,36 +86,18 @@ const std::string Command::description() const {
     return _description;
 };
 
-/*
 void Command::feed(std::vector<std::string> &args) {
     for(Option &option: _options) {
         option.feed(args);
     }
 };
-*/
 
-/*
 Command &Command::need(Option &option) {
     return this->option(option);
 };
-*/
 
-/*
 Command &Command::need(Option *option) {
     return this->option(*option);
-};
-*/
-
-/*
-Option &Command::option(std::string name) {
-    std::string prefix = "Command::option";
-    for(Option &o: _options) {
-        if(o.short_name() == name || o.long_name() == name) {
-            TRACE("command name=" + _name + " value=" + o.value());
-            return o;
-        }
-    }
-    throw Exception(Exception::REASONS::UNKNOWN_OPTION, name);
 };
 */
 

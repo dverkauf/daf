@@ -21,36 +21,6 @@ using namespace std::literals::string_literals;
 
 namespace DAF {
 
-struct Opt {
-    char letter;
-    std::string name;
-    bool has_arg;
-    std::string value;
-};
-
-struct  Opts {
-    std::vector<Opt> opts;
-    const char *getOptString() {
-        std::string s;
-        for(const auto &o: opts) {
-            s += o.letter;
-            if(o.has_arg) {
-                s += ':';
-            }
-        }
-        return s.c_str();
-    };
-    const option *getLongOpts() {
-        //option *options = malloc(sizeof(option) * opts.size());
-        std::vector<option> options;
-        for(const auto &o: opts) {
-            options.push_back(option{o.name.c_str(), (o.has_arg ? required_argument : no_argument), NULL, o.letter});
-        }
-        return options.data();
-    };
-};
-
-
 class Application: public DBasicClass {
     
     protected:
@@ -89,6 +59,8 @@ class Application: public DBasicClass {
     
     Application &addCommand(Command &command);
     Command &getCommand(std::string name) /* throw(Exception) */;
+    std::vector<Command> &commands() { return _commands; };
+    void addOption(Option option) { _options.push_back(option); };
     Logger *logger();
     std::string getHelp();
     void showHelp();
@@ -102,6 +74,11 @@ class Application: public DBasicClass {
 };
 
 }
+
+#define ALL_OPTIONS_PARSED -1
+#define UNKNOWN_OPTION_FOUND '?'
+#define MISSING_AN_OPTION_ARGUMENT ':'
+#define OPTION_IS_SETTING_A_FLAG 0
 
 #define CALLBACK(method) std::bind(&method, this)
 

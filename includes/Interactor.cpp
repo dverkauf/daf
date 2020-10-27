@@ -61,9 +61,26 @@ void Interactor::wait(std::string text, bool endl) {
     Interactor::readString();
 };
 
+/*
 bool Interactor::confirm(std::string question) {
-    std::cout << question << std::endl;
-    return true;
+    
+};
+*/
+
+bool Interactor::confirm(std::string question, bool defaultAnswer) {
+    std::cout << question;
+    std::cout << " [" << (defaultAnswer ? "Y" : "y") << ", " << (defaultAnswer ? "n" : "N") << "]" << std::endl;
+    while(true) {
+        std::string answer = Interactor::readString();
+        if(answer == "" || answer == "y") {
+            return true;
+        }
+        if(answer == "n") {
+            return false;
+        }
+        Interactor::bold("Not a valid answer. Please enter y or n.");
+    }
+    return false;
 };
 
 int Interactor::choose(std::string question, std::vector<std::string> choices) {
@@ -76,7 +93,8 @@ int Interactor::choose(std::string question, std::vector<std::string> choices, i
     for(int c = 0; c < choices.size(); c++) {
         if(cs.length() != 0) cs += "/";
         if(default_at == c) {
-            Interactor::put("(" + std::to_string(c+1) + ") " + choices[c], std::vector<const char *>{Interactor::BOLD});
+            Interactor::bold("(" + std::to_string(c+1) + ") " + choices[c]);
+            std::cout << std::endl;
             cs += std::to_string(c+1);
             continue;
         }
@@ -334,6 +352,10 @@ void Interactor::put(const std::string &text, const int rgb[3], const int rgb_bg
     std::cout << rgb2color(rgb) << rgb2color(rgb_bg, false) << text << Interactor::RESET << std::endl;
 };
 
-void Interactor::bold(std::string text, std::ostream &os = std::cout) {
+void Interactor::bold(std::string text) {
+    std::cout << Interactor::BOLD << text << Interactor::RESET;
+};
+
+void Interactor::bold(std::string text, std::ostream &os) {
     os << Interactor::BOLD << text << Interactor::RESET;
 };

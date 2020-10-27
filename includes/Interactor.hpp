@@ -9,6 +9,9 @@
 #include <iomanip>
 #include <exception>
 
+#define ANSWER_YES true
+#define ANSWER_NO false
+
 class Interactor {
 
     private:
@@ -87,7 +90,8 @@ class Interactor {
 
         static void wait(std::string);
         static void wait(std::string, bool);
-        static bool confirm(std::string question);
+        //static bool confirm(std::string question);
+        static bool confirm(std::string question, bool defaultAnswer = ANSWER_NO);
         static std::string prompt(std::string question);
         static std::string prompt(std::string question, std::string default_value);
         static int choose(std::string question, std::vector<std::string> choices);
@@ -112,6 +116,7 @@ class Interactor {
         static void ok(std::string);
         static void warn(std::string);
 
+        static void bold(std::string text);
         static void bold(std::string text, std::ostream &os);
 
         static void printInColumns(const std::vector<std::vector<std::string>> &rows);

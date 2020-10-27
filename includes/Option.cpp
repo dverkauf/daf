@@ -14,34 +14,15 @@ std::string Option::getHelp() {
 };
 
 /*
-std::string Option::value() {
-    std::string prefix = "Option::value";
-    TRACE("name=" + _short + " _value=" + _value);
-    return _value;
-    /*
-    /*
-    if(_values.size() > 0) {
-        return _values[0];
-    }
-    TRACE("option=" + _short + " _values.size()=" + std::to_string(_values.size()));
-    throw Exception(Exception::REASONS::NO_VALUE_FOR_PARAMETER, _short);
-    */
-    /*
-};
-*/
-/*
+
 std::vector<std::string> Option::values() {
     return _values;
 };
-*/
 
-/*
 bool Option::triggered() {
     return _wasTriggered;
 };
-*/
 
-/*
 Option &Option::feed(std::vector<std::string> &args) {
     std::string prefix = "Option::feed";
     TRACE("option = " + _short + " " + _long);
@@ -122,9 +103,8 @@ Option &Option::callback(Callable_with_value callback) {
 
 std::ostream& operator<<(std::ostream& os, const Option& o) {
     std::string s(1 + _MAX_LENGTH_SHORT_ + 1 + _MAX_LENGTH_LONG_ + 1 +_MAX_LENGTH_DECRPTION_ + 1, ' ');
-    std::string s_short = o._haveShort ? ("-"s + o._short) : "";
-    s.replace(0, 1 + _MAX_LENGTH_SHORT_, s_short);
-    std::string s_long = o._haveLong ? ("-"s + o._long.substr(0, _MAX_LENGTH_LONG_)) : "";
+    s.replace(0, 1 + _MAX_LENGTH_SHORT_, "-"s + o._short);
+    std::string s_long = "-"s + o._long.substr(0, _MAX_LENGTH_LONG_);
     s.replace(1 + _MAX_LENGTH_SHORT_ + 1, s_long.length(), s_long);
     s.replace(1 + _MAX_LENGTH_SHORT_ + 1 + _MAX_LENGTH_LONG_ + 1, _MAX_LENGTH_DECRPTION_, o._description);
     os << s;

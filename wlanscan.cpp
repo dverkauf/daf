@@ -60,7 +60,7 @@ class WlanScanApp : public DAF::Application {
             TRACE(prefix);
             #ifdef __APPLE__
             std::string cmd = "/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -s";
-            const std::regex re("^\\s*(.*)\\s(\\w{2}:\\w{2}:\\w{2}:\\w{2}:\\w{2}:\\w{2})\\s+([-+]?[0-9]*)\\s+([0-9]+)\\s+(\\w*)\\s+([-\\w]+)\\s+(.*)$");
+            const std::regex re("^\\s*(.*)\\s(\\w{2}:\\w{2}:\\w{2}:\\w{2}:\\w{2}:\\w{2})\\s+([-+]?[0-9]*)\\s+(\\S+)\\s+(\\w*)\\s+([-\\w]+)\\s+(.*)$");
             #endif
             #ifdef __linux__
             #define __LINUX___ true
@@ -198,7 +198,7 @@ class WlanScanApp : public DAF::Application {
         TRACE("");
         DAF::Command cmd = getCommand(_command);
         TRACE("");
-        DAF::Option opt = cmd.option("c");
+        DAF::Option opt = cmd.option('c');
         TRACE("opt.short_name()=" + opt.short_name());
         std::string config_file = opt.value();
         TRACE("config_file=" + config_file);
@@ -210,19 +210,21 @@ class WlanScanApp : public DAF::Application {
         Facility facility = config.facility(facility_names.at(answer));
         std::vector<std::string> headers{"SSID", "BBSID", "Channel", "Signal", "Security", "Timestamp"};
         for(auto &spot: facility.spots()) {
-            if(Interactor::confirm("Are you on spot: " + spot.name())) {
-                std::vector<Wlan> wlans;
-                std::vector<std::vector<std::string>> data;
-                do {
-                    wlans = Scanner::scan();
-                    data.erase(data.begin(), data.end());
-                    for(const auto &w: wlans) {
-                        data.push_back(std::vector<std::string>{w.ssid, w.bssid, w.channel, w.signal, w.security, w.timestamp});
-                    }
-                    Interactor::table(data, headers);
-                } while(! Interactor::confirm("Move to next spot?"));
-                spot.wlans(wlans);
+            bool arrived_to_spot = false;
+            while(! arrived_to_spot) {
+                arrived_to_spot = Interactor::confirm("Are you on spot: " + spot.name(), ANSWER_YES);
             }
+            std::vector<Wlan> wlans;
+            std::vector<std::vector<std::string>> data;
+            do {
+                wlans = Scanner::scan();
+                data.erase(data.begin(), data.end());
+                for(const auto &w: wlans) {
+                    data.push_back(std::vector<std::string>{w.ssid, w.bssid, w.channel, w.signal, w.security, w.timestamp});
+                }
+                Interactor::table(data, headers);
+            } while(! Interactor::confirm("Move to next spot?", ANSWER_YES));
+            spot.wlans(wlans);
         }
     };
 
@@ -231,9 +233,9 @@ class WlanScanApp : public DAF::Application {
         _useDefaultCommands = true;
         _useDefaultOptions = true;
         DAF::Command cmdScan("scan", "Scan a facility for WLANs");
-        DAF::Option optConfigFile("c", "config", "Specify an alternative config");
+        DAF::Option optConfigFile('c', "config", "Specify an alternative config");
         optConfigFile.takeValue();
-        DAF::Option optFacilityName("f", "facility", "Specify the facility to scan");
+        DAF::Option optFacilityName('f', "facility", "Specify the facility to scan");
         optFacilityName.takeValue();
         cmdScan.need(optConfigFile);
         cmdScan.need(optFacilityName);

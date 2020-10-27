@@ -71,49 +71,82 @@ void Application::init(const int &argc, char *argv[]) {
             .callback(CALLBACK(Application::showHelp))
         );
     }
-    std::string opts;
+    std::string opts = ":";
     std::vector<option> long_opts;
     // default options
     if(_useDefaultOptions) {
         TRACE("using default options");
-        /*
-        _options.push_back(Option('h', "help"s,     "Show help"s,                   &_help_on));
-        _options.push_back(Option('t', "trace"s,    "Activate trace information"s,  &_trace_on));
-        _options.push_back(Option('d', "debug"s,    "Activate debug information"s,  &_debug_on));
-        _options.push_back(Option('v', "verbose"s,  "Increase verbosity"s,          &_verbose_on));
-        */
-        opts = "htdv";
+        opts += "htdv";
         long_opts.push_back(option{"help", no_argument, &_help_on, 1});
         long_opts.push_back(option{"trace", no_argument, &_trace_on, 1});
         long_opts.push_back(option{"debug", no_argument, &_debug_on, 1});
         long_opts.push_back(option{"verbose", no_argument, &_verbose_on, 1});
     }
-    TRACE("debug is "s + (debug() ? "on"s : "off"s));
-    if(_useCommands) {
-        try {
-            std::string opts;
-            std::vector<option> long_opts;
-            Command command = getCommand(_command);
-            /*
-            if(_useDefaultOptions) {
-                for(auto &o: _options) {
-                    opts += o.short_name();
-                    long_opts.push_back(option{o.long_name().c_str(), o.isTakingValue() ? required_argument : no_argument, o.flag(), 1});
-                }
+    if(_options.size() > 0) {
+        for(Option &o: _options) {
+            opts += o.short_name();
+            if(o.isTakingValue()) {
+                opts += ':';
             }
-            */
-            std::vector<Option> command_options = command.options();
-            
-            
-            
-
-            //command.feed(_argv);
-            command.invoke();
-        } catch(const DAF::Exception &ex) {
-            throw ex;
+            long_opts.push_back(option{o.long_name().c_str(), o.isTakingValue() ? required_argument : no_argument, 0, o.short_name()});
         }
     }
-    
+    if(_useCommands) {
+        for(Option &o: getCommand(_command).options()) {
+            opts += o.short_name();
+            if(o.isTakingValue()) {
+                opts += ':';
+            }
+            long_opts.push_back(option{o.long_name().c_str(), o.isTakingValue() ? required_argument : no_argument, 0, o.short_name()});
+        }
+    }
+            
+    option *long_options = long_opts.data();
+    int c;
+    while(true) {
+        int option_index = 0;
+        c = getopt_long(argc, argv, opts.c_str(), long_options, &option_index);
+        if(c == ALL_OPTIONS_PARSED || c == OPTION_IS_SETTING_A_FLAG) {
+            break;
+        }
+        if(c == UNKNOWN_OPTION_FOUND) {
+            throw Exception(Exception::REASONS::UNKNOWN_OPTION, std::to_string(c));
+        }
+        if(c == MISSING_AN_OPTION_ARGUMENT) {
+            throw Exception(Exception::REASONS::NO_VALUE_FOR_PARAMETER, std::to_string(optopt));
+        }
+        if(_useDefaultOptions) {
+            switch(c) {
+                case 'h':
+                    _help_on = 1;
+                    break;
+                case 't':
+                    _trace_on = 1;
+                    break;
+                case 'd':
+                    _debug_on = 1;
+                    break;
+                case 'v':
+                    _verbose_on = 1;
+                    break;
+                default:
+                    if(_useCommands) {
+                        for(Option &o: getCommand(_command).options()) {
+                            if(c == o.short_name()) {
+                                o.trigger();
+                                if(o.isTakingValue()) {
+                                    o.value(std::string{optarg});
+                                }
+                                break;
+                            }
+                        }
+                    }
+            }
+        }
+    }
+    if(_useCommands) {
+        getCommand(_command).invoke();
+    }
 };
 
 void Application::setLoggingLevels(std::bitset<Logger::numberOfLevels> loggingLevels) {
@@ -131,7 +164,7 @@ void Application::setDescription(std::string description) {
 
 Application &Application::addCommand(Command &command) {
     _useCommands = true;
-    command.bind(this);
+    //command.bind(this);
     this->_commands.push_back(command);
     return *this;
 };
@@ -180,9 +213,7 @@ std::ostream& operator<<(std::ostream& os, const Application& a) {
         os << Interactor::BOLD << "\tCommand options:" << Interactor::RESET << std::endl;
         for(const Command &c: a._commands) {
             if(c.name() == a._help_on_command) {
-                for(const Option &o: c.options()) {
-                    os << "\t" << o << std::endl;
-                }
+                c.streamHelpOnOptions(os);
             }
         }
     }
