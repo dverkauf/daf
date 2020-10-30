@@ -1,7 +1,11 @@
 #ifndef _DBASICCLASS_H_
 #define _DBASICCLASS_H_
 
+#include <string>
+
 #include "Logger.hpp"
+
+using namespace std::literals::string_literals;
 
 namespace DAF {
 

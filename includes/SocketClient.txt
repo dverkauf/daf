@@ -1,0 +1,16 @@
+int sock = socket(AF_INET, SOCK_STREAM, 0);
+    if(sock < 0) {
+        std::string reason = "Failed to create a socket (";
+        switch (errno) {
+            case EACCES:            reason += "Permission to create a socket of the specified type and/or protocol is denied)"; break;
+            case EAFNOSUPPORT:      reason += "The implementation does not support the specified address family)"; break;
+            case EINVAL:            reason += "Unknown protocol, or protocol family not available)"; break;
+            case EMFILE:            reason += "The per-process limit on the number of open file descriptors has been reached)"; break;
+            case ENFILE:            reason += "The system-wide limit on the total number of open files has been reached)"; break;
+            case ENOBUFS:
+            case ENOMEM:            reason += "Insufficient memory is available. The socket cannot be created until sufficient resources are freed)"; break;
+            case EPROTONOSUPPORT:   reason += "The protocol type or the specified protocol is not supported within this domain)"; break;
+            default: reason += "Unknown error [" + std::to_string(errno) + "])"; break;
+        }
+        throw HTTPClientException(reason);
+    }
