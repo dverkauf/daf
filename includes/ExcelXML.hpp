@@ -113,6 +113,14 @@
 #define TABLE_DEFAULT_COLUMN_WIDTH 48
 #define TABLE_DEFAULT_ROW_HEIGHT 12.75
 
+#define OPERATER_EQUALS "Equals"
+#define OPERATER_DOES_NOT_EQUAL "DoesNotEqual"
+#define OPERATER_GREATER_THEN "GreaterThan"
+#define OPERATER_GREATER_THAN_OR_EQUAL "GreaterThanOrEqual"
+#define OPERATER_LESS_THAN "LessThan"
+#define OPERATER_LESS_THAN_OR_EQUAL "LessThanOrEqual"
+
+
 namespace DAF {
 
 struct Alignment {
@@ -364,6 +372,7 @@ struct Column {
 
 struct Row {
     std::vector<Cell> cells;
+    friend std::ostream &operator<<(std::ostream &os, Row &r) {};
 };
 
 struct CWorksheetOptions { // <c:WorksheetOptions>
@@ -415,11 +424,93 @@ struct Table { // <ss:Table>
     unsigned long top_cell{1}; // ss:TopCell
     bool full_columns{false}; // x:FullColumns
     bool full_rows{false}; // x:FullRows
-    
+    friend std::ostream &operator<<(std::ostream &os, Table &t) {
+        os << "<ss:Table";
+        if(t.default_column_width != TABLE_DEFAULT_COLUMN_WIDTH) {
+            os << " ss:DefaultColumnWidth=\"" << t.default_column_width << "\"";
+        }
+        if(t.default_row_height != TABLE_DEFAULT_ROW_HEIGHT) {
+            os << " ss:DefaultRowHeight=\"" << t.default_row_height << "\"";
+        }
+        if(t.expanded_column_count != 0) {
+            os << " ss:ExpandedColumnCount=\"" << t.expanded_column_count << "\"";
+        }
+        if(t.expanded_row_count != 0) {
+            os << " ss:ExpandedRowCount=\"" << t.expanded_row_count << "\"";
+        }
+        if(t.left_cell != 1) {
+            os << " ss:LeftCell=\"" << t.left_cell << "\"";
+        }
+        if(t.styleid.length() > 0) {
+            os << " ss:StyleID=\"" << t.styleid << "\"";
+        }
+        if(t.top_cell != 1) {
+            os << " ss:TopCell=\"" << t.top_cell << "\"";
+        }
+        if(t.full_columns) {
+            os << " x:FullColumns=\"1\"";
+        }
+        if(t.full_rows) {
+            os << " x:FullRows=\"1\"";
+        }
+        os << ">" << EOL;
+        for(Column &col: t.columns) {
+            os << col;
+        }
+        for(Row &row: t.rows) {
+            os << row;
+        }
+        os << "</ss:Table>" << EOL;
+        return os;
+    };
 };
 
-struct AutoFilter {
+struct AutoFilterCondition { // <x:AutoFilterCondition>
+    // requiered attributes x:Operator, x:Value
+    std::string xoperator{""};
+    std::string value{""};
+    friend std::ostream &operator<<(std::ostream &os, AutoFilterCondition &afc) {
+        if(afc.xoperator.length() > 0 && afc.value.length() > 0) {
+            os << "<x:AutoFilterCondition x:Operator=\"" << afc.xoperator << "\" x:Value=\"" << afc.value << "\" />" << EOL;
+        }
+        return os;
+    };
+};
 
+struct AutoFilterAnd { // <x:AutoFilterAnd>
+    std::vector<AutoFilterCondition> conditions;
+    friend std::ostream &operator<<(std::ostream &os, AutoFilterAnd &afa) {
+        if(afa.conditions.size() > 0) {
+            os << "<x:AutoFilterAnd>" << EOL;
+            for(AutoFilterCondition &afc: afa.conditions) {
+                os << afc;
+            }
+            os << "</x:AutoFilterAnd>" << EOL;
+        }
+        return os;
+    };
+};
+
+struct AutoFilterColumn { // x:AutoFilterColumn
+    // optional elements x:AutoFilterAnd, x:AutoFilterCondition, x:AutoFilterOr
+    AutoFilterAnd autofilterand;
+    // optional attributes x:Hidden, x:Index, x:Type, x:Value
+    friend std::ostream &operator<<(std::ostream &os, AutoFilterColumn &afc) { return os; };
+};
+
+struct AutoFilter { // <x:AutoFilter>
+    std::string range{""}; // x:Range REQUIERED!!!
+    std::vector<AutoFilterColumn> autofilter_column;
+    friend std::ostream &operator<<(std::ostream &os, AutoFilter &af) {
+        if(af.range.length() > 0) {
+            os << "<x:AutoFilter x:Range=\"" << af.range << "\">" << EOL;
+            for(AutoFilterColumn &afc: af.autofilter_column) {
+                os << afc;
+            }
+            os << "</x:AutoFilter>" << EOL;
+        }
+        return os;
+    };
 };
 
 struct XWorksheetOptions {
@@ -428,6 +519,9 @@ struct XWorksheetOptions {
 
 struct Worksheet {
     std::string name;
+    Names names;
+    Table table;
+    AutoFilter autofilter;
     bool is_protected{false};
     bool right_to_left{false};
     friend std::ostream &operator<<(std::ostream &os, Worksheet &ws) {
@@ -440,7 +534,9 @@ struct Worksheet {
             os << " ss:RightToLeft=\"1\"";
         }
         os << ">" << EOL;
-
+        os << ws.names;
+        os << table;
+        os << autofilter;
         os << "</Worksheet>" << EOL;
         return os;
     };
