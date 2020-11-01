@@ -6,7 +6,7 @@ objects:
 	g++ -c *.cpp -fPIC -std=c++17
 
 library: objects
-	g++ -shared -fPIC -o library/libdaf.so includes/*.o -std=c++17
+	g++ -shared -fPIC -lcurl -o library/libdaf.so includes/*.o -std=c++17
 
 main: main.cpp
 	g++ -c main.cpp -std=c++17
@@ -18,7 +18,7 @@ run:
 	LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:./library ./app test -d
 
 test: library
-	g++ test.cpp -L./library -ldaf -lcurl -o test -std=c++17
+	g++ test.cpp -L./library -ldaf -o test -std=c++17
 
 run_test:
 	LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:./library ./test

@@ -19,6 +19,8 @@ struct Util {
     static bool fileIsReadable(const std::string &file);
     static std::string baseName(const std::string &path);
     static bool fileIsValidJson(const std::string &file);
+    static std::string trim(const std::string &s);
+
     enum OS {
         UNKNOWN = 0,
         LINUX,

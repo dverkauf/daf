@@ -9,9 +9,9 @@ int main(int argc, char *argv[]) {
     DAF::HTTPClient client;
     try {
         //client.get("http://standards-oui.ieee.org/oui.txt");
-        client.get("http://www.heise.de/");
+        client.get("http://127.0.0.1:8888/config.json");
     } catch(DAF::HTTPClientException &e) {
-        std::cerr << e << "\n";
+        std::cerr << e.what() << "\n";
     }
     return EXIT_SUCCESS;
 }
