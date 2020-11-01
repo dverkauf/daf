@@ -47,7 +47,7 @@ HTTPClient::HTTPClient() {
     _curl = curl_easy_init();
 };
 
-HTTPClient::HTTPClient(const Proxy *proxy) {
+HTTPClient::HTTPClient(Proxy *proxy) {
     _logger->activate(Logger::Level::TRACE);
     _curl = curl_easy_init();
     setProxy(proxy);
@@ -92,7 +92,7 @@ HTTPResponse *HTTPClient::_method(unsigned short int method, const std::string &
             code = curl_easy_setopt(_curl, CURLOPT_HTTPGET, 1L);
             break;
         case METHOD::HEAD:
-            code = curl_easy_setopt(curl, CURLOPT_NOBODY, 1L);
+            code = curl_easy_setopt(_curl, CURLOPT_NOBODY, 1L);
             break;
         case METHOD::OPTIONS: break;
         case METHOD::PATCH: break;
