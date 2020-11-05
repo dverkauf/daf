@@ -22,9 +22,9 @@ HTTPResponse::HTTPResponse(std::string &headers, std::string &body) {
         std::smatch matches;
         if(status_line_not_found_yet && std::regex_match(line, matches, re_status_line)) {
             status_line_not_found_yet = false;
-            char **end;
-            _http_version = std::strtod(matches[1].str().c_str(), end);
-            _response_code = std::strtoul(matches[2].str().c_str(), end, 10);
+            char *end;
+            _http_version = std::strtod(matches[1].str().c_str(), &end);
+            _response_code = std::strtoul(matches[2].str().c_str(), &end, 10);
             _response_reason = matches[3];
             TRACE("HTTP Version: " + std::to_string(_http_version));
             TRACE("Respose code: " + std::to_string(_response_code));
@@ -39,7 +39,7 @@ HTTPResponse::HTTPResponse(std::string &headers, std::string &body) {
     if(status_line_not_found_yet) {
         throw HTTPClientException("status line not found");
     }
-    _body << body;
+    _body = body;
 };
 
 HTTPClient::HTTPClient() {
@@ -72,7 +72,11 @@ size_t get_headers(char *buffer, size_t size, size_t nitems, void *userdata) {
     return realsize;
 };
 
-HTTPResponse *HTTPClient::_method(unsigned short int method, const std::string &url) {
+HTTPResponse *HTTPClient::_method(METHOD method, const std::string &url, const char *payload) {
+    std::string prefix = "HTTPClient::_method";
+    TRACE("url=" + url);
+    //curl_easy_setopt(_curl, CURLOPT_URL, url.c_str());
+    _setopt(CURLOPT_URL, url);
     CURLcode code;
     switch(method) {
         case METHOD::CONNECT:
@@ -86,27 +90,57 @@ HTTPResponse *HTTPClient::_method(unsigned short int method, const std::string &
             */
             break;
         case METHOD::DELETE:
-            code = curl_easy_setopt(_curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+            _setopt(CURLOPT_CUSTOMREQUEST, _method_string(METHOD::DELETE));
             break;
         case METHOD::GET:
-            code = curl_easy_setopt(_curl, CURLOPT_HTTPGET, 1L);
+            _setopt(CURLOPT_HTTPGET, 1L);
             break;
         case METHOD::HEAD:
-            code = curl_easy_setopt(_curl, CURLOPT_NOBODY, 1L);
+            _setopt(CURLOPT_NOBODY, 1L);
             break;
-        case METHOD::OPTIONS: break;
-        case METHOD::PATCH: break;
+        case METHOD::OPTIONS:
+            _setopt(CURLOPT_CUSTOMREQUEST, _method_string(METHOD::OPTIONS));
+            _setopt(CURLOPT_NOBODY, 1L);
+            break;
+        case METHOD::PATCH:
+            _setopt(CURLOPT_CUSTOMREQUEST, _method_string(METHOD::PATCH));
+            break;
         case METHOD::POST:
-            code = curl_easy_setopt(_curl, CURLOPT_POST, 1L);
+            _setopt(CURLOPT_POST, 1L);
+            _setopt(CURLOPT_POSTFIELDS, payload);
             break;
-        case METHOD::PUT: break;
-        case METHOD::TRACE: break;
+        case METHOD::PUT:
+            _setopt(CURLOPT_CUSTOMREQUEST, _method_string(METHOD::PUT));
+            break;
+        case METHOD::TRACE:
+            _setopt(CURLOPT_CUSTOMREQUEST, _method_string(METHOD::TRACE));
+            break;
         default:
+            throw HTTPClientException("Unknown method");
     }
+    if(code != CURLE_OK) {
+        throw HTTPClientException(_curl_error("Failed to set method " + _method_string(method), code));
+    }
+    std::string body;
+    std::string headers;
+    _setopt(CURLOPT_WRITEDATA, (void *)&body);
+    _setopt(CURLOPT_WRITEFUNCTION, get_body);
+    _setopt(CURLOPT_HEADERDATA, (void *)&headers);
+    _setopt(CURLOPT_HEADERFUNCTION, get_headers);
+    curl_easy_setopt(_curl, CURLOPT_WRITEDATA, (void *)&body);
+    curl_easy_setopt(_curl, CURLOPT_WRITEFUNCTION, get_body);
+    curl_easy_setopt(_curl, CURLOPT_HEADERDATA, (void *)&headers);
+    curl_easy_setopt(_curl, CURLOPT_HEADERFUNCTION, get_headers);
+    code = curl_easy_perform(_curl);
+    if(code != CURLE_OK) {
+        throw HTTPClientException(_curl_error("Failed to perform request", code));
+    }
+    return new HTTPResponse(headers, body);
 };
 
 HTTPResponse *HTTPClient::_method(const char *method, const std::string &url) {
-
+    HTTPResponse *res; 
+    return res;
 };
 
 socket HTTPClient::connect(const std::string &url) {
@@ -134,6 +168,7 @@ socket HTTPClient::connect(const std::string &url) {
 HTTPResponse *HTTPClient::get(const std::string &url) {
     // curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
     std::string prefix = "HTTPClient::get";
+    /*
     TRACE("url=" + url);
     curl_easy_setopt(_curl, CURLOPT_URL, url.c_str());
     //curl_easy_setopt(curl, CURLOPT_HEADER, 1L);
@@ -151,6 +186,8 @@ HTTPResponse *HTTPClient::get(const std::string &url) {
     }
     HTTPResponse *res = new HTTPResponse(headers, body); 
     return res;
+    */
+   return _method(METHOD::GET, url, (const char *)NULL);
 };
 
 void HTTPClient::setProxy(Proxy *proxy) {
@@ -194,6 +231,81 @@ std::string HTTPClient::_curl_error(std::string error, CURLcode code) {
     reason += curl_easy_strerror(code);
     reason += ")";
     return reason;
+};
+
+std::string HTTPClient::_method_string(unsigned short int method) {
+    switch(method) {
+        case METHOD::CONNECT:
+            return NULL;
+        case METHOD::CUSTOM:
+            return NULL;            
+       case METHOD::DELETE:
+            return "DELETE"s;
+        case METHOD::GET:
+            return "GET"s;
+        case METHOD::HEAD:
+            return "HEAD"s;
+        case METHOD::OPTIONS:
+            return "OPTIONS"s;
+        case METHOD::PATCH:
+            return "PATCH"s;
+        case METHOD::POST:
+            return "POST"s;
+        case METHOD::PUT:
+            return "PUT"s;
+        case METHOD::TRACE:
+            return "TRACE"s;
+        default:
+            throw HTTPClientException("Unknown method");
+    }
+};
+
+CURLcode HTTPClient::_setopt(CURLoption opt, long parameter) {
+    CURLcode code = curl_easy_setopt(_curl, opt, parameter);
+    if(code != CURLE_OK) {
+        throw HTTPClientException(_curl_error("Failed to set proxy user", code));
+    }
+    return code;
+};
+
+CURLcode HTTPClient::_setopt(CURLoption opt, std::string parameter) {
+    CURLcode code = curl_easy_setopt(_curl, opt, parameter.c_str());
+    if(code != CURLE_OK) {
+        throw HTTPClientException(_curl_error("Failed to set proxy user", code));
+    }
+    return code;
+};
+
+CURLcode HTTPClient::_setopt(CURLoption opt, const char *parameter) {
+    CURLcode code = curl_easy_setopt(_curl, opt, parameter);
+    if(code != CURLE_OK) {
+        throw HTTPClientException(_curl_error("Failed to set proxy user", code));
+    }
+    return code;
+};
+
+CURLcode HTTPClient::_setopt(CURLoption opt, void *parameter) {
+    CURLcode code = curl_easy_setopt(_curl, opt, parameter);
+    if(code != CURLE_OK) {
+        throw HTTPClientException(_curl_error("Failed to set proxy user", code));
+    }
+    return code;
+};
+
+CURLcode HTTPClient::_setopt(CURLoption opt, size_t (*callback)(void *, size_t, size_t, void *)) {
+    CURLcode code = curl_easy_setopt(_curl, opt, callback);
+    if(code != CURLE_OK) {
+        throw HTTPClientException(_curl_error("Failed to set proxy user", code));
+    }
+    return code;
+};
+
+CURLcode HTTPClient::_setopt(CURLoption opt, size_t (*callback)(char *, size_t, size_t, void *)) {
+    CURLcode code = curl_easy_setopt(_curl, opt, callback);
+    if(code != CURLE_OK) {
+        throw HTTPClientException(_curl_error("Failed to set proxy user", code));
+    }
+    return code;
 };
 
 }

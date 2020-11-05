@@ -38,6 +38,11 @@ struct HTTPHeader {
     HTTPHeader(std::string n, std::string v) : name{n}, value{v} {};
 };
 
+struct HTTPParameter {
+    std::string key;
+    std::string value;
+};
+
 class HTTPRequest : public DBasicClass {
     public:
 };
@@ -47,10 +52,11 @@ class HTTPResponse : public DBasicClass {
     unsigned short int _response_code;
     std::string _response_reason;
     std::vector<HTTPHeader*> _headers;
-    std::stringstream _body;
+    std::string _body;
     public:
     HTTPResponse(std::stringstream &ss_headrs, std::stringstream &ss_body);
     HTTPResponse(std::string &headrs, std::string &body);
+    std::string &getBody() { return _body; };
 };
 
 struct Proxy {
@@ -87,9 +93,16 @@ class HTTPClient : public DBasicClass {
 
     bool _verbose();
 
-    HTTPResponse *_method(unsigned short int method, const std::string &url);
+    HTTPResponse *_method(METHOD method, const std::string &url, const char *payload);
     HTTPResponse *_method(const char *method, const std::string &url);
     std::string _curl_error(std::string error, CURLcode code);
+    std::string _method_string(unsigned short int m);
+    CURLcode _setopt(CURLoption opt, long parameter);
+    CURLcode _setopt(CURLoption opt, std::string parameter);
+    CURLcode _setopt(CURLoption opt, const char *parameter);
+    CURLcode _setopt(CURLoption opt, void *parameter);
+    CURLcode _setopt(CURLoption opt, size_t (*callback)(void *, size_t, size_t, void *));
+    CURLcode _setopt(CURLoption opt, size_t (*callback)(char *, size_t, size_t, void *));
 
     protected:
 

@@ -1,0 +1,1533 @@
+mysql> select * from User_;
++-------------+--------------------------------------+-----------------------+--------+-----------+----------------------------+----------------------------+-------------+-----------+--------------------------------------------------+-------------------+---------------+----------------------------+----------------------------------------------------------------------------------------------------+-----------------------+---------------------+-----------------+------------------+------------------------------+------------+--------------+--------------+--------+------------+------------+---------------+----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+-----------+------------+-----------+----------+----------------------------+---------------+----------------------------+---------------+----------------------------+---------------------+---------+-------------+--------------------+----------------------+--------+
+| mvccVersion | uuid_                                | externalReferenceCode | userId | companyId | createDate                 | modifiedDate               | defaultUser | contactId | password_                                        | passwordEncrypted | passwordReset | passwordModifiedDate       | digest                                                                                             | reminderQueryQuestion | reminderQueryAnswer | graceLoginCount | screenName       | emailAddress                 | facebookId | googleUserId | ldapServerId | openId | portraitId | languageId | timeZoneId    | greeting                         | comments                                                                                                                                       | firstName | middleName | lastName  | jobTitle | loginDate                  | loginIP       | lastLoginDate              | lastLoginIP   | lastFailedLoginDate        | failedLoginAttempts | lockout | lockoutDate | agreedToTermsOfUse | emailAddressVerified | status |
++-------------+--------------------------------------+-----------------------+--------+-----------+----------------------------+----------------------------+-------------+-----------+--------------------------------------------------+-------------------+---------------+----------------------------+----------------------------------------------------------------------------------------------------+-----------------------+---------------------+-----------------+------------------+------------------------------+------------+--------------+--------------+--------+------------+------------+---------------+----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+-----------+------------+-----------+----------+----------------------------+---------------+----------------------------+---------------+----------------------------+---------------------+---------+-------------+--------------------+----------------------+--------+
+|          15 | 0668b9ff-c37b-54af-f746-41071df3c5d5 | NULL                  |  20106 |     20102 | 2020-08-19 09:32:54.576000 | 2020-09-17 10:06:28.703000 |           1 |     20107 | password                                         |                 0 |             0 | NULL                       | 5533ed38b5e33c076a804bb4bca644f9,a1a5e3afae390b83ef0cb50f61a4d94f,a1a5e3afae390b83ef0cb50f61a4d94f | NULL                  | NULL                |               0 | 20106            | default@liferay.com          |          0 | NULL         |            0 | NULL   |          0 | de_DE      | UTC           | Willkommen!                      | NULL                                                                                                                                           | NULL      | NULL       | NULL      | NULL     | 2020-08-19 09:32:54.387000 | NULL          | NULL                       | NULL          | NULL                       |                   0 |       0 | NULL        |                  1 |                    0 |      0 |
+|         118 | 786b90df-77d8-a87b-f309-f6d7592297c1 | NULL                  |  20131 |     20102 | 2020-08-19 09:32:55.291000 | 2020-11-04 14:03:20.946000 |           0 |     20132 | AAAAoAAB9AC135BgDyVdgtwux4LN8KnIlDsl+VrpiYSlvTTO |                 1 |             0 | NULL                       | e5d86c6f3672e52795891c3597f20de0,751da756639bc033b572ba2e7849b589,19cd2872e8fe8a994ce6735053fcc65c | NULL                  | NULL                |               0 | test             | test@liferay.com             |          0 | NULL         |           -1 | NULL   |          0 | de_DE      | UTC           | Willkommen, Test Test!           | NULL                                                                                                                                           | Test      | NULL       | Test      | NULL     | 2020-11-04 14:03:20.946000 | 172.19.10.161 | 2020-11-04 13:52:24.905000 | 172.19.10.161 | 2020-10-08 09:27:02.151000 |                   0 |       0 | NULL        |                  0 |                    1 |      0 |
+|          14 | 06a81c30-4de6-d2a0-62b4-5984d3ed9ff9 | NULL                  |  34000 |     20102 | 2020-08-19 09:45:34.613000 | 2020-10-12 14:07:47.133000 |           0 |     34001 | AAAAoAAB9ACWWvDZQdFMIoFl7wRHv/EbWi7BkqUDfCNQ0/o3 |                 1 |             0 | 2020-08-19 09:47:10.740000 | c6fee41bb11427e5a29412cc7b91263f,a3958998691849341c4a1bf84c8e0628,77357c3e866c0d5f7660104732b7af82 | NULL                  | NULL                |               0 | normal           | norman.normal@diplexa.de     |          0 | NULL         |           -1 | NULL   |          0 | de_DE      | Europe/Lisbon | Willkommen, Norman Normal!       | NULL                                                                                                                                           | Norman    | NULL       | Normal    | NULL     | 2020-10-12 14:07:47.133000 | 172.27.0.1    | 2020-10-12 14:06:01.327000 | 172.27.0.1    | NULL                       |                   0 |       0 | NULL        |                  0 |                    0 |      0 |
+|           3 | bbb86ed3-4bbf-4116-e861-96bb418b2be1 | NULL                  |  34008 |     20102 | 2020-08-19 09:45:39.328000 | 2020-08-19 09:45:39.389000 |           0 |     34009 | AAAAoAAB9AC30uB0lIvBJoZhRXORrXi2w9K2Wi9ncZAvqJVi |                 1 |             1 | NULL                       | NULL                                                                                               | NULL                  | NULL                |               0 | anonymous20102_1 | anonymous20102_1@liferay.com |          0 | NULL         |           -1 | NULL   |          0 | de_DE      | UTC           | Willkommen, Anonymous Anonymous! | This user is automatically created by the UAD application. Application data anonymized by Personal Data Erasure will be assigned to this user. | Anonymous | NULL       | Anonymous | NULL     | NULL                       | NULL          | NULL                       | NULL          | NULL                       |                   0 |       0 | NULL        |                  0 |                    0 |      5 |
+|           4 | 63668e06-cebf-3793-e7be-d64561074420 | NULL                  |  34015 |     20102 | 2020-08-19 09:45:49.244000 | 2020-08-19 09:46:46.035000 |           0 |     34016 | AAAAoAAB9ACxF7mDawkc3D77p9C+2PGwgJRDZCeKnix6WWQi |                 1 |             0 | 2020-08-19 09:46:46.028000 | NULL                                                                                               | NULL                  | NULL                |               0 | supporter        | susi.supporter@diplexa.de    |          0 | NULL         |           -1 | NULL   |          0 | de_DE      | UTC           | Willkommen, Susi Supporter!      | NULL                                                                                                                                           | Susi      | NULL       | Supporter | NULL     | NULL                       | NULL          | NULL                       | NULL          | NULL                       |                   0 |       0 | NULL        |                  0 |                    0 |      0 |
+|         220 | diplexa                              | NULL                  |  39202 |     20102 | 2020-08-20 09:48:02.465000 | 2020-10-30 13:25:37.486000 |           0 |     39203 | AAAAoAAB9AAwHLhMtjx0LqH55ch7L11IXGnJS5Bg0fqeOuov |                 1 |             0 | 2020-10-09 02:22:10.000000 | dadff6f0d05adf03f8fd60e8fc07fe51,9f06dbe17b25fd2e38eb0a9ad9d54952,9d7948927f49fc72cf77da7afa0eda86 | NULL                  | NULL                |               0 | diplexa          | oliver.trappe@dsgv.de        |          0 | NULL         |        39201 | NULL   |          0 | de_DE      | UTC           | Willkommen, diplexa diplexa!     | NULL                                                                                                                                           | diplexa   | NULL       | diplexa   | NULL     | 2020-10-30 13:25:37.484000 | 172.18.0.6    | 2020-10-30 11:41:42.073000 | 172.18.0.6    | NULL                       |                   0 |       0 | NULL        |                  0 |                    0 |      0 |
+|           2 | OP-Backup                            | NULL                  |  39590 |     20102 | 2020-08-20 13:06:32.397000 | 2020-08-20 13:06:33.726000 |           0 |     39591 | AAAAoAAB9ACQ1NeLKCSCG0Ps8PUK6CYoGV+h+SeXg+gQFYxL |                 1 |             0 | 2020-08-20 13:06:33.324000 | NULL                                                                                               | NULL                  | NULL                |               0 | op-backup        | op-backup@dsgv.de            |          0 | NULL         |        39201 | NULL   |          0 | de_DE      | UTC           | Willkommen, Backup Operator!     | NULL                                                                                                                                           | Backup    | NULL       | Operator  | NULL     | NULL                       | NULL          | NULL                       | NULL          | 2020-08-20 13:06:33.726000 |                   1 |       0 | NULL        |                  0 |                    0 |      0 |
+|          11 | Grahl                                | NULL                  |  39624 |     20102 | 2020-08-20 13:13:29.497000 | 2020-08-21 11:51:03.294000 |           0 |     39625 | AAAAoAAB9AAz01l/Sy9+nAqDiKob1Z5pub2y5V9VIej9oEDE |                 1 |             0 | 2020-08-20 13:13:29.801000 | NULL                                                                                               | NULL                  | NULL                |               0 | grahl            | marian.grahl@dsgv.de         |          0 | NULL         |        39201 | NULL   |          0 | de_DE      | UTC           | Willkommen, Marian Grahl!        | NULL                                                                                                                                           | Marian    | NULL       | Grahl     | NULL     | 2020-08-21 11:51:03.294000 | 172.18.0.6    | 2020-08-20 13:16:28.883000 | 192.168.240.6 | NULL                       |                   0 |       0 | NULL        |                  0 |                    0 |      0 |
+|           5 | Zuen-OP                              | NULL                  |  40200 |     20102 | 2020-08-21 12:59:14.241000 | 2020-08-21 12:59:17.667000 |           0 |     40201 | AAAAoAAB9AD3cvY3MQhubrnkX8LPvM7AVFv1MEifZs1Pd2Hk |                 1 |             0 | 2020-08-21 12:59:14.875000 | NULL                                                                                               | NULL                  | NULL                |               0 | zuen-op          | peter.zuendorf@dsgv.de       |          0 | NULL         |        39201 | NULL   |          0 | de_DE      | UTC           | Willkommen, Peter Zündorf!       | NULL                                                                                                                                           | Peter     | NULL       | Zündorf   | NULL     | 2020-08-21 12:59:17.667000 | 172.18.0.6    | 2020-08-21 12:59:16.305000 | 172.18.0.6    | NULL                       |                   0 |       0 | NULL        |                  0 |                    0 |      0 |
+|           3 | Grahl-OP                             | NULL                  |  40439 |     20102 | 2020-08-23 20:21:25.090000 | 2020-08-23 20:21:27.004000 |           0 |     40440 | AAAAoAAB9ACSqAfm/T+uTibdZ9yn24ugZkpBfDpw+CQCbmLH |                 1 |             0 | 2020-08-23 20:21:25.909000 | NULL                                                                                               | NULL                  | NULL                |               0 | grahl-op         | mg@dsgv.de                   |          0 | NULL         |        39201 | NULL   |          0 | de_DE      | UTC           | Willkommen, Marian Grahl!        | NULL                                                                                                                                           | Marian    | NULL       | Grahl     | NULL     | 2020-08-23 20:21:27.004000 | 172.18.0.6    | 2020-08-23 20:21:27.004000 | NULL          | NULL                       |                   0 |       0 | NULL        |                  0 |                    0 |      0 |
++-------------+--------------------------------------+-----------------------+--------+-----------+----------------------------+----------------------------+-------------+-----------+--------------------------------------------------+-------------------+---------------+----------------------------+----------------------------------------------------------------------------------------------------+-----------------------+---------------------+-----------------+------------------+------------------------------+------------+--------------+--------------+--------+------------+------------+---------------+----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+-----------+------------+-----------+----------+----------------------------+---------------+----------------------------+---------------+----------------------------+---------------------+---------+-------------+--------------------+----------------------+--------+
+10 rows in set (0.01 sec)
+
+mysql> help
+
+For information about MySQL products and services, visit:
+   http://www.mysql.com/
+For developer information, including the MySQL Reference Manual, visit:
+   http://dev.mysql.com/
+To buy MySQL Enterprise support, training, or other products, visit:
+   https://shop.mysql.com/
+
+List of all MySQL commands:
+Note that all text commands must be first on line and end with ';'
+?         (\?) Synonym for `help'.
+clear     (\c) Clear the current input statement.
+connect   (\r) Reconnect to the server. Optional arguments are db and host.
+delimiter (\d) Set statement delimiter.
+edit      (\e) Edit command with $EDITOR.
+ego       (\G) Send command to mysql server, display result vertically.
+exit      (\q) Exit mysql. Same as quit.
+go        (\g) Send command to mysql server.
+help      (\h) Display this help.
+nopager   (\n) Disable pager, print to stdout.
+notee     (\t) Don't write into outfile.
+pager     (\P) Set PAGER [to_pager]. Print the query results via PAGER.
+print     (\p) Print current command.
+prompt    (\R) Change your mysql prompt.
+quit      (\q) Quit mysql.
+rehash    (\#) Rebuild completion hash.
+source    (\.) Execute an SQL script file. Takes a file name as an argument.
+status    (\s) Get status information from the server.
+system    (\!) Execute a system shell command.
+tee       (\T) Set outfile [to_outfile]. Append everything into given outfile.
+use       (\u) Use another database. Takes database name as argument.
+charset   (\C) Switch to another charset. Might be needed for processing binlog with multi-byte charsets.
+warnings  (\W) Show warnings after every statement.
+nowarning (\w) Don't show warnings after every statement.
+resetconnection(\x) Clean session context.
+
+For server side help, type 'help contents'
+
+mysql> system ls
+mysql> statuc
+    -> ^C
+mysql> status
+--------------
+
+Connection id:		14864
+Current database:	lportal
+Current user:		lportal@172.19.10.184
+SSL:			Not in use
+Current pager:		stdout
+Using outfile:		'output.txt'
+Using delimiter:	;
+Server version:		5.7.26-log MySQL Community Server (GPL)
+Protocol version:	10
+Connection:		portal04.dsgv.net via TCP/IP
+Server characterset:	utf8mb4
+Db     characterset:	utf8mb4
+Client characterset:	utf8mb4
+Conn.  characterset:	utf8mb4
+TCP port:		3306
+Binary data as:		Hexadecimal
+Uptime:			5 days 3 hours 57 min 14 sec
+
+Threads: 9  Questions: 318608  Slow queries: 0  Opens: 1100  Flush tables: 1  Open tables: 810  Queries per second avg: 0.713
+--------------
+
+mysql> help
+
+For information about MySQL products and services, visit:
+   http://www.mysql.com/
+For developer information, including the MySQL Reference Manual, visit:
+   http://dev.mysql.com/
+To buy MySQL Enterprise support, training, or other products, visit:
+   https://shop.mysql.com/
+
+List of all MySQL commands:
+Note that all text commands must be first on line and end with ';'
+?         (\?) Synonym for `help'.
+clear     (\c) Clear the current input statement.
+connect   (\r) Reconnect to the server. Optional arguments are db and host.
+delimiter (\d) Set statement delimiter.
+edit      (\e) Edit command with $EDITOR.
+ego       (\G) Send command to mysql server, display result vertically.
+exit      (\q) Exit mysql. Same as quit.
+go        (\g) Send command to mysql server.
+help      (\h) Display this help.
+nopager   (\n) Disable pager, print to stdout.
+notee     (\t) Don't write into outfile.
+pager     (\P) Set PAGER [to_pager]. Print the query results via PAGER.
+print     (\p) Print current command.
+prompt    (\R) Change your mysql prompt.
+quit      (\q) Quit mysql.
+rehash    (\#) Rebuild completion hash.
+source    (\.) Execute an SQL script file. Takes a file name as an argument.
+status    (\s) Get status information from the server.
+system    (\!) Execute a system shell command.
+tee       (\T) Set outfile [to_outfile]. Append everything into given outfile.
+use       (\u) Use another database. Takes database name as argument.
+charset   (\C) Switch to another charset. Might be needed for processing binlog with multi-byte charsets.
+warnings  (\W) Show warnings after every statement.
+nowarning (\w) Don't show warnings after every statement.
+resetconnection(\x) Clean session context.
+
+For server side help, type 'help contents'
+
+mysql> \@
+ERROR: 
+Unknown command '\@'.
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '\@' at line 1
+mysql> \q
+mysql> show tables;
++--------------------------------+
+| Tables_in_lportal              |
++--------------------------------+
+| AMImageEntry                   |
+| Account_                       |
+| Address                        |
+| AnnouncementsDelivery          |
+| AnnouncementsEntry             |
+| AnnouncementsFlag              |
+| AssetAutoTaggerEntry           |
+| AssetCategory                  |
+| AssetCategoryProperty          |
+| AssetDisplayPageEntry          |
+| AssetEntries_AssetCategories   |
+| AssetEntries_AssetTags         |
+| AssetEntry                     |
+| AssetEntryAssetCategoryRel     |
+| AssetEntryUsage                |
+| AssetLink                      |
+| AssetListEntry                 |
+| AssetListEntryAssetEntryRel    |
+| AssetListEntrySegmentsEntryRel |
+| AssetListEntryUsage            |
+| AssetTag                       |
+| AssetTagStats                  |
+| AssetVocabulary                |
+| Audit_AuditEvent               |
+| BackgroundTask                 |
+| BlogsEntry                     |
+| BlogsStatsUser                 |
+| BrowserTracker                 |
+| Calendar                       |
+| CalendarBooking                |
+| CalendarNotificationTemplate   |
+| CalendarResource               |
+| ChangesetCollection            |
+| ChangesetEntry                 |
+| CirC_AffectedDepartment        |
+| CirC_AffectedLine              |
+| CirC_ApprovalDocument          |
+| CirC_AuthorLine                |
+| CirC_AuthorsDepartment         |
+| CirC_CircularSettings          |
+| CirC_Entry                     |
+| CirC_HistoryEntry              |
+| CirC_Places                    |
+| CirC_RundschreibenKnoten       |
+| CirC_RundschreibenSchlagwort   |
+| CirC_RundschreibenType         |
+| CirC_TreeElem                  |
+| Circular_Attachments           |
+| Circular_Author                |
+| Circular_CircularEntry         |
+| Circular_Created               |
+| Circular_Documents             |
+| Circular_Recipient             |
+| Circular_Tags                  |
+| ClassName_                     |
+| ClusterGroup                   |
+| Company                        |
+| Configuration_                 |
+| Contact_                       |
+| Contacts_Entry                 |
+| Counter                        |
+| Country                        |
+| DDLRecord                      |
+| DDLRecordSet                   |
+| DDLRecordSetVersion            |
+| DDLRecordVersion               |
+| DDMContent                     |
+| DDMDataProviderInstance        |
+| DDMDataProviderInstanceLink    |
+| DDMFormInstance                |
+| DDMFormInstanceRecord          |
+| DDMFormInstanceRecordVersion   |
+| DDMFormInstanceVersion         |
+| DDMStorageLink                 |
+| DDMStructure                   |
+| DDMStructureLayout             |
+| DDMStructureLink               |
+| DDMStructureVersion            |
+| DDMTemplate                    |
+| DDMTemplateLink                |
+| DDMTemplateVersion             |
+| DEDataDefinitionFieldLink      |
+| DEDataListView                 |
+| DLContent                      |
+| DLFileEntry                    |
+| DLFileEntryMetadata            |
+| DLFileEntryType                |
+| DLFileEntryTypes_DLFolders     |
+| DLFileRank                     |
+| DLFileShortcut                 |
+| DLFileVersion                  |
+| DLFileVersionPreview           |
+| DLFolder                       |
+| DLOpenerFileEntryReference     |
+| DLSyncEvent                    |
+| EmailAddress                   |
+| ExpandoColumn                  |
+| ExpandoRow                     |
+| ExpandoTable                   |
+| ExpandoValue                   |
+| ExportImportConfiguration      |
+| FragmentCollection             |
+| FragmentEntry                  |
+| FragmentEntryLink              |
+| FriendlyURLEntry               |
+| FriendlyURLEntryLocalization   |
+| FriendlyURLEntryMapping        |
+| Group_                         |
+| Groups_Orgs                    |
+| Groups_Roles                   |
+| Groups_UserGroups              |
+| HtmlPreviewEntry               |
+| IM_MemberRequest               |
+| Image                          |
+| JournalArticle                 |
+| JournalArticleLocalization     |
+| JournalArticleResource         |
+| JournalContentSearch           |
+| JournalFeed                    |
+| JournalFolder                  |
+| KBArticle                      |
+| KBComment                      |
+| KBFolder                       |
+| KBTemplate                     |
+| KEYCAT_Activity                |
+| KEYCAT_Beziehung               |
+| KEYCAT_Fachbereich             |
+| KEYCAT_FbSw                    |
+| KEYCAT_History                 |
+| KEYCAT_Knoten                  |
+| KEYCAT_MaxNum                  |
+| KEYCAT_Schlagwort              |
+| KEYCAT_Verknuepfung            |
+| KaleoAction                    |
+| KaleoCondition                 |
+| KaleoDefinition                |
+| KaleoDefinitionVersion         |
+| KaleoInstance                  |
+| KaleoInstanceToken             |
+| KaleoLog                       |
+| KaleoNode                      |
+| KaleoNotification              |
+| KaleoNotificationRecipient     |
+| KaleoTask                      |
+| KaleoTaskAssignment            |
+| KaleoTaskAssignmentInstance    |
+| KaleoTaskForm                  |
+| KaleoTaskFormInstance          |
+| KaleoTaskInstanceToken         |
+| KaleoTimer                     |
+| KaleoTimerInstanceToken        |
+| KaleoTransition                |
+| Layout                         |
+| LayoutBranch                   |
+| LayoutFriendlyURL              |
+| LayoutPageTemplateCollection   |
+| LayoutPageTemplateEntry        |
+| LayoutPageTemplateStructure    |
+| LayoutPageTemplateStructureRel |
+| LayoutPrototype                |
+| LayoutRevision                 |
+| LayoutSEOEntry                 |
+| LayoutSet                      |
+| LayoutSetBranch                |
+| LayoutSetPrototype             |
+| LayoutSetVersion               |
+| LayoutVersion                  |
+| ListType                       |
+| Lock_                          |
+| MBBan                          |
+| MBCategory                     |
+| MBDiscussion                   |
+| MBMailingList                  |
+| MBMessage                      |
+| MBStatsUser                    |
+| MBThread                       |
+| MBThreadFlag                   |
+| MDRAction                      |
+| MDRRule                        |
+| MDRRuleGroup                   |
+| MDRRuleGroupInstance           |
+| Marketplace_App                |
+| Marketplace_Module             |
+| MembershipRequest              |
+| OA2Auths_OA2ScopeGrants        |
+| OAuth2Application              |
+| OAuth2ApplicationScopeAliases  |
+| OAuth2Authorization            |
+| OAuth2ScopeGrant               |
+| OrgGroupRole                   |
+| OrgLabor                       |
+| Organization_                  |
+| PasswordPolicy                 |
+| PasswordPolicyRel              |
+| PasswordTracker                |
+| Phone                          |
+| PluginSetting                  |
+| PollsChoice                    |
+| PollsQuestion                  |
+| PollsVote                      |
+| PortalPreferences              |
+| Portlet                        |
+| PortletItem                    |
+| PortletPreferences             |
+| QUARTZ_BLOB_TRIGGERS           |
+| QUARTZ_CALENDARS               |
+| QUARTZ_CRON_TRIGGERS           |
+| QUARTZ_FIRED_TRIGGERS          |
+| QUARTZ_JOB_DETAILS             |
+| QUARTZ_LOCKS                   |
+| QUARTZ_PAUSED_TRIGGER_GRPS     |
+| QUARTZ_SCHEDULER_STATE         |
+| QUARTZ_SIMPLE_TRIGGERS         |
+| QUARTZ_SIMPROP_TRIGGERS        |
+| QUARTZ_TRIGGERS                |
+| RatingsEntry                   |
+| RatingsStats                   |
+| ReadingTimeEntry               |
+| RecentLayoutBranch             |
+| RecentLayoutRevision           |
+| RecentLayoutSetBranch          |
+| Region                         |
+| Release_                       |
+| Repository                     |
+| RepositoryEntry                |
+| ResourceAction                 |
+| ResourceBlock                  |
+| ResourceBlockPermission        |
+| ResourcePermission             |
+| ResourceTypePermission         |
+| Role_                          |
+| SAPEntry                       |
+| SegmentsEntry                  |
+| SegmentsEntryRel               |
+| SegmentsExperience             |
+| SegmentsExperiment             |
+| SegmentsExperimentRel          |
+| ServiceComponent               |
+| SharingEntry                   |
+| SiteFriendlyURL                |
+| SiteNavigationMenu             |
+| SiteNavigationMenuItem         |
+| SocialActivity                 |
+| SocialActivityAchievement      |
+| SocialActivityCounter          |
+| SocialActivityLimit            |
+| SocialActivitySet              |
+| SocialActivitySetting          |
+| SocialRelation                 |
+| SocialRequest                  |
+| Subscription                   |
+| SystemEvent                    |
+| Team                           |
+| Ticket                         |
+| TrashEntry                     |
+| TrashVersion                   |
+| UserGroup                      |
+| UserGroupGroupRole             |
+| UserGroupRole                  |
+| UserGroups_Teams               |
+| UserIdMapper                   |
+| UserNotificationDelivery       |
+| UserNotificationEvent          |
+| UserTracker                    |
+| UserTrackerPath                |
+| User_                          |
+| Users_Groups                   |
+| Users_Orgs                     |
+| Users_Roles                    |
+| Users_Teams                    |
+| Users_UserGroups               |
+| VirtualHost                    |
+| WebDAVProps                    |
+| Website                        |
+| WikiNode                       |
+| WikiPage                       |
+| WikiPageResource               |
+| WorkflowDefinitionLink         |
+| WorkflowInstanceLink           |
+| staff                          |
+| staffconfig                    |
++--------------------------------+
+281 rows in set (0.00 sec)
+
+mysql> select * from staffconfig;
++--------------------------------------+-----+-----------------------------+------------------------------------------------------------------------------------+
+| uuid_                                | id_ | propertyName                | proertyValue                                                                       |
++--------------------------------------+-----+-----------------------------+------------------------------------------------------------------------------------+
+| c5e7f98b-2ec3-001e-20d2-f4f78615a333 |   1 | staff.synchronizer.interval | 4                                                                                  |
+| 1c78b326-6e5c-2c72-94a2-5008721c78da |   2 | staff.synchronizer.unit     | HOURS                                                                              |
+| a0ba35f1-9888-5434-237b-53c20309f829 |   3 | staff.synchronizer.url      | http://172.19.8.133/diplexa/dsgv-MA.nsf/RSPMHLookup_xml?ReadViewEntries&Count=9999 |
+| 1608c5f0-1c12-4f1d-4311-3d4caf97ade0 |   4 | staff.synchronizer.mode     | DSGV                                                                               |
++--------------------------------------+-----+-----------------------------+------------------------------------------------------------------------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from staff;
++--------------------------------------+-----+----------------------------------+-----------+------------------+----------------------+--------------------------------------+-----------------------------+-----------------+
+| uuid_                                | id_ | uid                              | title     | forename         | name                 | email                                | phone                       | department      |
++--------------------------------------+-----+----------------------------------+-----------+------------------+----------------------+--------------------------------------+-----------------------------+-----------------+
+| ceb1cab5-42a9-6a29-5769-4c2d5a49ff75 |   1 | F4FB93B8C54A1598C12578FE0043DD3B | NULL      | Jutta            | Ach                  | jutta.ach@dsgv.de                    | 030 / 20225-5654            | PIV             |
+| dafc4fb3-2178-20aa-7bbd-3a0b34dc7733 |   2 | 542716F08B3CFAADC1257084005E9812 | NULL      | Christian        | Achilles             | christian.achilles@dsgv.de           | 030 / 20225-5100            | PII             |
+| 9b767ccd-b6f6-7a63-7d3d-cdfc68ef8c68 |   3 | 19F763163E58F4EDC1257DE300542198 | NULL      | Fatma            | Akinci               | fatma.akinci@dsgv.de                 | 030 / 20225-5912            | PI              |
+| e683821b-5e5b-0ffb-f44c-a89f3d9848c0 |   4 | 746C8C4EDD6657DCC1257F1F002AE3AC | NULL      | Dirk Anton       | Albacht              | dirk.albacht@dsgv.de                 | 030 / 20225-5220            | PG              |
+| b10dd7fe-b125-627c-bba3-f24e12039d09 |   5 | FF66FE203F421370C125838C0038D5B2 | NULL      | Emiliyan         | Aleksandrov          | emiliyan.aleksandrov@dsgv.de         | 030 / 20225-5235            | AI              |
+| 504e166f-8000-7f43-4110-d901464b4288 |   6 | 075D13D7C57570D9C125739B003F50E3 | Dr.       | Silvio           | Andrae               | silvio.andrae@dsgv.de                | 030 / 20225-5437            | AVI             |
+| fc42c2f3-a872-5c5d-2dec-7eec285254c3 |   7 | 4ADD12748D5EF389C125842D002E0F65 | NULL      | Maia             | Andreo               | maia.andreo@dsgv.de                  | 030 / 20225-5909            | PI              |
+| b933389c-a247-d7dd-6563-56b0c9bfe39f |   8 | B7DB4A5A2DC40581C12583690060C392 | NULL      | Kerstin          | Antl                 | kerstin.antl@dsgv.de                 | 030 / 20225-5572            | BII             |
+| 11b0adcf-3c5f-c34b-4937-273c8051d5eb |   9 | 35E90EE9958C5B78C125805000402A4E | NULL      | Jürgen           | Arnoldt              | jürgen.arnoldt@dsgv.de               | 030 / 20225-5284            | AII             |
+| 67649243-8e37-84ef-d116-ae7d60568638 |  10 | 69FAD69CDD7D4A7FC12581AA003C5474 | NULL      | Patrick          | Arora                | patrick.arora@dsgv.de                | 030 / 20225-5352            | PIV             |
+| dcb41208-9d62-d373-ede9-d489268ec09e |  11 | 2B1F61807F19508EC1257DB000568C8E | NULL      | Alexander        | Aulibauer            | alexander.aulibauer@dsgv.de          | 030 / 20225-5415            | AVI             |
+| ddfbe3ca-932b-9777-9d2d-abf963e28353 |  12 | 7B8C45F71A8D871EC125772F00406377 | NULL      | Helga            | Bading               | helga.bading@dsgv.de                 | 030 / 20225-5606            | PI              |
+| 0fc70047-fdf2-5f72-5116-221cd51ba958 |  13 | 8B8C1F48E7A1B6C5C1257084005E981A | NULL      | Hubert           | Bächer               | hubert.bächer@dsgv.de                | 030 / 20225-5949            | PI              |
+| 6407ab9a-d65b-1e05-97cf-b6b63c0bff4f |  14 | 22431520FFDEEB4FC125751B005BD871 | NULL      | Denise           | Baetke               | denise.baetke@dsgv.de                | 030 / 20225-5604            | PI              |
+| 353aa55a-7c19-6017-7e71-6c82fb7ef064 |  15 | 3EA034FAFF6FF83AC12581FD00292295 | NULL      | Mario            | Baginski             | mario.baginski@dsgv.de               | 030 / 20225-5523            | BII             |
+| e3ee9df2-bb48-4453-50d4-8dee229f9928 |  16 | 3317260B84A2592FC1257084005E981B | Dr.       | Birgit           | Balow                | birgit.balow@dsgv.de                 | 030 / 20225-5913            | PI              |
+| 83f623e3-bf70-2941-6271-7aacb9883ac1 |  17 | 0A4DE435898ACDC6C1257084005E981C | NULL      | Jacqueline       | Barkow               | jacqueline.barkow@dsgv.de            | 0228 / 204-5869             | BIII            |
+| feb6858c-ee01-1c77-c4f9-ccd90a104477 |  18 | 4AB4D751C2D77AF4C1257E3D00395319 | NULL      | Dorrit           | Bartel               | dorrit.bartel@dsgv.de                | 030 / 20225-5557            | BIV             |
+| 6f723329-f6bd-cf12-93db-ab747864644b |  19 | 427704DF0533891FC1257084005E99D2 | Prof. Dr. | Wolfgang         | Barth                | wolfgang.barth@dsgv.de               | 0228 / 204-9931             | Hochschule      |
+| 6571d469-51ab-3bc1-8a66-99377721191a |  20 | 43FF32E893B722ABC12580DB002E56E0 | NULL      | Kathrin          | Baumbach             | kathrin.baumbach@dsgv.de             | 030 / 20225-5269            | AIII            |
+| 64a4f77c-e9d8-b1b1-ccdc-33b2a16f819e |  21 | 6AD150B10525B4B7C1257E9F00446D9E | NULL      | Klemens          | Bautsch              | klemens.bautsch@dsgv.de              | 030 / 20225-5254            | PIV             |
+| 93eef616-2308-9b7b-4480-b03a1b7576bd |  22 | D20B916D554D5E2AC12571C5003E7A88 | Dr.       | Peter-Christoph  | Becker               | peter-christoph.becker@dsgv.de       | 030 / 20225-5142            | SFP (Newsroom)  |
+| 40fa066f-5b00-336a-9da2-862021984810 |  23 | 5E44FE8711F3EBDDC1257BF1005087A8 | NULL      | Juliane          | Becker               | juliane.becker@dsgv.de               | 0228 / 204-9919             | Hochschule      |
+| cfc98a14-1f4c-e124-e5df-76bdf3ac93ff |  24 | 289274E0420448BBC1257084005E981E | NULL      | Nicole           | Beckmann             | nicole.beckmann@dsgv.de              | 030 / 20225-5101            | PII             |
+| 0167bd9c-7b1f-c203-bcfa-15d68471dd86 |  25 | E3B4736297E4839BC12577BD004CF82E | NULL      | Jessica Julia    | Beckmann             | jessica.beckmann@dsgv.de             | 030 / 20225-5538            | BII             |
+| f296f019-53d1-7364-037d-b0cda357b392 |  26 | 91C6F3F8AEAFED17C1257084005E981F | NULL      | Brigitte         | Beerse               | brigitte.beerse@dsgv.de              | 0228 / 204-5848             | BIII            |
+| 8d308d4a-4422-56af-8b79-62187b69df85 |  27 | 8EAD6F60FF2BD050C1257E990029D31D | NULL      | Jörg             | Beilke               | jörg.beilke@dsgv.de                  | 030 / 20225-5258            | PIV             |
+| 214eef96-db52-95ae-53f7-c77e032d9817 |  28 | 7F88D28451992677C125796B002EB484 | NULL      | Torsten          | Beiner               | torsten.beiner@dsgv.de               | 030 / 20225-5259            | PIV             |
+| 5f7998ff-9a86-f74d-ac73-bcc31de8f678 |  29 | 6722B569D7AFDEC5C12579B30050E7C5 | NULL      | Christiane       | Benicke              | christiane.benicke@dsgv.de           | 030 / 20225-5907            | PI              |
+| fbd757f3-5c4a-5b9e-8a01-e6677e9ad486 |  30 | 88CAAF2252CF5DDAC12583C50042C833 | NULL      | Irina            | Berenfeld            | irina.berenfeld@dsgv.de              | 030 / 20225-5399            | BVI             |
+| 9e6e3a3c-611e-40b4-a522-7db2b80e30d7 |  31 | 3E85B2F86DC25CBEC1257084005E99A7 | NULL      | Ute              | Berg                 | ute.berg@dsgv.de                     | 0228 / 204-9918             | Hochschule      |
+| 89c1bbcc-2bb3-ee3e-1327-509cf2304475 |  32 | 4BC42455EA9FE75BC1257DB000553364 | NULL      | Claudia          | Bergmann             | claudia.bergmann@dsgv.de             | 030 / 20225-5424            | AVI             |
+| 3e2dfdfa-078c-01ac-6fd2-37ef34dbc5d4 |  33 | 31E903684D5693FDC125716C004DFA22 | Dr.       | Matthias         | Bergner              | matthias.bergner@dsgv.de             | 030 / 20225-5320            | AI              |
+| ca142a7b-ded7-dd67-32a4-1e66cc633f6f |  34 | 26BB9894964B2028C1257CAD00303F74 | NULL      | NULL             | Berlinzimmer         | .berlinzimmer@dsgv.de                | 0228 / 204-9959             | NULL            |
+| b2054d33-c067-1bcf-1c51-7f731c43f65b |  35 | F71C034CC1C0D706C12582F10029B5BA | NULL      | Carol            | Bertini              | carol.bertini@dsgv.de                | 030 / 20225-5139            | PII             |
+| da28eac8-0cfc-38fd-68f3-11fd9d15723a |  36 | 171B0D35DBB8C7A9C1257306004DC733 | NULL      | Silvia           | Besner               | silvia.besner@dsgv.de                | 030 / 20225-5145            | SFP (Newsroom)  |
+| 57eee436-92d5-31e7-421c-0c927e6fdb7b |  37 | 4EE8853E3784D9BFC1257570004582F1 | NULL      | Astrid           | Beste                | astrid.beste@dsgv.de                 | 030 / 20225-5773            | AII             |
+| 5c279e42-5dc0-f2ee-c44a-a5af03a40c6f |  38 | C24C4D472ED708EFC12580AA003663A7 | NULL      | Patrick          | Beyer                | patrick.beyer@dsgv.de                | 030 / 20225-5720            | BI              |
+| 6204cbc8-a028-b4fa-d6ab-cf537d604368 |  39 | D6C835E25F9E9D5DC12583FA0031305A | NULL      | Ramona           | Birnbaum             | ramona.birnbaum@dsgv.de              | 030 / 20225-5713            | BI              |
+| 985de1f9-dc7c-47ee-65b2-60a46dab95f1 |  40 | B1513DC9A20D4963C12581B50045D481 | Dr.       | Jan              | Bischoff             | jan.bischoff@dsgv.de                 | 030 / 20225-5257            | PIV             |
+| e5c05e94-a71e-2404-7022-8d831de0989e |  41 | ACE8774E4E362143C1257DB100514B88 | NULL      | Sonja            | Bläser               | sonja.bläser@dsgv.de                 | 030 / 20225-1511            | AIII            |
+| 192752ca-16f8-8889-76f7-6ba4b5d45ee9 |  42 | 89FF3AD5E0E49206C1257084005E99BB | Prof. Dr. | Anne             | Böhm-Dries           | anne.böhm-dries@dsgv.de              | 0228 / 204-9904             | Hochschule      |
+| 8734abe0-f360-8af1-132d-f8cefc86b4ac |  43 | 3C7E73C4953CDD69C125811C0049C46D | NULL      | Mathias          | Bohm                 | mathias.bohm@dsgv.de                 | 030 / 20225-5266            | AIII            |
+| fcf6b169-806e-152a-497b-49d486767cf2 |  44 | C0EB22303BE862F3C12583D2003324F7 | Dr.       | Daniel           | Bohne                | daniel.bohne@dsgv.de                 | 030 / 20225-5366            | AIII            |
+| f1849072-1382-ba2d-4f30-7e60868656d7 |  45 | 5A0FB4F2E3BCEF2BC1257084005E982D | NULL      | Birgit           | Boland-Mayat         | birgit.boland-mayat@dsgv.de          | 0228 / 204-5870             | BIII            |
+| 54b8df5e-80cc-d3b2-7b00-5c5db2fe9980 |  46 | 82BBCBE18D5AA7CAC1257084005E982E | NULL      | Marina           | Boldin               | marina.boldin@dsgv.de                | 030 / 20225-5402            | AVI             |
+| d0b970e2-43bb-a178-472a-09e1011957b7 |  47 | C8BE80E4A2AFE4DCC1257084005E9830 | NULL      | Regina           | Bopp                 | regina.bopp@dsgv.de                  | 030 / 20225-5123            | PII             |
+| eb3bb93f-006f-3505-7013-24d3063e253c |  48 | DCA0BB92E8CAE410C12583EC00440618 | NULL      | Lars             | Borchert             | lars.borchert@dsgv.de                | 0228 / 204-                 | SFP (Newsroom)  |
+| 18b3be1d-c2ab-48ec-12a9-12f461ee8545 |  49 | 9D48BFF4EAF6577DC1257084005E9832 | Prof. Dr. | Claudia          | Breuer               | claudia.breuer@dsgv.de               | 0228 / 204-9922             | Hochschule      |
+| c38499b7-e0a5-a3e3-807c-225b98540bfa |  50 | 90CF5067CD6E8D8EC1257D5B0051773B | NULL      | Stefan           | Brinkmann            | stefan.brinkmann@dsgv.de             | 030 / 20225-5514            | BIV             |
+| 811a93d4-7c0c-45a9-d64f-b6a2ab193882 |  51 | EB8258ED1D956A3EC1257AD20049118B | NULL      | Sebastian        | Brinschwitz          | sebastian.brinschwitz@dsgv.de        | 030 / 20225-5376            | PIV             |
+| 97a60628-7311-3074-79d5-6ddfb9904e52 |  52 | 4D0BBB2C9E147040C12582C9002B4D17 | NULL      | Benjamin         | Bronk                | benjamin.bronk@dsgv.de               | 030 / 20225-5360            | AIII            |
+| 2ecbdb44-9331-7c6f-c19e-3ab4791be652 |  53 | 364F959AC930C172C1258390004E7794 | NULL      | Thomas           | Bronkalla            | thomas.bronkalla@dsgv.de             | 030 / 20225-                | NULL            |
+| f7edaebd-f1ed-fe64-123d-42306a580b91 |  54 | 672998CDE43738E6C12583EC00441DF7 | NULL      | Tim              | Brückner             | tim.brückner@dsgv.de                 | 0228 / 204-                 | SFP (Newsroom)  |
+| 88b9f835-a253-2fea-3b49-e4e1de2044f1 |  55 | E0AB004DCAABB8DBC1257084005E9834 | NULL      | Andreas          | Brunold              | andreas.brunold@dsgv.de              | 0228 / 204-9910             | Hochschule      |
+| 9d3d6532-8e02-f779-a588-6eec8c7051bf |  56 | 8994FFC7CC546F39C12573B00056B84C | NULL      | Inge             | Büscher              | inge.büscher@dsgv.de                 | 0228 / 204-5952             | PI              |
+| 064cc17f-9f2e-a530-6cb5-9dfc70d8329e |  57 | 27F29C2D46D8FC0EC1257084005E99D3 | Prof. Dr. | Frank            | Bulthaupt            | frank.bulthaupt@dsgv.de              | 0228 / 204-9932             | Hochschule      |
+| 670b40b2-ee20-7224-0283-07ad00cc0985 |  58 | 1B4F2404ABF8A2DAC1257E68002BB60A | NULL      | Anke             | Bunz                 | anke.bunz@dsgv.de                    | 030 / 20225-5113            | PII             |
+| e41b5e4d-0522-46c4-b870-1813d6917982 |  59 | 7B28A590E0B60A25C1257084005E9839 | NULL      | Dirk             | Buth                 | dirk.buth@dsgv.de                    | 030 / 20225-5524            | BII             |
+| 1c22e41f-7a80-09b9-667c-3517f8f93154 |  60 | 995E3B0F3E44B998C12570C3003036D8 | NULL      | Katrin           | Cacic                | katrin.cacic@dsgv.de                 | 030 / 20225-5634            | PIII            |
+| 55b75b7c-5b01-98f8-96bf-879930ddeedf |  61 | 58A8FAA327466A47C12583EC0040B0BF | NULL      | Sopio            | Chavchanidze         | sopio.chavchanidze@dsgv.de           | 0228 / 204-                 | SFP (Newsroom)  |
+| 8da0d12e-9f16-f03e-1c2b-8d579d3da33f |  62 | 30F526813215308AC1257084005E983B | Dr.       | Ralf             | Conradi              | ralf.conradi@dsgv.de                 | 030 / 20225-5396            | BVI             |
+| 003e5078-be20-7ab0-8146-c8e844c06bf4 |  64 | E8DA737F8353CAA5C125712300505949 | NULL      | Esther           | Dallmann             | esther.dallmann@dsgv.de              | 030 / 20225-5264            | AIII            |
+| 457e4f87-c858-ac47-eeaf-0aa6538d9593 |  65 | 1D2F8AFC2DF6C1AEC1257084005E983E | NULL      | Tatjana          | Daubner              | tatjana.daubner@dsgv.de              | 030 / 20225-5503            | BII             |
+| 68431942-d4b9-fc1d-5005-f27e8ff6b63b |  66 | 735DB91B14FACAF3C12579060035A5BF | NULL      | Michael          | Daubner              | michael.daubner@dsgv.de              | 030 / 20225-5699            | VL              |
+| bc3fb7db-98a8-41ff-0a76-11ff403e0802 |  67 | 9247D2FC0606C8CDC12583EC00444118 | NULL      | Michael          | Deekeling            | michael.deekeling@dsgv.de            | 0228 / 204-                 | SFP (Newsroom)  |
+| 04de1623-b83b-97f5-7911-18017c8e89fd |  68 | C2F6CD7AFB7DE95AC12576930038CFAB | NULL      | Sylvia           | Detten van           | sylvia.detten van@dsgv.de            | 0228 / 204-5821             | BIII            |
+| 47436147-d7ac-5328-18e2-8e85811ab389 |  69 | CE4D2C5B9B036759C12581D100337C44 | NULL      | Thorsten         | Dicke-Wentrup        | thorsten.dicke-wentrup@dsgv.de       | 030 / 20225-5425            | AVI             |
+| b50935d3-c30c-bffc-ce30-95b646ddc362 |  70 | 8558A0D95350B63DC1257084005E9841 | Dr.       | Judith           | Dickopf              | judith.dickopf@dsgv.de               | 030 / 20225-5263            | AIII            |
+| 0c121c16-f201-7797-f497-c0a7a3b5cdd7 |  71 | A7A5FD6094CB0E08C1257084005E9844 | Dr.       | Bernhard         | Dietrich             | bernhard.dietrich@dsgv.de            | 030 / 20225-5397            | BVI             |
+| 9feaf915-b939-18c6-942b-6f2c8ae020b8 |  72 | 690A2C29BE7B1EA2C1258394002AE304 | NULL      | Kristina         | Dimitrova            | kristina.dimitrova@dsgv.de           | 0228 / 204-                 | BIII            |
+| 20b0fcef-b148-a728-7b0c-f6d608d54a99 |  73 | B4FDF687162A2405C1257084005E9846 | NULL      | Edith            | Dobner               | edith.dobner@dsgv.de                 | 0228 / 204-9915             | Hochschule      |
+| 2dcb8679-9fd4-2c46-f9fa-2af1f6e3cef2 |  74 | EB7C6B034CA6203EC1257084005E9848 | NULL      | Korina           | Dörr                 | korina.dörr@dsgv.de                  | 030 / 20225-5193            | AII             |
+| a38da10d-79a5-7fd2-5c7f-146cd27bba07 |  75 | CC932979F33D7F82C1257084005E9847 | NULL      | Pawel            | Dolata               | pawel.dolata@dsgv.de                 | 0228 / 204-5991             | PI              |
+| 956b355b-e4e6-8c2a-089a-354c39a995a6 |  76 | EA9EED3B0FEF891EC125837700562D6E | NULL      | Dörte            | Dommisch             | dörte.dommisch@dsgv.de               | 030 / 20225-5576            | BII             |
+| d2b4442a-775d-53e8-64af-ded4aa518f84 |  77 | DF40E5715FB69458C125820A003136D6 | NULL      | Daniel           | Draenkow             | daniel.draenkow@dsgv.de              | 030 / 20225-4861            | BIV             |
+| fc4b0111-8e37-5b93-182d-334675c74224 |  78 | DC14C26C5545CBDCC12583EC004192E0 | NULL      | Meike            | Drefahl              | meike.drefahl@dsgv.de                | 0228 / 204-                 | SFP (Newsroom)  |
+| 77e2fc66-e7c4-6b02-22be-4239e6f3530b |  79 | 6686F7DA5BE7E9A9C12584190038D5A7 | NULL      | Sarah            | Drogosch             | sarah.drogosch@dsgv.de               | 0228 / 204-                 | SFP (Newsroom)  |
+| 1dc81877-000c-7c6a-9fdd-307af1169b7c |  80 | 055B47B411185430C12570930040AEBB | NULL      | Bonn             | Druckerei            | bonn.druckerei@dsgv.de               | 0228 / 204-5960             | PI              |
+| b9e5d6a6-2906-e6a8-40e3-b2057e70d81a |  81 | 452B474A7F0DA087C1257084005E984A | NULL      | Alexandra        | Düren                | alexandra.düren@dsgv.de              | 0228 / 204-9921             | Hochschule      |
+| f7e4c82f-0d2f-2d45-dc86-bf3ade6c5c7b |  82 | 7367549E12A76C31C1257084005E984B | NULL      | Sabine           | Düxmann              | sabine.düxmann@dsgv.de               | 030 / 20225-4011            | VL              |
+| 4ba05a02-898b-fa9c-e575-4f2187858b01 |  83 | DC67C4950AC404D9C12583C900357908 | NULL      | Claudia          | Eisentraut           | claudia.eisentraut@dsgv.de           | 0228 / 204-5812             | BIII            |
+| 2e5b25e7-687f-07ca-832a-12730f8b3ffd |  84 | A3C2A69205DB7B2DC12573F500550114 | NULL      | Eric             | Eispert              | eric.eispert@dsgv.de                 | 030 / 20225-5782            | AVI             |
+| c5391d47-9d1c-e224-989d-d8171db9694c |  85 | F9993B099EBFE278C125834600515EFE | NULL      | Yafet            | Embaye               | yafet.embaye@dsgv.de                 | 0032 2 740 16-47            | AV              |
+| 09d17703-2ebb-3108-01c1-53f44968735d |  86 | 411E5CCFA2671E0EC125729D004B7592 | NULL      | Michael          | Engelhard            | michael.engelhard@dsgv.de            | 030 / 20225-5331            | AI              |
+| 504c5051-16d6-8418-ee56-697ce49e67bc |  87 | 24C55A46F39C98D4C12583EC0041B407 | NULL      | Marika           | Ernst                | marika.ernst@dsgv.de                 | 0228 / 204-                 | SFP (Newsroom)  |
+| 2b4658ac-1dc2-5b6d-87a3-0ac95dbd7ee8 |  88 | 9AF283D015B98A0BC1257084005E9850 | Dr.       | Hans Ulrich      | Eßlinger             | hans.eßlinger@dsgv.de                | 030 / 20225-5140            | PII             |
+| e26c6683-f19b-4ee0-ad8a-c9b9ccbd458e |  89 | 74E933DC996BF4C3C125820B004C6336 | NULL      | Stefanie         | Estermann            | stefanie.estermann@dsgv.de           | 030 / 20225-5351            | PIV             |
+| 2f05c3c8-9a7b-2fdd-4154-87484ad7c307 |  90 | 04FA3851D5FDD6B7C1257084005E9857 | NULL      | Andreas          | Ewig                 | andreas.ewig@dsgv.de                 | 030 / 20225-5510            | BII             |
+| 8c7b4da7-cf92-3bed-de4e-2157bcdcad5d |  91 | C0FB39BED8EC0174C12583EC0032945B | NULL      | Bernadett        | Faßhauer-Kotte       | bernadett.faßhauer-kotte@dsgv.de     | 0228 / 204-                 | SFP (Newsroom)  |
+| dc273a60-b9f2-e4f2-fe8b-1542dca5fe87 |  92 | 47ACA1756EEBE30EC1258369002FA6CA | NULL      | Jörg             | Faulhaber            | jörg.faulhaber@dsgv.de               | 030 / 20225-5358            | PIV             |
+| 28d21585-ea61-1327-3d3e-8726eeb02c49 |  93 | AE0777DA0D0F6EE6C125740900526C54 | NULL      | Claudia          | Fehling              | claudia.fehling@dsgv.de              | 0228 / 204-9907             | Hochschule      |
+| b503b2a4-ab5b-3a6f-1acb-a6a48e899242 |  94 | 41562F68C3DBB108C12582130049BC0E | NULL      | Thelke           | Fiebrandt            | thelke.fiebrandt@dsgv.de             | 030 / 20225-5623            | PIII            |
+| 398231ae-6cb5-8e33-532a-47528ea33ced |  95 | 415AA4A5FEAFD6BCC12581A2004515BE | Dr.       | Rene             | Fiedler              | rene.fiedler@dsgv.de                 | 030 / 20225-5344            | AIII            |
+| 5c6ac13a-1cad-c8da-ed28-975ef380d0d8 |  96 | 5C9ADAA384602ADAC12583FB00403565 | NULL      | Jasmin           | Fiedler              | jasmin.fiedler@dsgv.de               | 0228 / 204-                 | BIII            |
+| 3c30857f-da45-0420-66c7-af889b6ccc77 |  97 | 4294AD6ED4666CF6C125845B0049CC21 | NULL      | Nina             | Fiedler              | nina.fiedler@dsgv.de                 | 0228 / 204-5847             | BIII            |
+| 4efd7b42-8af3-818e-cac0-0d478d675b36 |  98 | A2BC3C5E05CB6C74C1257DD5002C0EC4 | NULL      | Olaf             | Fischel              | olaf.fischel@dsgv.de                 | 030 / 20225-5610            | PI              |
+| cee4c16b-ca2d-df39-7a50-65586df4997b |  99 | F8349AE0EB3BCD4DC1257084005E99F8 | NULL      | Oliver           | Fischer              | oliver.fischer@dsgv.de               | 030 / 20225-5143            | PII             |
+| 6b48e6fc-31fb-d4fa-a19c-5fd64837db69 | 100 | 5255888D04466F0EC125843F003F1E00 | NULL      | Birgit           | Fischer-Gramsch      | birgit.fischer-gramsch@dsgv.de       | 0228 / 204-                 | AIII            |
+| d1af2e7f-3275-fe9c-aa08-d9cc0013429f | 101 | C7B07041986611FFC1257D41002CDDC0 | NULL      | Heiko            | Flach                | heiko.flach@dsgv.de                  | 030 / 20225-5536            | BII             |
+| b5875143-a8c2-8741-a345-1ff0b20d0678 | 102 | AB56F467C87838A9C1257084005E9861 | NULL      | Birgit           | Flau-Hardt           | birgit.flau-hardt@dsgv.de            | 0228 / 204-5816             | BIII            |
+| 8be8dedb-3edb-531c-9ab6-11c29511b1a7 | 103 | 0A0C7981EC2E7AC6C12578C4003DD320 | NULL      | Roland           | Flommer              | roland.flommer@dsgv.de               | 030 / 20225-5548            | BIV             |
+| aa74777b-0cef-d82c-2eb7-43247c683427 | 104 | 23D6ED72E42275D8C12576FE002FC840 | NULL      | Silvia           | Förster              | silvia.förster@dsgv.de               | 0228 / 204-9927             | Hochschule      |
+| 9b1edafe-0450-0988-424d-1a0fd2b0ecb8 | 105 | CD68C4CC440B35F2C1257084005E9863 | NULL      | Elke             | Fongern              | elke.fongern@dsgv.de                 | 0228 / 204-9914             | Hochschule      |
+| d91b296d-d108-5b1f-43a3-7f30389af8b6 | 106 | 9C443E0649B2533CC1257084005E9865 | NULL      | Heide            | Fornol               | heide.fornol@dsgv.de                 | 030 / 20225-5680            | BII             |
+| a27f4fc9-3103-12a7-023d-a63636cf96fc | 107 | 70C5ACF9892F816EC1258473002B435B | NULL      | Philipp          | Frank                | philipp.frank@dsgv.de                | 0228 / 204-                 | NULL            |
+| a39e36c5-77d1-514c-790a-398b959cfe89 | 108 | 2E50CF85AB24FCA1C1257A4D0028B250 | NULL      | Janet            | Franz                | janet.franz@dsgv.de                  | 030 / 20225-5201            | PG              |
+| 11990485-fba9-13f4-1ab1-7334fa21c4ba | 109 | 7C82028F08C3F7C4C1257084005E99C4 | NULL      | Jörg             | Friedberg            | jörg.friedberg@dsgv.de               | 030 / 20225-5409            | AVI             |
+| 61bcdc5f-9062-333c-94c5-a06bf67645d6 | 110 | 25D1B447B5BED158C1257084005E992E | NULL      | Luitgard         | Frings               | luitgard.frings@dsgv.de              | 030 / 20225-5781            | AII             |
+| 0ab4c703-1bf3-2d31-65a3-9e6f80c7a602 | 111 | 3ADD65D0DD74F76FC1257084005E9869 | NULL      | Peter            | Frings               | peter.frings@dsgv.de                 | 030 / 20225-5950            | PI              |
+| 26c8e3d0-1b11-3f16-dc29-e49a0bc2e39b | 112 | 4F14781D37CC5365C1257084005E9868 | Dr.       | Hartmut          | Frings               | hartmut.frings@dsgv.de               | 030 / 20225-5370            | AIII            |
+| a6627858-c387-ee17-049f-bbf6537ed011 | 113 | 0C112138A75ADECCC12582B300259331 | NULL      | Patrick          | Fritz                | patrick.fritz@dsgv.de                | 030 / 20225-4802            | BIV             |
+| 34118a52-0001-3a52-0aa7-51cd8888e8ba | 114 | 04067A25549018B8C1257084005E986B | NULL      | Peter            | Fröhlich             | peter.fröhlich@dsgv.de               | 0228 / 204-5874             | BIII            |
+| b06c855c-b1d9-3a74-0dc6-39d99e2889f3 | 115 | 8DD6D35649E69F7BC12571030044E720 | NULL      | Silvia           | Frömbgen             | silvia.frömbgen@dsgv.de              | 030 / 20225-5372            | AIII            |
+| 217eeb0d-3a39-d6c8-3631-bb26085a90aa | 116 | 1A31666D68F4B204C12581D20049C841 | NULL      | Sandra           | Fuchs                | sandra.fuchs@dsgv.de                 | 030 / 20225-4851            | BII             |
+| 51a230b5-f81b-7d18-898a-3641f7d4df63 | 117 | 6939B81388680B0CC1257084005E986C | NULL      | Hans-Joachim     | Fürth                | hans-joachim.fürth@dsgv.de           | 0228 / 204-9974             | PI              |
+| a586330a-f6ee-0748-e0b9-c31a54ba2863 | 118 | 52E75DA83D5CEF33C1257084005E99D8 | NULL      | Andreas          | Galandi              | andreas.galandi@dsgv.de              | 030 / 20225-5920            | PI              |
+| 19a3420b-483a-1b90-619d-763ee0f5cbb5 | 119 | 3A9B274EB92766E3C1258109003BA6C4 | NULL      | Sebastian        | Garbe                | sebastian.garbe@dsgv.de              | 030 / 20225-5500            | BIV             |
+| 7a2fb82e-0b0b-2c4c-50df-fd09cd67bbc0 | 120 | CE024622F08E0B44C12574C0004AD95C | NULL      | Christine        | Gegg                 | christine.gegg@dsgv.de               | 030 / 20225-5775            | AII             |
+| fe1e1f47-d0d6-df2f-73c3-ff0f115a46df | 121 | 9E7724717EA12208C12581FB004FD448 | NULL      | Nora             | Geiger               | nora.geiger@dsgv.de                  | 030 / 20225-1513            | AIII            |
+| ac2712b8-1c3c-9ba5-adbd-a5abb798cf7e | 122 | 76A7B44C54CC6DA2C1257084005E986F | NULL      | Peter            | Gepfert              | peter.gepfert@dsgv.de                | 030 / 20225-5790            | AII             |
+| 431f2174-43bd-8518-a5c8-fdf2efef1080 | 123 | C092F09A5EC3B239C125743B003BC544 | NULL      | Ralf             | Gerkum               | ralf.gerkum@dsgv.de                  | 0228 / 204-5992             | NULL            |
+| dd00a4a4-f1ec-9506-f315-280663b6f194 | 124 | 3385978ED37167A0C1258407004B538E | NULL      | Finn             | Gerlach              | finn.gerlach@dsgv.de                 | 030 / 20225-5365            | AIII            |
+| e58ab9b0-16bd-f608-15ca-3f62d723a0e1 | 125 | 22C13869608E35DBC1257EF2005178E6 | NULL      | Doreen           | Gielisch             | doreen.gielisch@dsgv.de              | 030 / 20225-5416            | AVI             |
+| d09d143b-8594-9a81-b7ce-4150deb80525 | 126 | 14CD7F6A4F39DBD2C125809F004D2CBD | NULL      | Jessica          | Glaser               | jessica.glaser@dsgv.de               | 030 / 20225-5332            | AI              |
+| cc49629b-9c99-721e-62e6-afa09ec765b1 | 127 | EED4860C12D207ABC1257084005E9875 | NULL      | Thomas           | Glutting             | thomas.glutting@dsgv.de              | 030 / 20225-5707            | BI              |
+| b0a77c45-4084-4499-7fb1-3aa963128f7b | 128 | 212758B8332416CCC1257084005E98AF | NULL      | Christine        | Göbel                | christine.göbel@dsgv.de              | 030 / 20225-5763            | AVI             |
+| c787c3c0-f777-2adb-ef2b-7bed11790433 | 129 | CB0588FF2AC198EFC1257284004544E5 | NULL      | Karin            | Göbel                | karin.göbel@dsgv.de                  | 030 / 20225-5362            | AIII            |
+| dbb94b66-405d-fc56-fe15-66ebc121303a | 130 | 8429343499C7DCC6C125739B004B699E | NULL      | Doris            | Goerke               | doris.goerke@dsgv.de                 | 030 / 20225-5529            | BII             |
+| 13030dd4-b07b-5175-ddb7-d9a4c8a3f60e | 131 | BD8226E4C09FE8E1C12583EC0045085F | NULL      | Sara             | Goldenberg           | sara.goldenberg@dsgv.de              | 0228 / 204-                 | SFP (Newsroom)  |
+| 41512417-0932-3356-52c6-4df49b231327 | 132 | 74EABE589559E824C1257084005E9879 | NULL      | Gabriele         | Gottschalk           | gabriele.gottschalk@dsgv.de          | 0228 / 204-5756             | AII             |
+| d4986bca-804f-d30e-bde6-042512e8a85d | 133 | 58A2B8A5F23D5858C125804F00299C34 | Dr.       | Maik             | Grabau               | maik.grabau@dsgv.de                  | 030 / 20225-5400            | AVI             |
+| 02aec8fd-8f3c-1394-0791-dc42a5cddd8b | 134 | BF555F800ED5C59AC12580AB0052797A | NULL      | Marian           | Grahl                | marian.grahl@dsgv.de                 | 030 / 20225-5979            | PI              |
+| 0131c8c9-3a49-39d3-43a3-af1457104298 | 135 | ECB8D6D0DEFB1D25C1257084005E987C | NULL      | Annett           | Graß                 | annett.graß@dsgv.de                  | 030 / 20225-5150            | PII             |
+| 9bb65436-03d2-8486-5446-a75100e3cf57 | 136 | E87CDE87B10EA32FC1257B570033FC55 | NULL      | Ruth             | Große                | ruth.große@dsgv.de                   | 030 / 20225-5256            | PIV             |
+| 720d2fc3-5260-ea28-2658-b0bb31ce2dff | 137 | F15D5A0F716F474BC1257084005E987D | Dr.       | Axel             | Grote                | axel.grote@dsgv.de                   | 030 / 20225-5715            | BIV             |
+| fe9f5883-c938-140e-780e-4bd5f15380da | 138 | 778573A6E87F0E6FC1257CC5004DBA45 | NULL      | Ann              | Grottke              | ann.grottke@dsgv.de                  | 030 / 20225-5342            | PIV             |
+| b56b1b42-c79e-f02d-e93d-e00b9f6cfe3a | 139 | 2409E74B90E3DC8EC1257F1E00574DD9 | NULL      | Alice            | Grund                | alice.grund@dsgv.de                  | 030 / 20225-5343            | AIII            |
+| 5d641086-4675-4962-ebdb-02ae5427b712 | 140 | 5D563D650504ACB4C1257084005E987E | NULL      | Thomas           | Grunwald             | thomas.grunwald@dsgv.de              | 030 / 20225-5716            | BI              |
+| ba93035e-c265-a10a-84c6-e134f48cecfc | 141 | 62585795CEA1BE9AC125824F0042106A | NULL      | Ellen            | Grunwald             | ellen.grunwald@dsgv.de               | 030 / 20225-5710            | BI              |
+| a4db1673-1759-a822-5685-9686257e69ef | 142 | 6AA819BD9AAE7ACCC1258050003D9931 | NULL      | Christian        | Günther              | christian.günther@dsgv.de            | 0032 2 740 16-15            | AV              |
+| e27643d7-63ba-b608-88d1-9f9a888fcac7 | 143 | 980330C6CC3B81BFC1258402004E36EC | NULL      | Michael          | Gunjevic             | michael.gunjevic@dsgv.de             | 030 / 20225-4839            | BI              |
+| 265bd392-1dec-0bb0-b0d4-426473db60b7 | 144 | 6C1CD0C89E79AEE6C1257084005E99C7 | NULL      | Steffen          | Gurtler              | steffen.gurtler@dsgv.de              | 030 / 20225-5722            | BI              |
+| 6daffe69-54f0-bac3-0a3e-f0a17b6cd864 | 145 | 852FAF62C113D318C1257D710043E0D9 | NULL      | Axel             | Guthmann             | axel.guthmann@dsgv.de                | 030 / 20225-5380            | BVI             |
+| 0be9c579-7463-c416-f797-1a884395d90d | 146 | 77848560252FD2EBC12583EC00420B69 | NULL      | Michael          | Gutzmann             | michael.gutzmann@dsgv.de             | 0228 / 204-                 | SFP (Newsroom)  |
+| 105c1032-e781-36ab-eb64-485665eca994 | 147 | 7644DD3F1E344F98C1257084005E9881 | NULL      | Rüdiger          | Haase                | rüdiger.haase@dsgv.de                | 030 / 20225-5391            | BVI             |
+| 5944e2c6-5136-1224-6ae7-29b18acfa720 | 148 | BF816E00755092BCC12583EC00410008 | NULL      | Danielle         | Haastert             | danielle.haastert@dsgv.de            | 0228 / 204-                 | SFP (Newsroom)  |
+| ffff267e-d3fe-f072-6d02-4ac1ce0917ef | 149 | 924FEA330BE1406FC12574C70058ED69 | NULL      | Jana             | Hähnel               | jana.hähnel@dsgv.de                  | 030 / 20225-1520            | AIII            |
+| 4980792f-b477-2fae-36b5-a16bd67cbfd8 | 150 | 17BBB73F4C120FA1C12583EC00404011 | NULL      | Karin            | Hagemann             | karin.hagemann@dsgv.de               | 0228 / 204-                 | SFP (Newsroom)  |
+| 971d7f82-8742-c0e7-bb81-13ec30fa2e8a | 151 | AD5E61320EA62F4BC1257084005E984E | NULL      | Dagmar           | Hamann               | dagmar.hamann@dsgv.de                | 030 / 20225-5709            | BI              |
+| 393053b0-4ab9-18ce-b9b2-3fc574c26c0c | 152 | CB4306B50C70169BC12575FC00395804 | Prof. Dr. | Marwan           | Hamdan               | marwan.hamdan@dsgv.de                | 0228 / 204-9935             | Hochschule      |
+| 119260d1-9857-22a4-de7a-13fdeacaec28 | 153 | 669BE078BDA3B9AFC12578AA00401471 | NULL      | Ellen            | Handrack             | ellen.handrack@dsgv.de               | 030 / 20225-5521            | BII             |
+| 022b05e5-08c5-0972-38f3-dadf12bfad22 | 154 | CA3A1696AC228FD1C12578B600320AF8 | NULL      | Sebastian        | Harden               | sebastian.harden@dsgv.de             | 030 / 20225-1422            | BII             |
+| d8948107-3c0e-0a11-e659-f1f1d8cd395f | 155 | 7384776F06EAD404C12581A900412B63 | NULL      | Alexander        | Hartberg             | alexander.hartberg@dsgv.de           | 030 / 20225-5147            | PII             |
+| eb2adc94-553c-c19e-b54d-98b271604040 | 156 | CC85BA90C68D1AA2C1257084005E9888 | NULL      | Martina          | Haß                  | martina.haß@dsgv.de                  | 030 / 20225-5384            | BVI             |
+| 456956c4-90be-f313-01f4-6a1b318dc64b | 157 | 2FBCE1200F59EA9EC1257084005E9889 | NULL      | Richard          | Hauke                | richard.hauke@dsgv.de                | 030 / 20225-5542            | BIV             |
+| 428949cf-3dd2-23c2-dfb3-2a2f5e42057a | 158 | 626940D429264B0DC12579890036B95A | Dr.       | Stefan           | Hauschild            | stefan.hauschild@dsgv.de             | 030 / 20225-5772            | AII             |
+| 991638bf-6aa5-045a-5a87-a21c9b4b194b | 159 | EA9D337EA659EE94C12579CA00326B65 | NULL      | Till             | Haverkamp            | till.haverkamp@dsgv.de               | 030 / 20225-5164            | PII             |
+| 7997443b-ca77-1652-0e63-9c6b4b37447f | 160 | 0876C43DBB2C822EC12583EC004399DD | NULL      | Andreas          | Heidenreich          | andreas.heidenreich@dsgv.de          | 0228 / 204-                 | SFP (Newsroom)  |
+| d0174093-6eca-0675-5b27-40fd4f40d7e1 | 161 | D80611C820E05CF2C1257084005E988B | NULL      | Uwe              | Heimbach             | uwe.heimbach@dsgv.de                 | 0228 / 204-5960             | PI              |
+| 0d73bcd1-8a5d-f3a8-6578-f5d023094d42 | 162 | AD074B2691FC5688C1257084005E988C | NULL      | Walter           | Heinrich             | walter.heinrich@dsgv.de              | 030 / 20225-5656            | PIV             |
+| 04d01e32-e2cd-e46b-5573-352d4f7398f3 | 163 | 777B2C62B21939F7C1257084005E988D | NULL      | Hans             | Heinz                | hans.heinz@dsgv.de                   | 0228 / 204-5940             | PI              |
+| 120ec5e5-2a9e-a65b-d299-fe972445ea32 | 164 | 1554150186F8D840C1257F4E0056266B | NULL      | Nadine Simone    | Heinz                | nadine.heinz@dsgv.de                 | 030 / 20225-                | NULL            |
+| 7ed2f4e7-db30-2b0d-e596-e0ed19df184e | 165 | 4ED66EFB67A81CE1C125711100360046 | Prof. Dr. | Bernd            | Heitzer              | bernd.heitzer@dsgv.de                | 0228 / 204-9900             | Hochschule      |
+| 0d49e5f7-b02a-ec54-01e4-770d9c53b5f4 | 166 | 7AB81CAA75891D40C12583C5004641A0 | NULL      | Kerstin          | Heller               | kerstin.heller@dsgv.de               | 0228 / 204-5813             | BIII            |
+| 15bdf483-6285-abb8-5d92-117529970c9b | 167 | F0BDDF6922699521C12571CA0044A48D | NULL      | Jessica          | Hellwig              | jessica.hellwig@dsgv.de              | 030 / 20225-5608            | PI              |
+| ed71b71a-cf06-b298-d1a8-55aef46e03e7 | 168 | 09FA82831F977A80C125791000289818 | NULL      | Andrea           | Helms                | andrea.helms@dsgv.de                 | 030 / 20225-5511            | BII             |
+| dc64d794-54d4-7d46-b974-a224b7746f75 | 169 | 4EC10A25552362F3C1257084005E988F | NULL      | Nadine           | Helterhoff           | nadine.helterhoff@dsgv.de            | 030 / 20225-5133            | PII             |
+| 9a81facf-cb42-0128-7a3b-7f94bd6c2a3b | 170 | 0C7FE776F44F8AE6C1257C45004D43DD | NULL      | Christian        | Helwig               | christian.helwig@dsgv.de             | 030 / 20225-5493            | AI              |
+| 2371765e-ef6b-b8df-8191-8a1c290a5923 | 171 | 9DCCD2734D100CDDC1257084005E9890 | NULL      | Iris             | Hemker               | iris.hemker@dsgv.de                  | 030 / 20225-5796            | AII             |
+| ce105ff5-1b3d-60e5-cd99-1524d03b66a5 | 172 | 4618099F23896FF1C1257084005E9891 | NULL      | Maria            | Henkemeyer           | maria.henkemeyer@dsgv.de             | 0228 / 204-5884             | BIII            |
+| cb999b39-2d07-974f-cd7f-5e802ce5e83f | 173 | BEC88925620B84E3C12578E9004392A8 | NULL      | Ute              | Hennings             | ute.hennings@dsgv.de                 | 030 / 20225-5678            | BIII            |
+| 4491669f-9612-cfcb-eecc-daadeb115d89 | 174 | 9A937D32AA0F12E6C125745C003483D8 | NULL      | Gabriele         | Hensel               | gabriele.hensel@dsgv.de              | 030 / 20225-5335            | AI              |
+| dcee9795-2632-a022-c06b-045247461eeb | 175 | CCC9C69FBA882736C1258132002AC898 | NULL      | Reimer           | Herda                | reimer.herda@dsgv.de                 | 030 / 20225-5541            | BI              |
+| eb1a724a-5760-63a3-305d-8a24173653bd | 176 | 9F41D7DBA50D82C0C12581920045D72E | Dr.       | Arne             | Hertel               | arne.hertel@dsgv.de                  | 030 / 20225-5350            | PIV             |
+| af3fa17f-bc95-43ac-52a3-18385beb4fce | 177 | 0519D68D5B6477A2C1257C780028181F | Dr.       | Anja             | Herzberg             | anja.herzberg@dsgv.de                | 030 / 20225-5268            | AIII            |
+| f7eed795-3497-d7db-9cd3-74bbf33788a9 | 178 | 9ED8B127FD49D4A3C12580CE004C510E | NULL      | Cornelia         | Herzog               | cornelia.herzog@dsgv.de              | 030 / 20225-5357            | AIII            |
+| 2bb1cd40-2f9b-639a-a129-302b587380b1 | 179 | D14F4133D3F2FC2FC1257084005E9897 | NULL      | Monika           | Heuwing              | monika.heuwing@dsgv.de               | 0228 / 204-5842             | BIII            |
+| b7cb681f-b32c-ecbe-18d1-8b88b22896b4 | 180 | 1458E31C17ACA709C1257FD800537C94 | NULL      | Diana            | Hildebrand           | diana.hildebrand@dsgv.de             | 030 / 20225-5766            | AVI             |
+| eb49bf9e-1cd1-a047-600a-296917186291 | 181 | 7D4549FFD4B4D4CEC1257DEA00315304 | NULL      | Nadin            | Hirsch               | nadin.hirsch@dsgv.de                 | 030 / 20225-5109            | PII             |
+| d334947d-3f52-6ff6-d388-d5f105e1f06f | 182 | D24427F465B081AEC12583EC004247DE | NULL      | Susann           | Hochstein            | susann.hochstein@dsgv.de             | 0228 / 204-                 | SFP (Newsroom)  |
+| 6d28f34d-48a0-81b4-6992-7495597bec20 | 183 | 9910D58B02ACE0F5C1257A76002C3783 | NULL      | Patricia         | Höller               | patricia.höller@dsgv.de              | 0228 / 204-9917             | Hochschule      |
+| 378e448e-2327-305b-8b54-00ff796257f9 | 184 | DA2084D85A9746A6C1257576004959F0 | NULL      | Lilija           | Höppner              | lilija.höppner@dsgv.de               | 0228 / 204-5860             | BIII            |
+| d0c16660-ad89-a811-463d-c507bca14d5a | 185 | 99CC8AE36A92BF63C12584180029AF07 | NULL      | Petra            | Hofmann              | petra.hofmann@dsgv.de                | 030 / 20225-5383            | BVI             |
+| 83513191-e539-4794-2e1a-db2b7bb7818d | 186 | 24E00FEC30B8F518C1257FDA003C82A8 | NULL      | Jens             | Hollnagel-Sader      | jens.hollnagel-sader@dsgv.de         | 030 / 20225-5545            | BII             |
+| f3ce5d06-b583-fc1e-4f0d-77ad53ec6505 | 187 | D4A5A3CEF36FF21BC125808F00544239 | NULL      | Jeannine         | Hoppe                | jeannine.hoppe@dsgv.de               | 030 / 20225-5628            | PIII            |
+| ad862079-98ec-9219-9138-87a9c992b2cd | 188 | EEECAA7662F586DDC12571D900357D13 | NULL      | Hildegard        | Horstmann            | hildegard.horstmann@dsgv.de          | 0228 / 204-5820             | BIII            |
+| 37da9dcf-d88d-dfe2-66e8-70e9877c3601 | 189 | F1852CDA13BA64BDC1257084005E98A0 | NULL      | Marion           | Horter               | marion.horter@dsgv.de                | 030 / 20225-5381            | BVI             |
+| ac34338a-2d89-f034-24e1-09abc3af09ee | 190 | B015EAD5F0A0CD9FC1257C24002CDCAB | NULL      | Georg J.         | Huber                | georg.huber@dsgv.de                  | 0032 2 740 16-12            | AV              |
+| 5f2bb0cb-5d43-45ff-37ed-9cde6791d083 | 191 | 5F7D5E17076F839EC125711700510D99 | NULL      | Jan              | Hübner               | jan.hübner@dsgv.de                   | 030 / 20225-5793            | AII             |
+| cae2ce15-d5ea-cc48-fb80-d574e10affac | 192 | BCF498BA1F2A6EC1C125815A003ABCFD | NULL      | Mathias          | Hütter               | mathias.hütter@dsgv.de               | 030 / 20225-5506            | BIV             |
+| 79395c39-3589-5939-b54e-dcc230b2fb1a | 193 | B05B64F1AA3E9CA6C1257084005E98A1 | Dr.       | Jens             | Hunstock             | jens.hunstock@dsgv.de                | 0228 / 204-9923             | Hochschule      |
+| 8902c212-67ab-39f4-cd64-b7088dfe4a16 | 195 | 8B122ADBCB134D8BC1257084005E98A3 | NULL      | Olaf             | Instinsky            | olaf.instinsky@dsgv.de               | 030 / 20225-5439            | AVI             |
+| 013b9d12-430b-812b-eec5-ef5058861e8d | 196 | D397FCC579D5A447C1257084005E9A0B | NULL      | Martina          | Jädicke              | martina.jädicke@dsgv.de              | 030 / 20225-5777            | AII             |
+| e264a170-9cd7-c6c3-3923-b2c4e386cda5 | 197 | 72D47DE1BA2704C4C1257084005E98A4 | NULL      | Pia              | Jankowski            | pia.jankowski@dsgv.de                | 030 / 20225-5760            | AII             |
+| 40b82c5a-3e6a-980a-e92f-566cd5a099c6 | 198 | C617E0327113DAB4C1257084005E98A5 | NULL      | Immo             | Janßen               | immo.janßen@dsgv.de                  | 030 / 20225-5784            | AII             |
+| 0a74a853-6bfd-e2ca-8793-f24ab4426c5e | 200 | F9A5DDB43947E745C1257F37004C30F7 | NULL      | Josefine         | Jaroschinski         | josefine.jaroschinski@dsgv.de        | 030 / 20225-1512            | AIII            |
+| d1baaeab-229d-01ea-5370-24e3fa4952aa | 201 | 25D61EC1F960057CC1257084005E98A7 | NULL      | Miriam           | Jolitz               | miriam.jolitz@dsgv.de                | 030 / 20225-5714            | BI              |
+| b79eb746-6ead-94ec-88fa-fd2f73e05cab | 202 | 76A8DDAFDFA20149C1257084005E98A8 | NULL      | Petra            | Jonas                | petra.jonas@dsgv.de                  | 0228 / 204-5801             | BIII            |
+| dfe400e7-08ce-dc21-df9f-348adf613c8d | 203 | 1A45194FE1468938C1258132003892A9 | NULL      | Julia            | Jouvenal             | julia.jouvenal@dsgv.de               | 030 / 20225-5798            | AII             |
+| ac284316-828b-f551-f81a-41364f03029a | 204 | A228A29F6501E48BC1257084005E9995 | NULL      | Renate           | Jührend              | renate.jührend@dsgv.de               | 030 / 20225-5149            | PII             |
+| 9533a8ba-23c1-f6d4-4c92-e5699c2d2e72 | 205 | F609D2D6F11624F2C1257ED5003ADBA1 | NULL      | Mark             | Jungbluth            | mark.jungbluth@dsgv.de               | 0228 / 204-                 | BIII            |
+| 44da639c-c006-98dc-d4d7-e644588357c6 | 206 | A119BD2E1F7A7828C1258313004308FF | NULL      | Armgard          | Junker               | armgard.junker@dsgv.de               | 0228 / 204-5747             | BIII            |
+| 0230624c-d0db-41d3-b950-c5e01603bccf | 207 | E2A16B6387D98411C12579C700422900 | NULL      | Igor             | Juresic              | igor.juresic@dsgv.de                 | 030 / 20225-5728            | BI              |
+| d5ad4ca9-59e6-9656-188d-13a6b9d4f7dc | 208 | 9ABE7F00F84E2CF6C1257084005E98AB | NULL      | Bärbel           | Kaatz                | bärbel.kaatz@dsgv.de                 | 0228 / 204-5757             | AII             |
+| de7040cd-714e-ab0d-a0cb-e2e27021d56e | 209 | 0428FCD75159C791C12579110035A275 | NULL      | Silke            | Kabus                | silke.kabus@dsgv.de                  | 030 / 20225-5410            | AVI             |
+| e58c18d7-caf8-e338-0a7c-8db2b27d1c55 | 210 | C63A04ED8D265349C125825F002626F7 | NULL      | Thomas           | Kandt                | thomas.kandt@dsgv.de                 | 030 / 20225-5954            | PI              |
+| 36bd3562-6791-614d-34db-76c9f8cf2fed | 211 | AA32D59C7D62769DC125724B0035E7F2 | NULL      | Jörg             | Kannwischer          | jörg.kannwischer@dsgv.de             | 030 / 20225-5161            | PII             |
+| a7a47a77-696b-84ee-44c3-a5b24552da7f | 212 | B0BF5318DE7D49FAC1257084005E98AE | Dr.       | Ivonn            | Kappel               | ivonn.kappel@dsgv.de                 | 030 / 20225-5398            | BVI             |
+| af86c01e-5917-c75a-fb4b-54c4374a5fc2 | 213 | 05D270331D0961F6C12580270041E23F | Dr.       | Hanna            | Kappstein            | hanna.kappstein@dsgv.de              | 030 / 20225-5655            | PIV             |
+| 42fe7603-79e3-6b1b-8e51-651359b03a39 | 214 | BEFB373D706E5491C1257C9B003F87B2 | Dr.       | Thomas           | Keidel               | thomas.keidel@dsgv.de                | 030 / 20225-5280            | AII             |
+| c742578d-ee1d-f2cb-0a05-3ab3f0e4f116 | 215 | 36F1FCA1FCB51FCCC1257084005E98B1 | NULL      | Dimitrios        | Kekes                | dimitrios.kekes@dsgv.de              | 030 / 20225-5976            | PI              |
+| ff4465fa-d9e7-400d-5bbf-64e3672d3fbe | 216 | F0EAB0DAA1DB5C38C1257EDD00452712 | NULL      | Mahmoud          | Khalife              | mahmoud.khalife@dsgv.de              | 030 / 20225-5393            | BVI             |
+| 2c5c1bda-e083-728b-9afa-44f1ef74039c | 217 | 58087037AC1686D9C1258417004AE81C | NULL      | Gundula          | Kirst                | gundula.kirst@dsgv.de                | 030 / 20225-5692            | VL              |
+| 19819177-fc18-4691-d2f8-777e1cc3f5ad | 218 | 59D6ABDDD18340BDC125830800405A9D | NULL      | Marcus           | Kitz                 | marcus.kitz@dsgv.de                  | 0228 / 204-5748             | BIII            |
+| 500f069f-721b-3015-7d69-a3c118e2c664 | 219 | C5A0E4FB89A69CADC1257DD40044B6B0 | NULL      | Kirsten          | Klapheck             | kirsten.klapheck@dsgv.de             | 0228 / 204-5850             | BIII            |
+| 630281d8-4dd5-8a43-b878-bf737515085c | 220 | 4E86FB5B72596DE3C1257C3500532569 | NULL      | Anne-Sophie      | Klein                | anne-sophie.klein@dsgv.de            | 0228 / 204-9933             | Hochschule      |
+| b3dfeaec-9ffb-138c-690d-f9e6dc8425f3 | 221 | 996EFE75821B7A4CC1257ED2003B1501 | NULL      | Sabine           | Klein                | sabine.klein@dsgv.de                 | 030 / 20225-5324            | AI              |
+| 974b3615-2362-1e18-9b37-0a3d4e415e9d | 222 | 61FCE787E6AC177CC125806C0038DCBF | NULL      | Jutta            | Klein                | jutta.klein@dsgv.de                  | 030 / 20225-5401            | AVI             |
+| 230585e2-77ae-bfc3-442c-4c32816304b9 | 223 | 268490351C2569DBC1257EBB003B52BF | NULL      | Antje            | Klober               | antje.klober@dsgv.de                 | 030 / 20225-5282            | AII             |
+| b432a70a-95d3-454f-feef-441bd034a089 | 224 | 577F883A0FE2785BC12583A5002640EF | NULL      | Simon            | Klos                 | simon.klos@dsgv.de                   | 0228 / 204-5807             | BIII            |
+| 8ca96f12-8d33-208e-06c5-4904ad81d938 | 225 | B101C041E2FCBC70C1257084005E98BD | NULL      | Andrea           | Koch                 | andrea.koch@dsgv.de                  | 0228 / 204-5984             | PI              |
+| 436b658b-9c1e-476d-1341-5e972697d277 | 226 | DAA43448BD915CEAC125768F00396C22 | NULL      | Viola            | Koch                 | viola.koch@dsgv.de                   | 030 / 20225-5130            | PII             |
+| ac31a1ca-7bd0-8cf0-8b2b-442adc5954b3 | 227 | 64CFB8B37D6C05EEC125846600397F08 | NULL      | Sabine           | Koch                 | sabine.koch@dsgv.de                  | 0228 / 204-5853             | BIII            |
+| 9ee6a118-0089-4f13-d6c7-b2d17822ebdf | 228 | CC6C963FD27ADDDAC1257084005E9987 | NULL      | Martin           | Köppen               | martin.köppen@dsgv.de                | 030 / 20225-5762            | AII             |
+| bd095969-a3c7-80d9-1035-209049780c7f | 229 | F087B773C5B1BCF6C1257084005E99AE | Prof. Dr. | Thomas           | Köster               | thomas.köster@dsgv.de                | 0228 / 204-9950             | Hochschule      |
+| 7ac05f2d-67d2-a808-7b33-76a5d594ca7a | 230 | F381E79EF1FD463AC1258439001FA80E | NULL      | Aljana           | Kohnke               | aljana.kohnke@dsgv.de                | 0228 / 204-                 | AIV             |
+| ba3ba1cd-00e4-1960-fef2-5f71175dfc95 | 231 | DE5D7DB585343FE0C125831300425D79 | NULL      | Allan            | Kolb                 | allan.kolb@dsgv.de                   | 0228 / 204-5746             | BIII            |
+| f0155c4f-cf0f-69d7-18be-bc340ba8a5d1 | 232 | 1EEF7CD2FBD52B8AC1257F1F002C3FFF | NULL      | Iris             | Kolodziej            | iris.kolodziej@dsgv.de               | 030 / 20225-5221            | PG              |
+| feabacdb-b9dd-4205-9a7c-b83d14079ad5 | 233 | 771C06A4AD8997B8C12582DE0032A29B | NULL      | Daniela          | Kolodziej            | daniela.kolodziej@dsgv.de            | 030 / 20225-5619            | PI              |
+| 0610e54f-d4d5-0c4a-4e7c-68f919c113fb | 234 | 55B97BFA400F0284C12583E7002CB02C | NULL      | Denise           | Komischke            | denise.komischke@dsgv.de             | 030 / 20225-1523            | AIII            |
+| 14e7375f-4a39-f3b8-f91f-e7f0eedf4926 | 235 | 03F1601A8C01B8CBC1257F22002C8DB4 | NULL      | Peter            | Konesny              | peter.konesny@dsgv.de                | 030 / 20225-5200            | PG              |
+| 4201d2de-adf3-f51b-ac56-fcf221cd7691 | 236 | AD692B71E35BDEF1C1257F1E00580FDA | NULL      | Jana             | Konetzky             | jana.konetzky@dsgv.de                | 030 / 20225-3011            | VL              |
+| 82e7ff95-e799-191b-57d9-72192c7aafed | 237 | 5FF55A2DBD9A8A80C12573FA0036EDB5 | NULL      | Anke             | Kotkamp              | anke.kotkamp@dsgv.de                 | 030 / 20225-5526            | BII             |
+| 89d4a9f4-101f-62c3-fdde-9f47e19f023e | 238 | DF6639D7BC338DE0C1257084005E98C4 | NULL      | Anja             | Krämer               | anja.krämer@dsgv.de                  | 0228 / 204-5811             | BIII            |
+| ffa3537e-68c4-f007-4ae0-4e38e06a5582 | 239 | 7E3E45599478E671C1257084005E99CA | NULL      | Sebastian        | Kral                 | sebastian.kral@dsgv.de               | 030 / 20225-5771            | AII             |
+| c96f0f17-ee52-897f-e924-aa27def0b7ce | 240 | 0654A3A25B349442C1257084005E98C3 | Dr.       | Heike            | Kramer               | heike.kramer@dsgv.de                 | 030 / 20225-5620            | PIII            |
+| 558c771f-de06-bc2f-fa97-161177dec8e8 | 241 | 0A42DDC30B714B75C12573F600556CC6 | NULL      | Thomas           | Krebs                | thomas.krebs@dsgv.de                 | 030 / 20225-17400           | NULL            |
+| 0fa89195-3fcf-dc65-26bf-21954075f988 | 242 | 0FAE946B281AFED7C1257DD900427980 | NULL      | Kathrin          | Krenz                | kathrin.krenz@dsgv.de                | 030 / 20225-5914            | PI              |
+| 030a4fc6-204a-73e5-0f39-2745bf549ad2 | 243 | F592E9CA2C506F15C1257084005E98C7 | NULL      | Theodor          | Kreter               | theodor.kreter@dsgv.de               | 0228 / 204-5964             | PI              |
+| 4f223e56-b294-2e67-b151-5e32282b973c | 244 | A20FC9B783FF672DC1257084005E98C8 | NULL      | Sandra           | Kretschmer           | sandra.kretschmer@dsgv.de            | 030 / 20225-5683            | BII             |
+| 8d354d8e-3ebd-17a2-e7b1-b1cd1fa5de81 | 245 | 0F2C1C0A4C951123C1257F540028B8A8 | NULL      | Stefanie         | Krüger               | stefanie.krüger@dsgv.de              | 030 / 20225-5530            | BII             |
+| f600dbbd-206e-f734-d4d9-9ef1de4f1ad3 | 246 | 499168AEC9B2C84BC125830D003CBE46 | NULL      | Mandy            | Krüger               | mandy.krüger@dsgv.de                 | 030 / 20225-5582            | BI              |
+| 7f1d8ab5-b869-adaf-7140-5f2ac046f525 | 247 | DED463342799B602C1257084005E98CA | NULL      | Petra            | Krug                 | petra.krug@dsgv.de                   | 030 / 20225-5652            | PIV             |
+| 50e2d6aa-275a-f8f6-b21c-2f9a39fdac3b | 248 | FB62E24E2F7DC4D9C1257C9B0040617F | Dr.       | Klaus            | Krummrich            | klaus.krummrich@dsgv.de              | 0228 / 204-5730             | AII             |
+| 7437ee4d-27b9-a806-e6c1-09346b420232 | 249 | 2AE85E6807B7049BC1257515004B2332 | NULL      | Gudrun           | Küpper               | gudrun.küpper@dsgv.de                | 030 / 20225-5631            | PIII            |
+| 23467791-f44f-06ee-edca-f42afcc4974a | 250 | 990DADA45018B8CBC1257EE6003A7F3D | NULL      | Dorothee         | Küpper               | dorothee.küpper@dsgv.de              | 030 / 20225-1021            | Präsidialbüro   |
+| 2df2be18-54eb-b77f-8d8c-0ef23b3a05f3 | 251 | 51FFCEF25BA74FF9C1257CBB004F21D3 | NULL      | Carsten          | Kusch                | carsten.kusch@dsgv.de                | 030 / 20225-5250            | PIV             |
+| 6e91d971-87a6-3f44-448c-517cd284859e | 252 | A8578CC50707FD0AC1257D9A004E00FC | NULL      | Lutz             | Lambrecht            | lutz.lambrecht@dsgv.de               | 030 / 20225-5337            | AI              |
+| b8efde35-4398-da3d-04de-4d6d81e3171a | 253 | 61027849E89452B0C1258168003C6BDA | Dr.       | Christian        | Lange-Hausstein      | christian.lange-hausstein@dsgv.de    | 030 / 20225-5544            | BIV             |
+| b00a53a6-5dcd-3bc4-9e21-a09a0b4c5ece | 254 | A9250AD61F3315A9C12578390034FA83 | Prof. Dr. | Olaf Alexander   | Langner              | olaf.langner@dsgv.de                 | 030 / 20225-5340            | AIII            |
+| 06a67be4-5580-a9ca-64d3-b2609d4beb0b | 255 | 3B2B23D917CB214FC12570C3003005FE | NULL      | Isabelle         | Lanz                 | isabelle.lanz@dsgv.de                | 030 / 20225-5797            | AII             |
+| f9fc35e6-b4bf-d8b9-cc89-6d4578e92356 | 256 | 514D798B1D173014C125843B00407CAF | NULL      | Nicole           | Lardong              | nicole.lardong@dsgv.de               | 030 / 20225-5641            | PIII            |
+| b44856cf-abcf-12f8-9beb-17b9dc3303e6 | 257 | E510EC29E9DEB752C125767F002EEA2C | Dr.       | Stefan           | Larisch              | stefan.larisch@dsgv.de               | 030 / 20225-5326            | AI              |
+| 92feac49-f0ad-24ed-e4b7-02e1c96491af | 258 | 9999AE40DA112705C1257084005E99B1 | NULL      | Heike            | Legler               | heike.legler@dsgv.de                 | 030 / 20225-5917            | PI              |
+| 33019490-8c52-d331-19d6-6f90efaed502 | 259 | 11A0F4E21A68C18DC1257084005E98D4 | NULL      | Silke            | Lehm                 | silke.lehm@dsgv.de                   | 030 / 20225-5120            | PII             |
+| e5b065f8-2b83-b09b-989b-f385792ebf1b | 260 | 47021FD3CDCD2982C125715B0043AB9F | NULL      | Ingmar           | Lehmann              | ingmar.lehmann@dsgv.de               | 030 / 20225-5779            | AII             |
+| ab042151-2640-e8bc-41dd-4d055c0bc251 | 261 | 29DEFAE657E97E86C1257084005E98D7 | NULL      | Elke             | Leier                | elke.leier@dsgv.de                   | 030 / 20225-5195            | AII             |
+| 45b014dd-b1a6-f7e4-ebb7-5ab45501465e | 262 | 36AEA3F770332E3BC125846D0022BA08 | NULL      | Frank            | Lichopoj             | frank.lichopoj@dsgv.de               | 0228 / 204-                 | BII             |
+| d73d34b9-6f78-a553-8c89-2dc680cec822 | 263 | 981F526C9A1FE242C12583EC0042C3E4 | NULL      | Kerstin          | Lies                 | kerstin.lies@dsgv.de                 | 0228 / 204-                 | SFP (Newsroom)  |
+| 4688d404-b9e6-9a04-30d3-2e48ef387d6f | 264 | ED2C7EA7E683AF14C1257BAB002606AF | NULL      | Elke             | Liese                | elke.liese@dsgv.de                   | 030 / 20225-5615            | PI              |
+| 3de31507-6945-adfc-2f89-c6fcdb739b8e | 265 | 9F2320AEDCBB8123C1257FAF0032F937 | NULL      | Wibke            | Lindemann            | wibke.lindemann@dsgv.de              | 030 / 20225-5311            | AI              |
+| 637c2095-5b44-3680-b2e1-5a710380483c | 266 | 475221B6C58DEFD5C1257D9E0038800D | NULL      | Lisa             | Lindenmeyer          | lisa.lindenmeyer@dsgv.de             | 030 / 20225-5111            | PII             |
+| cccec2cb-d6c3-a487-1041-c1513e7b7ed0 | 267 | CB869041FE6F3E80C12580060032CBA0 | NULL      | Frauke           | Lion                 | frauke.lion@dsgv.de                  | 030 / 20225-5706            | BI              |
+| ffb784a5-9793-d30e-40f5-ac104860f1d4 | 268 | 3770610FEB0326DFC1257084005E98D9 | NULL      | Tania            | Lippert              | tania.lippert@dsgv.de                | 030 / 20225-5328            | AI              |
+| c7c7cdc0-f18c-fd8c-e26b-9c58bfe8b152 | 269 | F000D1CA4231FB89C125804F002CB4BD | Dr.       | Martin           | Lippert              | martin.lippert@dsgv.de               | 030 / 20225-5422            | AVI             |
+| e6f97fc5-03a2-cc57-1c73-b54763431b02 | 270 | 26026BDD4B6F7C56C1257084005E98DB | NULL      | Sabine           | Lippold              | sabine.lippold@dsgv.de               | 030 / 20225-5901            | PI              |
+| 5aa04de0-72ae-9bed-4110-21b28594c3bc | 271 | 7422B53FDB40A837C1257084005E98DC | NULL      | Hildegard        | Löhle                | hildegard.löhle@dsgv.de              | 0228 / 204-5941             | PI              |
+| b081131c-bc6a-0ea8-57d2-a4b398c64bf1 | 272 | 83387376C7328075C1257AE10043DAA4 | Dr.       | Brigitte         | Loewenich            | brigitte.loewenich@dsgv.de           | 030 / 20225-3010            | VL              |
+| 224363a5-9694-881d-1c9a-bfcab37b4ba9 | 273 | D93FEE71D05A9455C1257084005E9926 | NULL      | Andrea           | Lohoff               | andrea.lohoff@dsgv.de                | 0228 / 204-9902             | Hochschule      |
+| 858818a2-5046-6521-35ca-bee53287d68f | 274 | 35652384CA51D729C12582BA00252B68 | NULL      | Andreas          | Longin               | andreas.longin@dsgv.de               | 030 / 20225-5972            | PI              |
+| 19189ece-2a9b-58ef-81d9-e2a5eee204fe | 275 | 9D491B5634B4FDA3C1257084005E995B | NULL      | Maniola          | Lorenz               | maniola.lorenz@dsgv.de               | 030 / 20225-5373            | AIII            |
+| 44d0aeac-a5cb-ccc5-4541-77c080e4f4b1 | 276 | 1416CDD07F316D47C1257ECA00307D8B | Dr.       | Frank            | Lorenz               | frank.lorenz@dsgv.de                 | 0228 / 204-5800 BN/5808 BL  | BIII            |
+| 61b31e38-1b3a-2fae-851a-aa39466cb031 | 277 | DC84A16505818166C1257FE2002A51D4 | Prof. Dr. | André            | Lucas                | andré.lucas@dsgv.de                  | 0228 / 204-9930             | Hochschule      |
+| b8d14c93-10e7-17ee-cf8a-058509c4d8d7 | 278 | 81265FE192A837FAC1257B790030101A | NULL      | Hans-Martin      | Lusch                | hans-martin.lusch@dsgv.de            | 030 / 20225-5414            | AVI             |
+| daf88a42-9244-fd01-bb51-f8974feeef61 | 279 | BE76E586BD99A642C1257084005E98E5 | NULL      | Nadja            | Mamedow              | nadja.mamedow@dsgv.de                | 030 / 20225-5252            | PIV             |
+| c55d9134-573a-a63f-8901-2e7b72cb94a5 | 280 | AF9F620CB5F0A4E8C1257084005E9932 | NULL      | Volkmar          | Manns                | volkmar.manns@dsgv.de                | 030 / 20225-5509            | BII             |
+| f0dfa445-4292-40fe-2854-e6ce945671a0 | 281 | A4BC87295317C978C1258455001EA2A0 | NULL      | Judith           | Marcinkowski         | judith.marcinkowski@dsgv.de          | 0228 / 204-                 | AIII            |
+| bdfb6a8c-43c3-f409-7480-2cc15ba5417d | 282 | CAC67A654406852CC125844300231832 | NULL      | Dennis           | Mard                 | dennis.mard@dsgv.de                  | 030 / 20225-5639            | PIII            |
+| 3d591b44-968e-cc5b-61f6-0b25020f52f5 | 283 | 95D6757E2E453B71C1257084005E98E6 | NULL      | Stefan           | Marotzke             | stefan.marotzke@dsgv.de              | 030 / 20225-5110            | PII             |
+| cf01a841-6a06-8f2f-fe2e-21f7f8965767 | 284 | 19A3F1E70FB3156DC1257DA200485021 | NULL      | Holger           | Marth                | holger.marth@dsgv.de                 | 030 / 20225-5390            | BVI             |
+| 4924b6b2-0363-0799-6566-4447ee4fe0bc | 285 | DE6853874BF7E06EC12583EC00406D6C | NULL      | Anja             | Martick              | anja.martick@dsgv.de                 | 0228 / 204-                 | SFP (Newsroom)  |
+| f78faff5-3ae1-801b-36b3-d7ed139e37ab | 286 | B074A92EE604CE6DC125835B0050D41F | NULL      | Marco            | Massier              | marco.massier@dsgv.de                | 030 / 20225-5518            | BIV             |
+| 40ba8787-ce46-15c2-695d-5d330b00fa20 | 287 | 2CD3399C08F532ABC125729D00479F08 | NULL      | Silke            | Mauch                | silke.mauch@dsgv.de                  | 030 / 20225-5283            | AII             |
+| f49cfc44-0775-462c-23db-a43096b52a63 | 288 | 32B8FA5921AF42F7C12583CB004E0254 | NULL      | Karl-Michael     | Mauel                | karl-michael.mauel@dsgv.de           | 0228 / 204-                 | NULL            |
+| 5c577098-ecc1-7666-4e9f-6d623ebd4878 | 289 | DD287FF4CA75A405C12579040045C870 | NULL      | Gregor           | Mauer                | gregor.mauer@dsgv.de                 | 0228 / 204-5742             | AII             |
+| 7eff952a-9c84-4741-b13c-80f832723290 | 290 | FA74F479574DBA41C12580A5004817AF | NULL      | Julia Malena     | Meier                | julia.meier@dsgv.de                  | 030 / 20225-5519            | BII             |
+| 09512890-b6e9-eb9d-36eb-262fd1ba2740 | 291 | 9929E2FF8178762CC1257CDF00238378 | NULL      | Daniela          | Meinert              | daniela.meinert@dsgv.de              | 030 / 20225-5411            | AVI             |
+| 070f770a-258f-1eb2-f2c5-fca748e91a72 | 292 | 04422F3E0FF6AEA0C125838C0055794E | NULL      | Gregor           | Melchert             | gregor.melchert@dsgv.de              | 030 / 20225-5565            | BIV             |
+| 16443f1a-93fa-da52-83fe-855a440004dd | 293 | C0315A5AFFDC5725C125814D003A1B78 | NULL      | Patrik           | Merkt                | patrik.merkt@dsgv.de                 | 030 / 20225-5417            | AVI             |
+| 0358ccec-0623-c1a7-8d9f-2810974a0543 | 294 | 00D6BF0757E4FFEDC1257F1F002EDCBF | NULL      | Ernst-Josef      | Mesterom             | ernst-josef.mesterom@dsgv.de         | 030 / 20225-5210            | PG              |
+| d0a411b8-db44-e40b-83f9-ad2218e88180 | 295 | 373CC7AD9FDE6606C1257084005E98EB | NULL      | Jörg             | Meyer-Morisse        | jörg.meyer-morisse@dsgv.de           | 030 / 20225-5906            | PI              |
+| a7817ed7-fab9-77bf-9e0d-5f75debbd5ad | 296 | E2BA290BDF85B478C1257084005E98EC | NULL      | Edgar            | Michalski            | edgar.michalski@dsgv.de              | 030 / 20225-5931            | PI              |
+| b3621238-710f-cf15-d093-cc56a12e00c0 | 297 | 3AC15A2E4CF03882C1257084005E98ED | NULL      | Simone           | Milde                | simone.milde@dsgv.de                 | 030 / 20225-5761            | AII             |
+| 85489e1e-c145-2fa3-4f82-da3086707e2b | 298 | E5C02D3C4B98ED10C12583EC0043369B | NULL      | Matthias         | Miltner              | matthias.miltner@dsgv.de             | 0228 / 204-                 | SFP (Newsroom)  |
+| c19f1afe-0ff0-c869-2310-4b715726d4a4 | 299 | EBC191A6B077B1B3C12584070031A971 | NULL      | Isabel           | Mittelhesper         | isabel.mittelhesper@dsgv.de          | 030 / 20225-5108            | PII             |
+| f4f81ad0-0bc9-4af4-3bcf-449cf94d9389 | 300 | 2BD82E3C9F04C018C1257DDB0047F6FA | NULL      | Yvonne           | Mittelstaedt         | yvonne.mittelstaedt@dsgv.de          | 030 / 20225-5354            | AIII            |
+| b3299743-ce08-6483-f76d-a4a5ae5a2e0b | 301 | 0E4AEF244F547AABC125843300238CDB | NULL      | Pia Melina       | Mönnich              | pia.mönnich@dsgv.de                  | 030 / 20225-5543            | BIV             |
+| 0823144f-0585-3655-4428-a25c8e4afe48 | 303 | AD4B10FADC206845C1257084005E98EE | NULL      | Dirk             | Moormann             | dirk.moormann@dsgv.de                | 030 / 20225-5788            | AII             |
+| b49d1cd9-39ac-95ac-a4a1-d9a00720f1fe | 304 | 27DA131D3AD0B4BCC125762D0036F343 | NULL      | Carina           | Moormann             | carina.moormann@dsgv.de              | 030 / 20225-5774            | AII             |
+| 922b9bfa-9b8c-4aff-aca3-4fb467d4d817 | 305 | 0CFFE4BD4183EB01C1258115004E4708 | NULL      | Sven             | Mücke                | sven.mücke@dsgv.de                   | 030 / 20225-5925            | PI              |
+| f4020f61-fc7c-e5aa-fd93-6ea46c79f5e6 | 306 | 94D58AC0CB7FC1B4C1257084005E98F2 | NULL      | Marion           | Mühlbradt            | marion.mühlbradt@dsgv.de             | 030 / 20225-5117            | PII             |
+| 644c283f-ccd5-d731-fbbe-b5f5c7d4079a | 307 | 2F68E55E86BC0096C1257084005E98F0 | NULL      | Werner           | Müller               | werner.müller@dsgv.de                | 0228 / 204-5863             | BIII            |
+| b3e9d1a0-3fdb-f5f3-49e5-9a60c138ae21 | 308 | F97B7577C955B512C1257084005E98F1 | NULL      | Peter            | Müller               | peter.müller@dsgv.de                 | 030 / 20225-5141            | SFP (Newsroom)  |
+| 0f431d86-f4bf-a69e-fa6e-abcba3500778 | 309 | 4B697B32567473B3C12583EC003325D2 | NULL      | Arne             | Münster              | arne.münster@dsgv.de                 | 0228 / 204-                 | SFP (Newsroom)  |
+| 35c03d55-d236-2fcf-c5ac-8d6b568d671f | 310 | A8584A56D2E43F97C125761E0046CB2B | Prof. Dr. | Dirk             | Neuhaus              | dirk.neuhaus@dsgv.de                 | 0228 / 204-9936             | Hochschule      |
+| 62d4635b-933c-e2ac-d355-1128d69c179f | 311 | 3F1AF67F7FE8F19EC1257084005E98F6 | NULL      | Wolfgang         | Neumann              | wolfgang.neumann@dsgv.de             | 0032 2 740 16-14            | AV              |
+| d11661e3-07b0-86b0-c2fe-3adeba1bd686 | 312 | E3E06CA3F4A56FB3C1257084005E98F5 | NULL      | Horst            | Neumann              | horst.neumann@dsgv.de                | 030 / 20225-5614            | PI              |
+| 428833ba-52a6-af2f-9c67-8221498dbfea | 313 | CB3B6C695F0D493AC125826700275BDF | Dr.       | Damaris          | Nicodem              | damaris.nicodem@dsgv.de              | 030 / 20225-5349            | PIV             |
+| 2b56b854-ffe3-230f-86e1-096e91f4e121 | 314 | D5FD695DDFF1965EC1258329003B8541 | NULL      | Andre            | Niemeyer             | andre.niemeyer@dsgv.de               | 030 / 20225-5571            | BII             |
+| ba12953a-4313-46ef-cb38-57fa701194e9 | 315 | 5730F6436A21A056C125815300434B94 | NULL      | Jenni            | Nimz                 | jenni.nimz@dsgv.de                   | 030 / 20225-5622            | PIII            |
+| a0be643f-a56d-553b-6d74-43f11c2b1b41 | 316 | 9046BD6E9AB74B00C1257084005E98F8 | NULL      | Christine        | Noch                 | christine.noch@dsgv.de               | 030 / 20225-5701            | BI              |
+| a1e93652-d27a-4ebf-12fd-a314a7dc62a0 | 317 | FC2D93F638AB4CB6C1257F8E0047B667 | Dr.       | Michaela         | Norgall              | michaela.norgall@dsgv.de             | 030 / 20225-5236            | AI              |
+| c6b8540c-91d6-ff31-8b1c-29d9d248a8d2 | 318 | 28E56394C25371CCC1257084005E98FE | NULL      | Ulrike von       | Oertzen              | ulrike.von.oertzen@dsgv.de           | 030 / 20225-5122            | PII             |
+| bd14e289-d69a-b32d-9721-2ee8f7afc07e | 319 | 8061094ECE3712C3C1258132002B2DA0 | NULL      | Mirko Torgen     | Oesau                | mirko.oesau@dsgv.de                  | 030 / 20225-5553            | BI              |
+| 3d2e6ff1-423d-1422-cf17-1abf119f9c6c | 320 | CA19BBA451B413DAC1257F940027B6D2 | NULL      | Jasmin           | Olschewski           | jasmin.olschewski@dsgv.de            | 030 / 20225-5125            | PII             |
+| 7adc31d0-b2fd-bdf6-1328-1447840bf920 | 321 | DC487B06DB18A29CC1257084005E9900 | NULL      | Robert           | Oppenhäuser          | robert.oppenhäuser@dsgv.de           | 0228 / 204-5942             | PI              |
+| ae6083d6-ada4-f626-0aa0-7fe6424abf4e | 322 | BC6126E9ADCC8A33C1257CDF002CA983 | NULL      | Christoph        | Paasch               | christoph.paasch@dsgv.de             | 0228 / 204-9924             | Hochschule      |
+| 52499536-be9d-ff80-bc6f-6e0f1c94f27f | 323 | D3B5C91B42FB7E53C1257EF5003916DD | NULL      | Anne             | Pagano               | anne.pagano@dsgv.de                  | 0228 / 204-9925             | Hochschule      |
+| 5fea6f1a-d43d-8ccf-1e06-5519caab6124 | 324 | 09F24116FDBEA913C12578F10034B6E9 | NULL      | Stephanie        | Parent               | stephanie.parent@dsgv.de             | 030 / 20225-5394            | BVI             |
+| 8e01ad1e-bbbb-228c-5ea6-7b7a51fba31b | 325 | 261BCCFB74C87CFDC1257084005E9903 | NULL      | Tobias           | Pauer                | tobias.pauer@dsgv.de                 | 030 / 20225-5392            | BVI             |
+| a51da8f0-bc69-948a-4837-49115f540a1a | 326 | 3F3908DC126CA61CC1257084005E9905 | NULL      | Norbert          | Paulsen              | norbert.paulsen@dsgv.de              | 030 / 20225-5977            | PI              |
+| 33fb5d5c-514a-0106-49f4-73a401f92e9e | 327 | A9465985518E4185C1257F9B0044582B | Dr.       | Friedrich        | Paulsen              | friedrich.paulsen@dsgv.de            | 030 / 20225-5233            | AI              |
+| 69c59d1f-a697-001d-78d1-f3492d2ebacf | 328 | C03A7E48C573308CC1257147002E3EA7 | NULL      | Ines             | Peippelmann          | ines.peippelmann@dsgv.de             | 030 / 20225-5124            | PII             |
+| 94b3c82a-8b25-0a5b-8fe5-00f08be28900 | 329 | D1C7347FED229C64C125833F0034A439 | NULL      | Inga             | Penshorn             | inga.penshorn@dsgv.de                | 030 / 20225-4822            | BIV             |
+| b4e721bf-70af-5c91-c602-b6e81bfaffe9 | 330 | 3E9F762B462C8CBEC1257DA300460BE6 | NULL      | Nicky            | Perleberg            | nicky.perleberg@dsgv.de              | 030 / 20225-5978            | PI              |
+| 2008d73d-5c42-d8b0-1541-98c2fa0c0611 | 331 | 9FB3E01B3A16393AC12570DC0035BE4E | NULL      | Julia            | Peschel              | julia.peschel@dsgv.de                | 030 / 20225-5281            | AII             |
+| dbc8170d-53b7-8882-f7d4-221699efc4f0 | 332 | B9190904631766CBC1257C22003FAF1A | NULL      | Jan              | Petersen             | jan.petersen@dsgv.de                 | 030 / 20225-5660            | VL              |
+| 2115439a-049f-2c56-a8ce-cd9c5cf42444 | 333 | 47DDDFB90580F3B3C1257D1D00489EDD | NULL      | Christina        | Pfaff                | christina.pfaff@dsgv.de              | 030 / 20225-5427            | AVI             |
+| 02704a00-407d-5a24-4b56-c7eb1fbb653f | 334 | 02EC5FCE64EB0DE7C1257084005E9908 | NULL      | Ute              | Pfennig              | ute.pfennig@dsgv.de                  | 030 / 20225-5911            | PI              |
+| f0e843d4-ac3f-c19a-3181-a80c876f2320 | 335 | 3B980562D58F0786C12577EB003981AA | NULL      | Hilde            | Philippi             | hilde.philippi@dsgv.de               | 0228 / 204-5814             | BIII            |
+| 892ec28e-2e8a-1165-9ded-c4f9f54465f7 | 336 | 9375C1B049CC5C7FC1257E76002C14C5 | NULL      | Rosemarie        | Pieper               | rosemarie.pieper@dsgv.de             | 0032 2 740 16-11            | AV              |
+| 6547bbb3-7172-12b0-a64f-03455061fb49 | 337 | 0C0B24D9E5039491C1257084005E98FA | NULL      | Marie-Francoise  | Piller               | marie-francoise.piller@dsgv.de       | 0032 2 740 16-10            | AV              |
+| 116d4f94-28d6-9ab9-fd4c-bb7c9ebff056 | 338 | 21C397DFAC6B490CC1257084005E990B | Dr.       | Jens             | Piorkowski           | jens.piorkowski@dsgv.de              | 030 / 20225-5657            | BI              |
+| d50f056a-83a6-3c75-b0d0-4bcba54284ed | 339 | 31F980B1EF7A0749C1257D41002C4F09 | NULL      | Lars             | Pischel              | lars.pischel@dsgv.de                 | 030 / 20225-5516            | BII             |
+| c7129e6c-da10-9997-1bfd-5249da5feba6 | 340 | B2B444E45D80A379C125843B002D5CDC | NULL      | Franziska        | Pöhlchen             | franziska.pöhlchen@dsgv.de           | 0228 / 204-                 | BII             |
+| 1a399537-ac8a-9f97-1cba-2ff0455de431 | 341 | 508F6F171BD3A5C3C1257084005E9999 | NULL      | Kathrin          | Preiß                | kathrin.preiß@dsgv.de                | 030 / 20225-5617            | PI              |
+| 319ef6fa-2d76-a5c8-2514-b203b260ca39 | 342 | AC1D6C84554487D6C1258473002B93FB | NULL      | Felix            | Preuße               | felix.preuße@dsgv.de                 | 0228 / 204-                 | NULL            |
+| 67c07b5e-6c20-593c-1e73-649fadd334f0 | 343 | 21E399C3EA580F29C12579E900382788 | NULL      | Heike            | Probe                | heike.probe@dsgv.de                  | 030 / 20225-5136            | PII             |
+| 5d0dc847-cea4-6a53-92bc-0a0133802f06 | 344 | 02C40A205F995E39C12583EC00422B57 | NULL      | Michael          | Prokoph              | michael.prokoph@dsgv.de              | 0228 / 204-                 | SFP (Newsroom)  |
+| d450b802-8494-f7ce-e0c2-d7b1c3ae5c15 | 345 | 7D5A45EB2583E2B0C125803D0045659B | NULL      | Michael          | Pullen               | michael.pullen@dsgv.de               | 030 / 20225-5659            | PIV             |
+| 91f2c49d-d517-63a7-7d5e-456e3b36368b | 346 | 950BDF0473BA7D2BC12583EC0045390F | NULL      | Anne             | Pusch                | anne.pusch@dsgv.de                   | 0228 / 204-                 | SFP (Newsroom)  |
+| b00021b6-ae09-864a-d15d-c6e1e6dcf2ef | 347 | F04E9A2FBEF27CE6C125820A003E424F | NULL      | Benjamin         | Radermacher          | benjamin.radermacher@dsgv.de         | 030 / 20225-5559            | BIV             |
+| a2429064-2ad0-63fa-7161-1753ca08b30a | 348 | 766D64047D18BFD8C125839F0033F64B | NULL      | Ines             | Raetz                | ines.raetz@dsgv.de                   | 030 / 20225-4875            | BIV             |
+| c78e637b-1352-122e-4891-afef29631e04 | 349 | D4AE1170AEE593E9C1257084005E9815 | NULL      | Christina        | Raschick             | christina.raschick@dsgv.de           | 030 / 20225-5612            | PI              |
+| 410729c5-ba87-7ee3-df1b-2dfd9830c469 | 350 | 69D064272D7C3A41C1257084005E9910 | NULL      | Mohsen           | Rasouli              | mohsen.rasouli@dsgv.de               | 030 / 20225-5988            | PI              |
+| 37fa70da-cfe0-7d6f-9371-089da8ebf1f9 | 351 | 66A6D0EBCCECAC90C12582CF002BBC2A | NULL      | Lydia            | Raters               | lydia.raters@dsgv.de                 | 030 / 20225-5567            | BII             |
+| f31b3d13-f646-0df3-3999-3f6a2f9f630c | 352 | 293BB62B7AD17B67C1258144003AA8D1 | NULL      | Selina           | Rautenberg           | selina.rautenberg@dsgv.de            | 030 / 20225-5156            | PII             |
+| 9f593d13-8dd5-b28f-d5e3-a3c31e4734d4 | 353 | AD7A203C39534DD5C12583C30030D908 | NULL      | Claudia          | Rautenberg           | claudia.rautenberg@dsgv.de           | 030 / 20225-5361            | AIII            |
+| 95b40d5d-2a3e-8984-bc0d-0f3123e08528 | 354 | 5FB816D15C048F60C1257084005E9911 | Dr.       | Bertram          | Reddig               | bertram.reddig@dsgv.de               | 030 / 20225-5795            | AII             |
+| 16cde714-993d-3300-c699-c7a3f604cd1b | 355 | B540BCE0F72A2D18C1257EA6003B14A8 | NULL      | Dominik          | Rehkopf              | dominik.rehkopf@dsgv.de              | 030 / 20225-5339            | AI              |
+| c1980ea1-9170-60fd-0c32-75f7bec8169d | 356 | 36387669AD201310C1257BAB0023C3FE | NULL      | Sven             | Reiche               | sven.reiche@dsgv.de                  | 030 / 20225-5932            | PI              |
+| 031d9403-8713-733c-3c0b-1d4685a49de6 | 357 | CD221623834FC145C125845C003030DA | NULL      | Stephan          | Reichert             | stephan.reichert@dsgv.de             | 030 / 20225-5438            | AVI             |
+| 2eaffcf1-61d8-6193-7651-130ec7d424e8 | 358 | 9F81307F57251249C12574080049E4E3 | NULL      | Michael          | Reimann              | michael.reimann@dsgv.de              | 030 / 20225-5770            | AII             |
+| 068e7f06-2aa4-70bc-b496-029db6b27dfd | 359 | 760CF0724FA6BE7BC12582550034D7AA | NULL      | Christina        | Reimann              | christina.reimann@dsgv.de            | 030 / 20225-5637            | PIII            |
+| 6efa66eb-78d6-c703-07f4-e6754d3f47eb | 360 | AB11F92AACBF85CFC12571AA0044FB9E | NULL      | Petra            | Reinhardt            | petra.reinhardt@dsgv.de              | 030 / 20225-5191            | AII             |
+| 203910db-a700-832e-06d5-393a40dca86e | 361 | FF76B2A9DB9F78E3C12584470044F4E2 | NULL      | Katharina        | Reinhold             | katharina.reinhold@dsgv.de           | 0228 / 204-                 | SFP (Newsroom)  |
+| 0907ff13-579b-f911-f9ce-ce85f129fb6a | 362 | A22F8EB45393704EC1258108005471E9 | NULL      | Jessica          | Rempp                | jessica.rempp@dsgv.de                | 030 / 20225-5132            | PII             |
+| 8bf5e4f8-27f6-88f7-cba6-6cc3a0e4ca50 | 363 | B23A7388CF1DE340C12583EC004553BF | NULL      | Fanny            | Remus                | fanny.remus@dsgv.de                  | 0228 / 204-                 | SFP (Newsroom)  |
+| 50faad3c-8700-0514-80bf-8832f96ac32c | 364 | 6C24D726EAD0F271C1257DB6003F6040 | NULL      | Volker           | Renk                 | volker.renk@dsgv.de                  | 030 / 20225-1026            | Präsidialbüro   |
+| 81ebe3a3-01a3-f6aa-35c7-750cea99edd3 | 365 | A2C41AF6706ED837C12583EC0041432E | NULL      | Juliane          | Rentsch              | juliane.rentsch@dsgv.de              | 0228 / 204-                 | SFP (Newsroom)  |
+| 488e53c9-f80b-eee4-83dc-97a93841cca3 | 366 | 86F63C219193DD90C12583290048BACE | NULL      | Clemens          | Rettberg             | clemens.rettberg@dsgv.de             | 0228 / 204-5844             | BIII            |
+| 45985c6d-a034-3449-9119-1557ae32b77c | 367 | F7857DF65F59BF37C12581630022CE66 | NULL      | Katrin           | Richter              | katrin.richter@dsgv.de               | 030 / 20225-1011            | Präsidialbüro   |
+| 2634e593-e214-c17a-2458-b0ab57835cd1 | 368 | ECEDAE7D8F8D939DC1257FE900353C84 | Dr.       | Reinhold         | Rickes               | reinhold.rickes@dsgv.de              | 030 / 20225-5303            | AII             |
+| 4b7c7729-157a-a494-0de9-c782ff9f5b02 | 369 | 32E0029EB319602DC1257F37004AF594 | NULL      | Daniela          | Rieder               | daniela.rieder@dsgv.de               | 030 / 20225-1522            | AIII            |
+| c8819531-d059-dfe8-8f4b-b8e229e900b0 | 370 | 6C8539158048BF06C12578B000438FF0 | NULL      | Silvana          | Riemer               | silvana.riemer@dsgv.de               | 030 / 20225-5502            | BIV             |
+| 7ebac5f5-3d6c-80be-f6cf-5cdb8ef6af78 | 371 | E40133363FA8A266C12582750029CC5F | NULL      | Thomas           | Rienecker            | thomas.rienecker@dsgv.de             | 030 / 20225-5112            | PII             |
+| 45ec6566-3c4b-cc86-3314-c4b67230d920 | 372 | C9C2E99CB95383A4C12583AC002F9DA6 | NULL      | Christof         | Rietzke              | christof.rietzke@dsgv.de             | 0228 / 204-                 | BII             |
+| df7074fa-4b37-1c7b-7769-8c0eb463d87a | 373 | B4158DE30CCC90FFC12571CE00340814 | NULL      | Annette          | Ringwald             | annette.ringwald@dsgv.de             | 030 / 20225-5729            | AII             |
+| 7f705eac-0311-7edb-bbb9-4bad32a1339b | 374 | 2A722759BDF81D00C1257084005E991B | NULL      | Tanja            | Rinne                | tanja.rinne@dsgv.de                  | 030 / 20225-5508            | BII             |
+| cb9f3250-0808-4c92-aaa3-1f9c3474a93d | 375 | AA7022D2C89035D9C1257DB00053F0CA | NULL      | Jürgen           | Robbes               | jürgen.robbes@dsgv.de                | 030 / 20225-5423            | AVI             |
+| ee2e7c53-98c5-4ce0-47e8-39178a11ea0a | 376 | A7C6E99451B05F8EC1257F6B004B58E2 | NULL      | Ingo             | Röhricht             | ingo.röhricht@dsgv.de                | 030 / 20225-5957            | PI              |
+| 3bc533b3-7f80-06a0-1ca1-0162ab482e2b | 377 | 892D6BAA7646570BC1257084005E991F | Prof. Dr. | Dieter           | Rohrmeier            | dieter.rohrmeier@dsgv.de             | 0228 / 204-9934             | Hochschule      |
+| e7f8e4d4-014c-847b-81fb-e9762bbcea32 | 378 | 935E1E0DF3E80552C1257084005E9923 | NULL      | Thomas           | Rosenhain            | thomas.rosenhain@dsgv.de             | 030 / 20225-5146            | SFP (Newsroom)  |
+| 49470426-2efa-21cf-a3de-38475626f6a7 | 379 | 0F31111D3360CF38C1257B74003DDF4B | NULL      | Claudia          | Rosenthal            | claudia.rosenthal@dsgv.de            | 030 / 20225-5636            | PIII            |
+| e4fe8156-e99b-860f-e7c4-88381985e201 | 380 | 4DB38427F2A95D88C12583EC0045A395 | NULL      | Julia            | Roth                 | julia.roth@dsgv.de                   | 0228 / 204-                 | SFP (Newsroom)  |
+| 43029fe4-4718-8233-cac6-836c6f779e0c | 381 | E0373E3A5812F50CC12584490042AE14 | NULL      | Michaela         | Roth                 | michaela.roth@dsgv.de                | 030 / 20225-43              | PII             |
+| 8281e4be-ce48-c655-65ba-ccb049bf7a13 | 382 | 1F0181ABC5B9A280C1257FDA003C5ECD | NULL      | Simone           | Runge                | simone.runge@dsgv.de                 | 030 / 20225-5910            | PI              |
+| 123f4eae-e84e-e5c6-84f3-7403848b9214 | 383 | 5FD70BC2C3BBD70FC125760000451FBC | NULL      | Stefanie         | Rust-Kracht          | stefanie.rust-kracht@dsgv.de         | 0228 / 204-9926             | Hochschule      |
+| b4e2cb32-1e69-7fec-0e34-3b5e4302ee78 | 384 | 5B8FE00E88EC6C00C1257A050053E586 | NULL      | Alexandra        | Ryrko                | alexandra.ryrko@dsgv.de              | 030 / 20225-5190            | AII             |
+| ca8a544e-53e6-d8ad-2ad8-cb15c59cb705 | 385 | 22F95ABE13DAEF55C12580DB005C0611 | NULL      | Lena             | Salein               | lena.salein@dsgv.de                  | 030 / 20225-5196            | AII             |
+| dbe0425c-3fd8-2910-1cdd-ae298a1d4884 | 386 | 21BCD6CA918CD050C125828F002C39D0 | NULL      | Evgeniya         | Samarina             | evgeniya.samarina@dsgv.de            | 0228 / 204-9912             | Hochschule      |
+| 7e9dc89a-00cc-ed55-5088-a4bd03d2eb8c | 387 | 8E12D65C77D3118CC12582D4003E44A6 | Dr.       | Abbas            | Samhat               | abbas.samhat@dsgv.de                 | 030 / 20225-5355            | AIII            |
+| 145ae741-ac01-4c42-a3a5-89665e518244 | 388 | 80FD4C3F879C1F57C125840900358DC0 | NULL      | Max              | Sanft                | max.sanft@dsgv.de                    | 030 / 20225-4828            | BII             |
+| 13c22833-61d8-f297-6ba9-7010bed0df48 | 389 | C2794411D7D92382C125793D003E7757 | NULL      | Anja             | Schaaf               | anja.schaaf@dsgv.de                  | 030 / 20225-5556            | BIV             |
+| 4de216a2-c5d7-fdaf-9af4-362faecadb44 | 390 | ABF6EF6E12706C5EC1257084005E99B2 | Dr.       | Karl-Peter       | Schackmann-Fallis    | karl-peter.schackmann-fallis@dsgv.de | 030 / 20225-3000 BL/3001 BN | VL              |
+| b97369d0-9881-7fa4-2c82-87563d481e0c | 391 | DFE2C16A05F0405EC1258117002E1A12 | NULL      | Jochen           | Schaller             | jochen.schaller@dsgv.de              | 030 / 20225-5348            | AIII            |
+| 360bc83c-80af-70e9-4055-0a5501cee0dd | 392 | 8078D3C489249628C1257ED100423F0D | NULL      | Eva Lena         | Scharm               | eva.scharm@dsgv.de                   | 030 / 20225-5369            | AIII            |
+| f1987964-3150-10ef-1f5f-57d09cfd96eb | 393 | 1D718E01641CD381C1257084005E9929 | Dr.       | Sonja            | Scheffler            | sonja.scheffler@dsgv.de              | 030 / 20225-5306            | AII             |
+| cacf6692-0212-52d5-37e0-a5772f831db9 | 394 | F7345A65381B9EC6C1257084005E992A | NULL      | Saskia           | Schellhaase          | saskia.schellhaase@dsgv.de           | 030 / 20225-5129            | PII             |
+| 0cc941bf-e27f-ea96-4f2b-83291dea7c58 | 395 | B1284B86793D24A3C125832700362BB4 | NULL      | Steven           | Schenk               | steven.schenk@dsgv.de                | 030 / 20225-5558            | BIV             |
+| 87321ef3-7cbf-9f84-7d67-6e1904ae1991 | 396 | 78CB0CF8E7FC511EC12583EC0044B4BB | NULL      | Marlen           | Schenk               | marlen.schenk@dsgv.de                | 0228 / 204-                 | SFP (Newsroom)  |
+| 05f95dd6-0e79-92de-ffd9-f7649c9719b3 | 397 | FEAD99B14EF130D6C1257084005E992C | NULL      | Helga            | Scherrer-Tanumidjaja | helga.scherrer-tanumidjaja@dsgv.de   | 030 / 20225-5261            | AIII            |
+| d94bdd90-a422-2117-da4e-ed2de349145c | 398 | DB84F0FEEFA2B926C12581B8002B7EE8 | NULL      | Claudia          | Scheurig             | claudia.scheurig@dsgv.de             | 030 / 20225-5607            | PI              |
+| 28dae246-cf73-894a-dd84-70b305fff37b | 399 | 8B9DAF15C4C19A8CC12582CF002C40EE | NULL      | Carmen           | Schick               | carmen.schick@dsgv.de                | 030 / 20225-5532            | BII             |
+| 088267cf-3d68-3f78-bc4d-c60229e101f1 | 400 | 9879242EBD44590DC1258417003A2169 | NULL      | Sebastian        | Schimm               | sebastian.schimm@dsgv.de             | 030 / 20225-5367            | AIII            |
+| 12e9db64-f5fe-9f7e-915e-b7f3ebd552f2 | 401 | A34E98990153570CC12582040041F272 | NULL      | Helmut           | Schleweis            | helmut.schleweis@dsgv.de             | 030 / 20225-1000            | VL              |
+| dad612d7-0cad-998a-c82f-07653642d109 | 402 | C24E47C01AB99BE7C1257084005E992F | NULL      | Britt            | Schlösser            | britt.schlösser@dsgv.de              | 030 / 20225-5922            | PI              |
+| db069d94-4f7f-126c-f010-6d74c61f136c | 403 | BE82B28688D2FE30C1257DD400457B97 | NULL      | Karin            | Schlößer             | karin.schlößer@dsgv.de               | 0228 / 204-9938             | Hochschule      |
+| 12847d43-2a86-be56-fe12-963df85daced | 404 | 31AAAAF8604C8B56C1257084005E9930 | NULL      | Ina-Maria        | Schmalfuß            | ina-maria.schmalfuß@dsgv.de          | 030 / 20225-5321            | AI              |
+| 29b87f5f-153d-600b-324d-281c5d7eafeb | 405 | 8D3D67A7A1C40BEAC1257F56004B5D22 | Dr.       | Joachim          | Schmalzl             | joachim.schmalzl@dsgv.de             | 030 / 20225-4000 BL/4001 BN | VL              |
+| 6515f7c4-cd71-2ed5-8177-a478311fbfdf | 406 | 4A85D619E043092CC12570C30034021E | NULL      | Doris            | Schmidt              | doris.schmidt@dsgv.de                | 030 / 20225-5724            | BI              |
+| 777b534d-735f-f2c0-683a-a24afc642ee3 | 407 | 707173F098D11D06C1257084005E9933 | Prof. Dr. | Georg Andreas    | Schmidt              | georg.schmidt@dsgv.de                | 0228 / 204-9920             | Hochschule      |
+| ab38901c-4a22-8d98-02e9-e6200f9b41a9 | 408 | 3D9DE19362788C32C12580AA00543F5E | NULL      | Sabine           | Schmidt              | sabine.schmidt@dsgv.de               | 030 / 20225-5377            | AIII            |
+| 297c00f7-64d8-ac15-350c-d8dbb1243ed8 | 409 | 3997CB0CB454AB91C12570D0002E9978 | NULL      | Katrin           | Schmieglitz          | katrin.schmieglitz@dsgv.de           | 030 / 20225-5121            | PII             |
+| 4f8e5c50-0380-053d-c0cd-d53c477d0328 | 410 | 71FEA416A5DDD4B7C1257084005E9935 | NULL      | Stephan R.       | Schmitz              | stephan.schmitz@dsgv.de              | 030 / 20225-5956            | PI              |
+| 85d76149-0572-e636-bc8d-0658a31f2727 | 411 | 14CC680D7DA1D075C1257084005E9937 | Dr.       | Hans Ulrich      | Schneider            | hans.schneider@dsgv.de               | 030 / 20225-5600            | PI              |
+| 89352ce9-2470-73b4-a9a0-e9c7ccd86dd3 | 412 | DE19B816958C6497C12578B000618BAB | Dr. /BN   | Hans Ulrich      | Schneider            | hans.schneider@dsgv.de               | 0228 / 204-5690             | PI              |
+| cb25e7b2-4cfb-d23d-5185-0beef64696e3 | 413 | 6FC7395AAC09444DC125824F004A7AFF | NULL      | Aline            | Schneider            | aline.schneider@dsgv.de              | 0228 / 204-                 | Hochschule      |
+| eafa44c1-3345-7908-f0dd-743cbffe9be6 | 414 | 0A8DECE442A8FBDCC1257084005E9938 | NULL      | Ruth             | Schnitzler           | ruth.schnitzler@dsgv.de              | 030 / 20225-5789            | AII             |
+| 0911f065-bb92-f6de-e317-d70800cd69fa | 415 | 8CF790139D3CE0FAC1257084005E993B | NULL      | Hannelore        | Schoen               | hannelore.schoen@dsgv.de             | 0228 / 204-5899             | BIII            |
+| e8eddf69-fdd3-a5b6-fe4a-8cc50c53ed45 | 416 | 28AE8BF71A47E1D6C1257084005E993D | NULL      | Gabriele         | Schöne               | gabriele.schöne@dsgv.de              | 0228 / 204-5731             | AII             |
+| 639d0eb8-2289-b4c2-6df9-186b833779d4 | 417 | DEC985E30E6B7484C12582CF002AEF30 | NULL      | Christian        | Schollmeyer          | christian.schollmeyer@dsgv.de        | 030 / 20225-5560            | BIV             |
+| 55a0bc98-ce8f-ee68-97de-fe8ad892d394 | 418 | C6217A72C43DA0A4C125718C0050AA3C | Dr.       | Ralf             | Schopohl             | ralf.schopohl@dsgv.de                | 030 / 20225-7379            | NULL            |
+| 346ca2fc-3717-5103-bc3a-6079030dd0c3 | 419 | 595DE6EA3A23A167C1257084005E9985 | NULL      | Frank            | Schreiber-Handschug  | frank.schreiber-handschug@dsgv.de    | 030 / 20225-5504            | BIV             |
+| 12a64eed-0585-e47b-63fb-601d188756ba | 420 | C234884557B8A711C12576D4003ABBC7 | NULL      | Marén            | Schröder             | marén.schröder@dsgv.de               | 030 / 20225-1259            | NULL            |
+| db069886-1f29-81ff-82a8-7fb3cf9207c8 | 421 | D0A145ECE917DD12C12583BD00347D26 | NULL      | Frederik         | Schubert             | frederik.schubert@dsgv.de            | 030 / 20225-5597            | BIV             |
+| 3c3c14e9-feaf-9ae5-de9e-6d3dd7be25b9 | 422 | 3CD21C17952A2685C125830C002DBDEA | NULL      | Anna Miriam      | Schütt               | anna.schütt@dsgv.de                  | 030 / 20225-5368            | AIII            |
+| 81cd9f77-49f5-6a2a-5df5-240039568d26 | 423 | 28B3DD0EDAD02ED4C12582420034DF1D | NULL      | Kai              | Schuhknecht          | kai.schuhknecht@dsgv.de              | 030 / 20225-5584            | BII             |
+| 15555269-c2fb-c6fd-d624-d9a467636276 | 424 | FF245B2AD3F0514FC125823C002D6115 | NULL      | Isabella         | Schukraft            | isabella.schukraft@dsgv.de           | 030 / 20225-5126            | PII             |
+| 5ab06ad4-f12f-cab0-e4dd-f954fcf4f0f6 | 425 | 7980ADFD858B043FC1257084005E9943 | NULL      | Katrin           | Schulz               | katrin.schulz@dsgv.de                | 030 / 20225-5234            | AI              |
+| e630fc6e-11fb-bedc-8606-d88cbb7b92f0 | 426 | 592B6CF920BE4228C1257FE90034A90D | Dr.       | Holger           | Schulz               | holger.schulz@dsgv.de                | 030 / 20225-5307            | AII             |
+| ab1c3867-b90f-a52c-b2c6-949393a6df6d | 427 | F4A9A15B644E3F85C12582BA0031EE0E | NULL      | Markus           | Schulz               | markus.schulz@dsgv.de                | 030 / 20225-5704            | BI              |
+| f0fe8eed-11e4-9d16-07ef-2bf7b329fcea | 428 | F04E050A542BDF57C125831C00245D41 | NULL      | Anke             | Schulz               | anke.schulz@dsgv.de                  | 030 / 20225-5719            | BI              |
+| 41f7bfa8-7347-fad5-62fa-14912add896b | 429 | C38F6F6D40908C56C12570C3002E70AF | NULL      | Yvonne           | Schulze              | yvonne.schulze@dsgv.de               | 030 / 20225-5786            | AII             |
+| ef70b975-0b74-a1a3-6fdf-75c7ce17546f | 430 | 08B7B840E31051D9C12584250043A27A | NULL      | Daniela          | Schulze              | daniela.schulze@dsgv.de              | 030 / 20225-5721            | BI              |
+| 3fb1b266-619d-a2e3-da8a-d6f28c037dc2 | 431 | 04A7D2441529476FC12572CD00433209 | NULL      | Kathleen         | Schumacher           | kathleen.schumacher@dsgv.de          | 030 / 20225-5918            | PI              |
+| 5aa44a46-73d3-33c2-de5b-45b869f5b4fd | 432 | 2CC6A7D405324075C125739900448AA7 | NULL      | Matthias         | Schumacher           | matthias.schumacher@dsgv.de          | 030 / 20225-5520            | BII             |
+| 236020e5-8161-0c5d-935a-97503689de08 | 433 | 304D7D1B325904BBC125752F002F0F20 | NULL      | Katrin           | Schurbaum            | katrin.schurbaum@dsgv.de             | 030 / 20225-5302            | AII             |
+| d3340d71-35a8-af0e-7d75-10bad558f76d | 434 | 18F4DCEFEC57D75AC12582B300392B42 | NULL      | Michael          | Schwirten            | michael.schwirten@dsgv.de            | 030 / 20225-1920            | Betriebsrat     |
+| cfc302a3-5e27-eb55-d487-fb069d5aaaaf | 435 | C8C1647EA3285BD2C125818C002CA181 | NULL      | Nadine           | Sensburg             | nadine.sensburg@dsgv.de              | 030 / 20225-5323            | AI              |
+| 6f99a62f-05c8-8df4-896d-c48dbf34d5c3 | 436 | 80D467D9F43D81E2C125730F0030AA5C | Dr.       | Birgit           | Seydel               | birgit.seydel@dsgv.de                | 030 / 20225-5353            | PIV             |
+| 846fe51d-d140-6f76-8ef1-d4ea25de1fe2 | 437 | 90882FB1E3E4F8ADC12583EC00426770 | NULL      | Martha           | Siedlaczek           | martha.siedlaczek@dsgv.de            | 0228 / 204-                 | SFP (Newsroom)  |
+| 128c85ec-e28d-0fd9-5b0f-dfcf3722c731 | 438 | 4FF353023B45D2B4C12579D40047E658 | NULL      | Alexander        | Simon                | alexander.simon@dsgv.de              | 0032 2 740 16-46            | AV              |
+| aa5403d8-efd0-a814-9796-e92cbc1c6d7d | 439 | AFFE0529B7098C9CC1258132002B6E38 | NULL      | Elena            | Smajlovic            | elena.smajlovic@dsgv.de              | 030 / 20225-5552            | BI              |
+| 24a2a1d5-da2e-b96b-8518-57958dfb5eeb | 440 | 5E10D8B679D642E8C12581A1002B12A5 | NULL      | Susanne          | Smuskiewiecz         | susanne.smuskiewiecz@dsgv.de         | 030 / 20225-5374            | AIII            |
+| a06909de-5fe7-4eb5-a769-9af8003eeaa0 | 441 | 90C1849390D300CDC12581B6003B1042 | Dr.       | André            | Sonntag              | andré.sonntag@dsgv.de                | 030 / 20225-5794            | AII             |
+| 1b207ec0-a80e-913e-f2de-241fb368ae6d | 442 | F0FB53A2D8705C6EC12580AA004D6E51 | NULL      | Jens             | Sperling             | jens.sperling@dsgv.de                | 030 / 20225-5347            | AIII            |
+| 1459c59f-8ac4-8726-9274-83b19aed3da1 | 443 | 6DE53778E7990445C1257084005E994E | NULL      | Volker           | Sperrhacke           | volker.sperrhacke@dsgv.de            | 030 / 20225-5708            | BI              |
+| 27cee525-1e92-a73c-2da2-cc0e5c726068 | 444 | 2371EB299C634273C125830D003DDE31 | NULL      | Alina            | Spielau              | alina.spielau@dsgv.de                | 030 / 20225-5711            | BI              |
+| 15c07528-efe9-6904-65ef-d1e63d9f75e2 | 445 | D24E2B5BE2560A2CC1257084005E9A08 | NULL      | Cordula          | Spitzer              | cordula.spitzer@dsgv.de              | 030 / 20225-5778            | AII             |
+| c21ec16f-c962-9117-986f-06b989f05ab4 | 446 | 6561F05F41A7A0EFC1258417003545CA | NULL      | Laura            | Stahnke              | laura.stahnke@dsgv.de                | 0228 / 204-                 | SFP (Newsroom)  |
+| f65c46eb-004b-288d-3e4e-3688e47629cb | 447 | A997250509B50AA3C12583EC0043555F | NULL      | Karin            | Staiger              | karin.staiger@dsgv.de                | 0228 / 204-                 | SFP (Newsroom)  |
+| 7baf92e3-77fb-dfe4-c339-93c72b7a3201 | 448 | 759A6F4249E67411C1257084005E9951 | NULL      | Carsten          | Steffan              | carsten.steffan@dsgv.de              | 030 / 20225-5650            | PIV             |
+| 606aeb9a-dbcf-5726-4be4-dbed2cf5016d | 449 | 8BB345CC439020D0C1257536004A35CF | NULL      | Martin           | Stein                | martin.stein@dsgv.de                 | 030 / 20225-5515            | BII             |
+| 156e30b9-27bf-2ca5-09e5-6f5e21f78e63 | 450 | 48A8CC6FC17A1289C1257F6800356AD0 | NULL      | Claudia          | Steingräber          | claudia.steingräber@dsgv.de          | 030 / 20225-5651            | PIV             |
+| 2595b369-94c8-2e34-0562-16f3bb604cb2 | 451 | D83CC71E920A65D5C125738A004C0C74 | NULL      | Jürgen           | Steven               | jürgen.steven@dsgv.de                | 030 / 20225-5533            | BII             |
+| 07da3b21-e3ad-a615-06d0-c6385544ef08 | 452 | 6517D1647EC33F3AC12581A8004D6FF3 | NULL      | Markus           | Stiefelhagen         | markus.stiefelhagen@dsgv.de          | 030 / 20225-4841            | BIV             |
+| be615ce9-b429-2ee5-cc81-e8d8e575b0a9 | 453 | 6674ED3728E2E39BC1258454002B9B40 | NULL      | Susanne          | Stiehler             | susanne.stiehler@dsgv.de             | 030 / 20225-5375            | AIII            |
+| 78a15638-ddb5-8e90-328b-1136698813dd | 454 | 13D63D29B25F33A6C12580DB00311185 | NULL      | Carsten          | Stier                | carsten.stier@dsgv.de                | 030 / 20225-5371            | AIII            |
+| 32ad111e-5096-e866-c3bd-b8c24485857a | 455 | AF79AA5A42D076CFC12579F2003F0810 | NULL      | Alexander        | Stigler              | alexander.stigler@dsgv.de            | 030 / 20225-5137            | PII             |
+| 1bbb2032-927a-65ef-f2b9-2d2dcf49d60a | 456 | 217ECBDD01326049C1257600004401DD | NULL      | Ina              | Strack               | ina.strack@dsgv.de                   | 0228 / 204-9963             | Hochschule      |
+| 791d4247-8ec3-cc0d-0a10-43da38097668 | 457 | B2667B3387813CF9C125811D003C8FA6 | NULL      | Klaudia          | Strauch              | klaudia.strauch@dsgv.de              | 030 / 20225-5930            | PI              |
+| 85cbdc04-94d1-7ef2-b2b2-988ec96a2944 | 458 | F5D876C70D09DC8EC1257B0A002990E4 | NULL      | Stephanie        | Strauß               | stephanie.strauß@dsgv.de             | 030 / 20225-5517            | BII             |
+| 9ab71104-16f7-c8b6-8fb9-ca10391dd300 | 459 | 0A50D377C1360E98C12574C800399E32 | NULL      | Birgit           | Stubbe               | birgit.stubbe@dsgv.de                | 0228 / 204-5732/5824 VU     | AII             |
+| 1992bf4f-6a33-2e96-c510-f3a0532f5e0d | 460 | A75D0F6E0781B930C1258447004498F6 | NULL      | Jessica          | Stüer                | jessica.stüer@dsgv.de                | 0228 / 204-                 | SFP (Newsroom)  |
+| 7bef6eb1-86f4-7d39-f88d-ceeda9eb6112 | 461 | B53204015A9FEC20C12573F600554404 | NULL      | Alexander        | Stülpnagel von       | alexander.stülpnagel von @dsgv.de    | 030 / 20225-17400           | NULL            |
+| 5a4546f2-54cc-6e1f-7aff-09b1212222ce | 462 | D5A73CFE2A43C556C1257F4E0021D642 | NULL      | Martin           | Switaiski            | martin.switaiski@dsgv.de             | 030 / 20225-5333            | AI              |
+| 5fa40a07-ff66-d095-b114-2b2afd167a3d | 463 | AFBED160E1DFF0FBC1257084005E9957 | NULL      | Katrin           | Szypkowski           | katrin.szypkowski@dsgv.de            | 030 / 20225-5702            | BI              |
+| c2b7a3a7-26f4-50f5-4ab0-fc7ec00bf5e5 | 464 | CD22EBDF6B813D19C1257988002F4130 | NULL      | Markus           | Tacke                | markus.tacke@dsgv.de                 | 030 / 20225-5501            | BIV             |
+| d40fe7f7-f163-9f22-531d-d36794aed597 | 465 | 14422A030151CE37C1257084005E9958 | NULL      | Sonja            | Täuber               | sonja.täuber@dsgv.de                 | 030 / 20225-5115            | PII             |
+| c3fc1ec1-53e6-91eb-0ffd-c2338983172b | 466 | 0855A57317B3BE61C12570DD004D1C12 | NULL      | Gabriele         | Teller               | gabriele.teller@dsgv.de              | 030 / 20225-5116            | PII             |
+| dc808e67-7f8d-9131-5fe6-7e533f0657e9 | 467 | 9D5FD1CAF78400DDC125809F004ED799 | NULL      | Anja             | Terschlüsen          | anja.terschlüsen@dsgv.de             | 030 / 20225-5359            | AIII            |
+| 1dd19f10-54ad-05aa-b61c-7cb48313f6dd | 468 | 69907FBBC53DC6C8C12583140026F1DA | NULL      | Fabian           | Teucher              | fabian.teucher@dsgv.de               | 030 / 20225-4897            | BIV             |
+| 0db49011-c75a-2c36-7cfa-dd2cc1a4edbe | 469 | 80D0173F4757E724C12580D6004F2934 | Dr.       | Michael          | Thaler               | michael.thaler@dsgv.de               | 0228 / 204-5810             | BIII            |
+| ccd1bb78-3cc0-72c6-b721-fd267776b5c9 | 470 | 31F5A6FF872BDC2BC1257CE4003E6F12 | NULL      | Stefanie         | Thiel                | stefanie.thiel@dsgv.de               | 030 / 20225-5626            | PIII            |
+| dd4f2702-aaaa-2269-1d23-69df8384423b | 471 | 28CC1123F7CF63BBC12583EC00428B19 | NULL      | Katharina        | Thiele               | katharina.thiele@dsgv.de             | 0228 / 204-                 | SFP (Newsroom)  |
+| e73f3cd9-8d34-0c32-b009-c0441cdccce1 | 472 | 76B6F7F5D9AA81A1C1257084005E995C | NULL      | Ursula           | Thielen              | ursula.thielen@dsgv.de               | 030 / 20225-5601            | PI              |
+| af97f3c0-a8b1-fce9-d4ed-a9bf03126455 | 473 | FEB56007022D7246C12572790036B232 | NULL      | Manuela          | Thomsen              | manuela.thomsen@dsgv.de              | 030 / 20225-5632            | PIII            |
+| 41841dc8-b7b1-6bea-073e-2112cf756e1d | 474 | 188B496FB604B06CC12581000049C280 | NULL      | Herbert          | Tilgner              | herbert.tilgner@dsgv.de              | 030 / 20225-4862            | BIV             |
+| dc069142-3c5a-2bff-5f57-de473f7bac7c | 475 | C473180CED35FF18C1257DC5004519DC | Dr.       | Markus           | Tischer              | markus.tischer@dsgv.de               | 030 / 20225-5334            | AI              |
+| d8158897-a070-e5cd-b280-434b3b382ef0 | 476 | 014302531931BAA9C12582FD004596B6 | NULL      | Bahar            | Tokatli              | bahar.tokatli@dsgv.de                | 0228 / 204-                 | Hochschule      |
+| cc957449-539c-05b0-d80b-268b31b62593 | 477 | 2F40D8E89C85082EC12579830045F62F | Dr.       | Florian          | Trappe               | florian.trappe@dsgv.de               | 030 / 20225-5379            | AIII            |
+| e0dbafa1-c133-c19b-b3a0-cbefd555f20a | 478 | 75BB4D397EF6BA61C12580A5004D3A6F | NULL      | Frank            | Trojahn              | frank.trojahn@dsgv.de                | 030 / 20225-5513            | BII             |
+| 29838c31-7411-b274-9841-2bc096c5be62 | 479 | 9481EF0F1E1F68EBC12583EC0043DF65 | NULL      | Peter            | Trzka                | peter.trzka@dsgv.de                  | 0228 / 204-                 | SFP (Newsroom)  |
+| 7aea798d-a5ce-1e13-bc04-c33a64cf4f62 | 480 | C1EDCD7D072D6031C1257D890044BA57 | NULL      | Jana             | Tschiltschke         | jana.tschiltschke@dsgv.de            | 030 / 20225-5338            | AI              |
+| 2f8bb04d-7b09-acf6-2de8-607952e5b5d7 | 481 | AC2209D05520CA12C1257084005E995F | NULL      | Ursula           | Tumbrink             | ursula.tumbrink@dsgv.de              | 030 / 20225-5621            | PIII            |
+| b5d08380-bbeb-2f7c-b41f-7b0e70a1ef71 | 482 | A8AC48F5593C1080C12581D4003046F3 | NULL      | Susanne          | Uhlen                | susanne.uhlen@dsgv.de                | 030 / 20225-5623            | PIII            |
+| 0a81fde4-9ccd-d658-99b8-ef98b8caa5e7 | 483 | 6A937BF6B6C0F0FBC1257E150038ACB8 | NULL      | Leon             | Unger                | leon.unger@dsgv.de                   | 030 / 20225-5429            | AVI             |
+| d18e891f-4e7c-e374-cf95-958f43d3d142 | 484 | 09AFA4AD322185DCC12579DC0040B1F8 | NULL      | Magdalena        | Veicht               | magdalena.veicht@dsgv.de             | 030 / 20225-5551            | BIV             |
+| 26d9d31d-32d2-1f50-374e-4ef87a762af8 | 485 | AC278FB7F8AAE40EC1257354002BF4CE | Dr.       | Elke             | Vincke               | elke.vincke@dsgv.de                  | 030 / 20225-5527            | BII             |
+| 9e75503f-370d-84ce-97a5-a68e2c545bb7 | 486 | A1778510BCDE02ECC1257DB7004790EF | NULL      | Daniela          | Völker               | daniela.völker@dsgv.de               | 030 / 20225-5915            | PI              |
+| a5867395-9906-1e0d-f486-69ab3a060cdb | 487 | 3AFF169F8DCD0845C125809100345015 | Dr.       | Johannes         | Voit                 | johannes.voit@dsgv.de                | 030 / 20225-5412            | AVI             |
+| 8394c2d7-a70a-3f7d-55dc-a45e997ee709 | 488 | D6B30DE9CE750609C12582A2002BA375 | NULL      | Helen            | Voitl                | helen.voitl@dsgv.de                  | 030 / 20225-5322            | AIII            |
+| bf9e7bf9-23ae-d3cc-6dd2-7489c6ecafa0 | 489 | FC8C3128EF17A629C12581BB004AE1BB | NULL      | Patrick          | Vollrath             | patrick.vollrath@dsgv.de             | 030 / 20225-5413            | AVI             |
+| d7979a74-0b45-33d9-4160-64a9504de1da | 490 | 76A8E0FD22F27869C1258443003B6018 | NULL      | Mariella         | von Loesch           | mariella.von loesch@dsgv.de          | 0228 / 204-                 | AIII            |
+| 82fc8ba0-0bbd-22de-4fa2-f702f50423f2 | 491 | 4E88DE8B4B476214C1257BEA00489352 | NULL      | Marcus           | Waidelich            | marcus.waidelich@dsgv.de             | 030 / 20225-5700            | BI              |
+| ab83f9b1-e324-c2fa-34a7-f815bdc562b7 | 492 | FF7B63A23CF0E313C12583EC0044D0DE | NULL      | Björn            | Wannhoff             | björn.wannhoff@dsgv.de               | 0228 / 204-                 | SFP (Newsroom)  |
+| 5bf35b64-39c2-5f33-563d-c5c558dc48ad | 493 | 8A06E69DFC97EDF7C125717700413A89 | NULL      | Katja            | Weber                | katja.weber@dsgv.de                  | 030 / 20225-5162            | PII             |
+| 3e046e02-0e37-6b2e-cd24-16d0598e65fa | 494 | B41BB7ED02FD2964C1257A6E002EBFDB | NULL      | Barbara          | Wedde                | barbara.wedde@dsgv.de                | 030 / 20225-5566            | BI              |
+| 7e021467-e195-c000-d857-e0ebe86d522a | 495 | 99A9F40922DCC113C1257084005E996C | NULL      | Olaf             | Wegner               | olaf.wegner@dsgv.de                  | 030 / 20225-5408            | AVI             |
+| c2a3e66f-82e5-c38a-859a-f43e01d8d6ee | 496 | CEABBA7FE2BC1594C1257084005E996D | Dr.       | Thorsten         | Wehber               | thorsten.wehber@dsgv.de              | 0228 / 204-5750             | AII             |
+| 5068ccd8-e517-d650-9945-ff052c234690 | 497 | 7AD29890FC6CCDC4C125809F004C8AEB | NULL      | Christina        | Wehmeier             | christina.wehmeier@dsgv.de           | 030 / 20225-5336            | AI              |
+| 2cb5f9fa-4e79-c8dc-85be-b697fd0185d1 | 498 | AC72C3D4C8409546C12581D9003E1663 | NULL      | Frank            | Weigand              | frank.weigand@dsgv.de                | 030 / 20225-5550            | BIV             |
+| 8e85404e-0de5-82e7-f4fb-276100e8aafd | 499 | CA2F55D544DABEC8C1257084005E996F | NULL      | Axel             | Weiß                 | axel.weiß@dsgv.de                    | 030 / 20225-5540            | BIV             |
+| e2d3c417-f8e4-156f-a347-30476951b367 | 500 | 37B60BFC4F1375CCC12574100034770E | Dr.       | Mirko            | Weiß                 | mirko.weiß@dsgv.de                   | 030 / 20225-5327            | AI              |
+| 248fc4bc-36f3-ee9d-4403-dec06bd6c552 | 501 | 0F98D5DEB9DFE3B2C1257084005E9971 | NULL      | Martina          | Weller               | martina.weller@dsgv.de               | 030 / 20225-5613            | PI              |
+| 083e4578-86f1-c38f-75f4-dcdc7bbd2c6e | 502 | 8A710A4AC86742F3C1257F1F002F2CC4 | NULL      | Jacqueline       | Wender               | jacqueline.wender@dsgv.de            | 030 / 20225-5222            | PG              |
+| f9ab8788-fc98-d081-4fcb-56010ddd863d | 503 | 30DAC901E4E66E42C1257DB10051B61C | NULL      | Stefanie         | Wenig                | stefanie.wenig@dsgv.de               | 030 / 20225-5341            | AIII            |
+| b4709fb6-24e6-42ad-0722-fe70ed1f83d6 | 504 | 8F5F9780BC242A4CC12582F8002A9950 | NULL      | Max              | Wesseling            | max.wesseling@dsgv.de                | 0032 2 740 16-18            | AV              |
+| 6fb688f3-1e75-64ee-f6da-32b9b66cc0f4 | 505 | 07F01DC8EF114ADBC1257084005E9973 | NULL      | Fritzsch Sabine  | Westtours            | fritzsch.westtours@dsgv.de           | 030 / 20225-1900            | PI              |
+| 750f479a-6554-7a8a-6fab-03e60d5d20f0 | 506 | 940B1F4A7F219271C12583F400337648 | NULL      | Isabell          | Wingenbach           | isabell.wingenbach@dsgv.de           | 030 / 20225-5561            | BIV             |
+| 12f7013c-9a52-4944-283e-0ae9bd35b164 | 507 | 6566D028879133C2C1257084005E9978 | NULL      | Anna Maria       | Winter               | anna.winter@dsgv.de                  | 030 / 20225-5767            | AVI             |
+| fef5dd92-31f1-5fb9-d366-4812eb52f250 | 508 | E79F42D4DDCC7BAEC1257711003A7370 | NULL      | Daniela          | Wintoch              | daniela.wintoch@dsgv.de              | 030 / 20225-5712            | BI              |
+| 92ea4b77-176d-a510-570f-59ab8c576d09 | 509 | FC8DED5C1F672B45C1257E88002DCC83 | NULL      | Maren            | Wittschorek          | maren.wittschorek@dsgv.de            | 030 / 20225-5363            | AIII            |
+| 5b5cf584-163d-e250-0acb-f8ba5f1e29fc | 510 | E6BF25E3B9B1CC6CC1257DBD00347286 | NULL      | Kamilla          | Wölfle               | kamilla.wölfle@dsgv.de               | 030 / 20225-1521            | AIII            |
+| b9a7fe85-6189-50cf-eed5-828727d35c07 | 511 | 2A134329143664BAC1257169002A3900 | NULL      | Petra            | Wöllmer              | petra.wöllmer@dsgv.de                | 030 / 20225-1020            | Präsidialbüro   |
+| 1a3412d5-c9a4-9559-87b0-21e12ed92084 | 512 | 9FB7E035470A76DAC12581E1005B7D79 | NULL      | Mathias          | Wolf                 | mathias.wolf@dsgv.de                 | 030 / 20225-5555            | BI              |
+| 9e19b46a-eb54-c074-2cd1-64d20974fa79 | 513 | 6925DD48B009BB73C125797A0045E8F4 | Dr.       | Silke            | Wollgarten           | silke.wollgarten@dsgv.de             | 030 / 20225-5378            | AIII            |
+| 82cb11df-525f-b02d-7279-6441255dd6a1 | 514 | 7391A4E937E87725C1257084005E997A | NULL      | Frank            | Wollschläger         | frank.wollschläger@dsgv.de           | 030 / 20225-5703            | BI              |
+| 093111da-322a-13e1-e142-99eb20e3b897 | 515 | A5BF8EA11EBD78ABC12583DD004C1103 | NULL      | Ralf             | Wozniak              | ralf.wozniak@dsgv.de                 | 0228 / 204-                 | NULL            |
+| 308286f2-0393-488c-773e-b3a137dd46bb | 516 | BEC44685155C5B42C1257F290044A283 | NULL      | Stefanie         | Zahrte               | stefanie.zahrte@dsgv.de              | 030 / 20225-5197            | AII             |
+| d18b492f-f5a7-4f2f-b447-812f049495b8 | 517 | 4189658BD144FC3CC1257F1E00579638 | NULL      | Jannke           | Zeelen               | jannke.zeelen@dsgv.de                | 030 / 20225-5364            | AIII            |
+| a31b56a9-e63b-6292-27bf-99166c089712 | 518 | CD89B3711F9600CBC12583EC0044EEF1 | NULL      | Melanie          | Zerahn               | melanie.zerahn@dsgv.de               | 0228 / 204-                 | SFP (Newsroom)  |
+| 50fb71cf-536a-9037-6412-8cea5e7b2e18 | 519 | 76564622BA00DEB8C1258137003E44F7 | NULL      | Marco            | Zieger               | marco.zieger@dsgv.de                 | 030 / 20225-5230            | PG              |
+| 782ab1ba-98bb-8cbe-697d-35700db9a657 | 520 | 17085E544522414AC1257084005E997C | NULL      | Jutta            | Zimmermann           | jutta.zimmermann@dsgv.de             | 030 / 20225-5611            | PI              |
+| f8942dab-2b77-c7be-acf1-e279cb8f3db6 | 521 | A1CA22A9627218B3C1257084005E9980 | NULL      | Peter            | Zündorf              | peter.zündorf@dsgv.de                | 030 / 20225-5970            | PI              |
+| cf28035d-b6a9-e810-bb95-ebfdcf56ece2 | 522 | 9C9BD96F611D9E1AC125763300479EF4 | NULL      | Peter / BN       | Zündorf              | peter.zündorf@dsgv.de                | 0228 / 204-5970             | PI              |
++--------------------------------------+-----+----------------------------------+-----------+------------------+----------------------+--------------------------------------+-----------------------------+-----------------+
+518 rows in set (0.01 sec)
+
+mysql> show tables;
++--------------------------------+
+| Tables_in_lportal              |
++--------------------------------+
+| AMImageEntry                   |
+| Account_                       |
+| Address                        |
+| AnnouncementsDelivery          |
+| AnnouncementsEntry             |
+| AnnouncementsFlag              |
+| AssetAutoTaggerEntry           |
+| AssetCategory                  |
+| AssetCategoryProperty          |
+| AssetDisplayPageEntry          |
+| AssetEntries_AssetCategories   |
+| AssetEntries_AssetTags         |
+| AssetEntry                     |
+| AssetEntryAssetCategoryRel     |
+| AssetEntryUsage                |
+| AssetLink                      |
+| AssetListEntry                 |
+| AssetListEntryAssetEntryRel    |
+| AssetListEntrySegmentsEntryRel |
+| AssetListEntryUsage            |
+| AssetTag                       |
+| AssetTagStats                  |
+| AssetVocabulary                |
+| Audit_AuditEvent               |
+| BackgroundTask                 |
+| BlogsEntry                     |
+| BlogsStatsUser                 |
+| BrowserTracker                 |
+| Calendar                       |
+| CalendarBooking                |
+| CalendarNotificationTemplate   |
+| CalendarResource               |
+| ChangesetCollection            |
+| ChangesetEntry                 |
+| CirC_AffectedDepartment        |
+| CirC_AffectedLine              |
+| CirC_ApprovalDocument          |
+| CirC_AuthorLine                |
+| CirC_AuthorsDepartment         |
+| CirC_CircularSettings          |
+| CirC_Entry                     |
+| CirC_HistoryEntry              |
+| CirC_Places                    |
+| CirC_RundschreibenKnoten       |
+| CirC_RundschreibenSchlagwort   |
+| CirC_RundschreibenType         |
+| CirC_TreeElem                  |
+| Circular_Attachments           |
+| Circular_Author                |
+| Circular_CircularEntry         |
+| Circular_Created               |
+| Circular_Documents             |
+| Circular_Recipient             |
+| Circular_Tags                  |
+| ClassName_                     |
+| ClusterGroup                   |
+| Company                        |
+| Configuration_                 |
+| Contact_                       |
+| Contacts_Entry                 |
+| Counter                        |
+| Country                        |
+| DDLRecord                      |
+| DDLRecordSet                   |
+| DDLRecordSetVersion            |
+| DDLRecordVersion               |
+| DDMContent                     |
+| DDMDataProviderInstance        |
+| DDMDataProviderInstanceLink    |
+| DDMFormInstance                |
+| DDMFormInstanceRecord          |
+| DDMFormInstanceRecordVersion   |
+| DDMFormInstanceVersion         |
+| DDMStorageLink                 |
+| DDMStructure                   |
+| DDMStructureLayout             |
+| DDMStructureLink               |
+| DDMStructureVersion            |
+| DDMTemplate                    |
+| DDMTemplateLink                |
+| DDMTemplateVersion             |
+| DEDataDefinitionFieldLink      |
+| DEDataListView                 |
+| DLContent                      |
+| DLFileEntry                    |
+| DLFileEntryMetadata            |
+| DLFileEntryType                |
+| DLFileEntryTypes_DLFolders     |
+| DLFileRank                     |
+| DLFileShortcut                 |
+| DLFileVersion                  |
+| DLFileVersionPreview           |
+| DLFolder                       |
+| DLOpenerFileEntryReference     |
+| DLSyncEvent                    |
+| EmailAddress                   |
+| ExpandoColumn                  |
+| ExpandoRow                     |
+| ExpandoTable                   |
+| ExpandoValue                   |
+| ExportImportConfiguration      |
+| FragmentCollection             |
+| FragmentEntry                  |
+| FragmentEntryLink              |
+| FriendlyURLEntry               |
+| FriendlyURLEntryLocalization   |
+| FriendlyURLEntryMapping        |
+| Group_                         |
+| Groups_Orgs                    |
+| Groups_Roles                   |
+| Groups_UserGroups              |
+| HtmlPreviewEntry               |
+| IM_MemberRequest               |
+| Image                          |
+| JournalArticle                 |
+| JournalArticleLocalization     |
+| JournalArticleResource         |
+| JournalContentSearch           |
+| JournalFeed                    |
+| JournalFolder                  |
+| KBArticle                      |
+| KBComment                      |
+| KBFolder                       |
+| KBTemplate                     |
+| KEYCAT_Activity                |
+| KEYCAT_Beziehung               |
+| KEYCAT_Fachbereich             |
+| KEYCAT_FbSw                    |
+| KEYCAT_History                 |
+| KEYCAT_Knoten                  |
+| KEYCAT_MaxNum                  |
+| KEYCAT_Schlagwort              |
+| KEYCAT_Verknuepfung            |
+| KaleoAction                    |
+| KaleoCondition                 |
+| KaleoDefinition                |
+| KaleoDefinitionVersion         |
+| KaleoInstance                  |
+| KaleoInstanceToken             |
+| KaleoLog                       |
+| KaleoNode                      |
+| KaleoNotification              |
+| KaleoNotificationRecipient     |
+| KaleoTask                      |
+| KaleoTaskAssignment            |
+| KaleoTaskAssignmentInstance    |
+| KaleoTaskForm                  |
+| KaleoTaskFormInstance          |
+| KaleoTaskInstanceToken         |
+| KaleoTimer                     |
+| KaleoTimerInstanceToken        |
+| KaleoTransition                |
+| Layout                         |
+| LayoutBranch                   |
+| LayoutFriendlyURL              |
+| LayoutPageTemplateCollection   |
+| LayoutPageTemplateEntry        |
+| LayoutPageTemplateStructure    |
+| LayoutPageTemplateStructureRel |
+| LayoutPrototype                |
+| LayoutRevision                 |
+| LayoutSEOEntry                 |
+| LayoutSet                      |
+| LayoutSetBranch                |
+| LayoutSetPrototype             |
+| LayoutSetVersion               |
+| LayoutVersion                  |
+| ListType                       |
+| Lock_                          |
+| MBBan                          |
+| MBCategory                     |
+| MBDiscussion                   |
+| MBMailingList                  |
+| MBMessage                      |
+| MBStatsUser                    |
+| MBThread                       |
+| MBThreadFlag                   |
+| MDRAction                      |
+| MDRRule                        |
+| MDRRuleGroup                   |
+| MDRRuleGroupInstance           |
+| Marketplace_App                |
+| Marketplace_Module             |
+| MembershipRequest              |
+| OA2Auths_OA2ScopeGrants        |
+| OAuth2Application              |
+| OAuth2ApplicationScopeAliases  |
+| OAuth2Authorization            |
+| OAuth2ScopeGrant               |
+| OrgGroupRole                   |
+| OrgLabor                       |
+| Organization_                  |
+| PasswordPolicy                 |
+| PasswordPolicyRel              |
+| PasswordTracker                |
+| Phone                          |
+| PluginSetting                  |
+| PollsChoice                    |
+| PollsQuestion                  |
+| PollsVote                      |
+| PortalPreferences              |
+| Portlet                        |
+| PortletItem                    |
+| PortletPreferences             |
+| QUARTZ_BLOB_TRIGGERS           |
+| QUARTZ_CALENDARS               |
+| QUARTZ_CRON_TRIGGERS           |
+| QUARTZ_FIRED_TRIGGERS          |
+| QUARTZ_JOB_DETAILS             |
+| QUARTZ_LOCKS                   |
+| QUARTZ_PAUSED_TRIGGER_GRPS     |
+| QUARTZ_SCHEDULER_STATE         |
+| QUARTZ_SIMPLE_TRIGGERS         |
+| QUARTZ_SIMPROP_TRIGGERS        |
+| QUARTZ_TRIGGERS                |
+| RatingsEntry                   |
+| RatingsStats                   |
+| ReadingTimeEntry               |
+| RecentLayoutBranch             |
+| RecentLayoutRevision           |
+| RecentLayoutSetBranch          |
+| Region                         |
+| Release_                       |
+| Repository                     |
+| RepositoryEntry                |
+| ResourceAction                 |
+| ResourceBlock                  |
+| ResourceBlockPermission        |
+| ResourcePermission             |
+| ResourceTypePermission         |
+| Role_                          |
+| SAPEntry                       |
+| SegmentsEntry                  |
+| SegmentsEntryRel               |
+| SegmentsExperience             |
+| SegmentsExperiment             |
+| SegmentsExperimentRel          |
+| ServiceComponent               |
+| SharingEntry                   |
+| SiteFriendlyURL                |
+| SiteNavigationMenu             |
+| SiteNavigationMenuItem         |
+| SocialActivity                 |
+| SocialActivityAchievement      |
+| SocialActivityCounter          |
+| SocialActivityLimit            |
+| SocialActivitySet              |
+| SocialActivitySetting          |
+| SocialRelation                 |
+| SocialRequest                  |
+| Subscription                   |
+| SystemEvent                    |
+| Team                           |
+| Ticket                         |
+| TrashEntry                     |
+| TrashVersion                   |
+| UserGroup                      |
+| UserGroupGroupRole             |
+| UserGroupRole                  |
+| UserGroups_Teams               |
+| UserIdMapper                   |
+| UserNotificationDelivery       |
+| UserNotificationEvent          |
+| UserTracker                    |
+| UserTrackerPath                |
+| User_                          |
+| Users_Groups                   |
+| Users_Orgs                     |
+| Users_Roles                    |
+| Users_Teams                    |
+| Users_UserGroups               |
+| VirtualHost                    |
+| WebDAVProps                    |
+| Website                        |
+| WikiNode                       |
+| WikiPage                       |
+| WikiPageResource               |
+| WorkflowDefinitionLink         |
+| WorkflowInstanceLink           |
+| staff                          |
+| staffconfig                    |
++--------------------------------+
+281 rows in set (0.00 sec)
+
+mysql> select * from Configuration_;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| configurationId                                                                                                                                                                                | dictionary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| /com.liferay.portal.remote.cxf.common.configuration.CXFEndpointPublisherConfiguration.164a09b8-2248-47a4-89c0-dd2bcfb75b51                                                                     | :org.apache.felix.configadmin.revision:=L"1"
+authVerifierProperties="auth.verifier.BasicAuthHeaderAuthVerifier.urls.includes\=*"
+configurator.url="org.dsgv.portal.circular.create.rest#cxf"
+contextPath="/circular-create-rest"
+service.bundleLocation="?"
+service.factoryPid="/com.liferay.portal.remote.cxf.common.configuration.CXFEndpointPublisherConfiguration"
+service.pid="/com.liferay.portal.remote.cxf.common.configuration.CXFEndpointPublisherConfiguration.164a09b8-2248-47a4-89c0-dd2bcfb75b51"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| /com.liferay.portal.remote.rest.extender.configuration.RestExtenderConfiguration.c3d9574b-0b50-4403-bdd8-46b34b20fccb                                                                          | :org.apache.felix.configadmin.revision:=L"1"
+configurator.url="org.dsgv.portal.circular.create.rest#rest"
+contextPaths="/circular-create-rest"
+jaxRsApplicationFilterStrings="(jaxrs.application\=true)"
+jaxRsServiceFilterStrings="(component.name\=org.dsgv.portal.circular.create.rest.CircularCreateRestApplication)"
+service.bundleLocation="?"
+service.factoryPid="/com.liferay.portal.remote.rest.extender.configuration.RestExtenderConfiguration"
+service.pid="/com.liferay.portal.remote.rest.extender.configuration.RestExtenderConfiguration.c3d9574b-0b50-4403-bdd8-46b34b20fccb"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| com.liferay.document.library.document.conversion.internal.security.auth.verifier.image.request.module.configuration.ImageRequestAuthVerifierConfiguration.d0441232-3cf0-4b78-9d1a-7e7e923e97e9 | :org.apache.felix.configadmin.revision:=L"1"
+enabled=B"true"
+felix.fileinstall.filename="com.liferay.document.library.document.conversion.internal.security.auth.verifier.image.request.module.configuration.ImageRequestAuthVerifierConfiguration-default.config"
+hostsAllowed="127.0.0.1,SERVER_IP"
+service.bundleLocation="?"
+service.factoryPid="com.liferay.document.library.document.conversion.internal.security.auth.verifier.image.request.module.configuration.ImageRequestAuthVerifierConfiguration"
+service.pid="com.liferay.document.library.document.conversion.internal.security.auth.verifier.image.request.module.configuration.ImageRequestAuthVerifierConfiguration.d0441232-3cf0-4b78-9d1a-7e7e923e97e9"
+urlsExcludes="/image/user_male_portrait,/image/company_logo"
+urlsIncludes="/documents/*,/image/*,/c/wiki/get_page_attachment"
+                                                                                                                                                                                             |
+| com.liferay.frontend.theme.font.awesome.web.internal.configuration.CSSFontAwesomeConfiguration                                                                                                 | :org.apache.felix.configadmin.revision:=L"1"
+enableFontAwesome=B"true"
+service.bundleLocation="?"
+service.pid="com.liferay.frontend.theme.font.awesome.web.internal.configuration.CSSFontAwesomeConfiguration"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| com.liferay.oauth2.provider.scope.internal.configuration.BundlePrefixHandlerFactoryConfiguration.8d32adb2-dbf5-4197-bd2a-7bf2a1ba5139                                                          | :org.apache.felix.configadmin.revision:=L"1"
+felix.fileinstall.filename="com.liferay.oauth2.provider.scope.internal.configuration.BundlePrefixHandlerFactoryConfiguration-default.config"
+include.bundle.symbolic.name=B"false"
+osgi.jaxrs.name="Default"
+separator="."
+service.bundleLocation="?"
+service.factoryPid="com.liferay.oauth2.provider.scope.internal.configuration.BundlePrefixHandlerFactoryConfiguration"
+service.pid="com.liferay.oauth2.provider.scope.internal.configuration.BundlePrefixHandlerFactoryConfiguration.8d32adb2-dbf5-4197-bd2a-7bf2a1ba5139"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| com.liferay.oauth2.provider.scope.internal.configuration.ConfigurableScopeMapperConfiguration.eebc092f-6a06-4ca6-9bd7-780a5cd4262e                                                             | :org.apache.felix.configadmin.revision:=L"1"
+felix.fileinstall.filename="com.liferay.oauth2.provider.scope.internal.configuration.ConfigurableScopeMapperConfiguration-default.config"
+mapping=[ \
+  "DELETE,PATCH,POST,PUT\=everything,everything.write", \
+  "GET,HEAD,OPTIONS\=everything.read", \
+  "everything.write\=everything,everything.write", \
+  ]
+osgi.jaxrs.name="Default"
+service.bundleLocation="?"
+service.factoryPid="com.liferay.oauth2.provider.scope.internal.configuration.ConfigurableScopeMapperConfiguration"
+service.pid="com.liferay.oauth2.provider.scope.internal.configuration.ConfigurableScopeMapperConfiguration.eebc092f-6a06-4ca6-9bd7-780a5cd4262e"
+                                                                                                                                                                                                                                                                                                                                                              |
+| com.liferay.organizations.internal.configuration.OrganizationTypeConfiguration.c2ea172d-728e-4ffc-93c0-a37fd9e45ca3                                                                            | :org.apache.felix.configadmin.revision:=L"1"
+childrenTypes=[ \
+  "organization", \
+  ]
+countryEnabled=B"true"
+countryRequired=B"false"
+felix.fileinstall.filename="com.liferay.organizations.internal.configuration.OrganizationTypeConfiguration-default.config"
+name="organization"
+rootable=B"true"
+service.bundleLocation="?"
+service.factoryPid="com.liferay.organizations.internal.configuration.OrganizationTypeConfiguration"
+service.pid="com.liferay.organizations.internal.configuration.OrganizationTypeConfiguration.c2ea172d-728e-4ffc-93c0-a37fd9e45ca3"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| com.liferay.portal.remote.cxf.common.configuration.CXFEndpointPublisherConfiguration.877c278c-3b4c-4128-8894-813ffb3fab44                                                                      | :org.apache.felix.configadmin.revision:=L"4"
+authVerifierProperties=[ \
+  "auth.verifier.BasicAuthHeaderAuthVerifier.urls.includes\=*", \
+  ]
+configuration.cleaner.ignore="true"
+contextPath="/circular-create-rest"
+extensions=[ \
+  "", \
+  ]
+felix.fileinstall.filename="com.liferay.portal.remote.cxf.common.configuration.CXFEndpointPublisherConfiguration-877c278c-3b4c-4128-8894-813ffb3fab44.config"
+service.bundleLocation="?"
+service.factoryPid="com.liferay.portal.remote.cxf.common.configuration.CXFEndpointPublisherConfiguration"
+service.pid="com.liferay.portal.remote.cxf.common.configuration.CXFEndpointPublisherConfiguration.877c278c-3b4c-4128-8894-813ffb3fab44"
+                                                                                                                                                                                                                                                                                                                                                        |
+| com.liferay.portal.remote.rest.extender.configuration.RestExtenderConfiguration.a67299e7-4007-4a40-8566-8a7f82a1ebab                                                                           | :org.apache.felix.configadmin.revision:=L"2"
+configuration.cleaner.ignore="true"
+contextPaths=[ \
+  "/circular-create-rest", \
+  ]
+felix.fileinstall.filename="com.liferay.portal.remote.rest.extender.configuration.RestExtenderConfiguration-a67299e7-4007-4a40-8566-8a7f82a1ebab.config"
+jaxRsApplicationFilterStrings=[ \
+  "(jaxrs.application\=true)", \
+  ]
+jaxRsProviderFilterStrings=[ \
+  "", \
+  ]
+jaxRsServiceFilterStrings=[ \
+  "(component.name\=org.dsgv.portal.circular.create.rest.CircularCreateRestApplication)", \
+  ]
+service.bundleLocation="?"
+service.factoryPid="com.liferay.portal.remote.rest.extender.configuration.RestExtenderConfiguration"
+service.pid="com.liferay.portal.remote.rest.extender.configuration.RestExtenderConfiguration.a67299e7-4007-4a40-8566-8a7f82a1ebab"
+                                                                                                                                                                                                                                |
+| com.liferay.portal.search.elasticsearch6.configuration.ElasticsearchConfiguration                                                                                                              | :org.apache.felix.configadmin.revision:=L"2"
+additionalConfigurations=""
+additionalIndexConfigurations="{\ \"analysis\":\ {\ \"filter\":\ {\ \"german_decompound\":{\ \"type\"\ :\ \"decompound\"\ }\ },\ \"analyzer\":\ {\ \"german_decompound\":\ {\ \"type\":\ \"custom\",\ \"tokenizer\"\ :\ \"standard\",\ \"filter\"\ :\ [\ \"german_decompound\",\ \"unique\",\ \"german_normalization\",\ \"lowercase\"\ ]\ }\ }\ }\ }"
+additionalTypeMappings=""
+bootstrapMlockAll="false"
+clientTransportIgnoreClusterName="false"
+clientTransportNodesSamplerInterval=""
+clientTransportPingTimeout=""
+clientTransportSniff="true"
+clusterName="LiferayElasticsearchCluster"
+discoveryZenPingUnicastHostsPort="9300-9400"
+felix.fileinstall.filename="com.liferay.portal.search.elasticsearch6.configuration.ElasticsearchConfiguration.config"
+httpCORSAllowOrigin="/https?://elasticsearch(:[0-9]+)?/"
+httpCORSConfigurations=""
+httpCORSEnabled="true"
+httpEnabled="true"
+indexNamePrefix="liferay-"
+indexNumberOfReplicas=""
+indexNumberOfShards=""
+logExceptionsOnly="true"
+networkBindHost=""
+networkHost=""
+networkPublishHost=""
+operationMode="REMOTE"
+overrideTypeMappings=""
+retryOnConflict="5"
+service.bundleLocation="?"
+service.pid="com.liferay.portal.search.elasticsearch6.configuration.ElasticsearchConfiguration"
+transportAddresses=[ \
+  "elasticsearch:9300", \
+  ]
+transportTcpPort=""
+ |
+| com.liferay.portal.security.auth.verifier.internal.basic.auth.header.configuration.BasicAuthHeaderAuthVerifierConfiguration.4b8b837a-f82b-4243-9ec6-8cf5d976a3ce                               | :org.apache.felix.configadmin.revision:=L"1"
+enabled=B"true"
+felix.fileinstall.filename="com.liferay.portal.security.auth.verifier.internal.basic.auth.header.configuration.BasicAuthHeaderAuthVerifierConfiguration-default.config"
+service.bundleLocation="?"
+service.factoryPid="com.liferay.portal.security.auth.verifier.internal.basic.auth.header.configuration.BasicAuthHeaderAuthVerifierConfiguration"
+service.pid="com.liferay.portal.security.auth.verifier.internal.basic.auth.header.configuration.BasicAuthHeaderAuthVerifierConfiguration.4b8b837a-f82b-4243-9ec6-8cf5d976a3ce"
+urlsExcludes="/api/liferay*"
+urlsIncludes="/api/*,/xmlrpc*"
+                                                                                                                                                                                                                                                                                                                                                                                             |
+| com.liferay.portal.security.auth.verifier.internal.portal.session.configuration.PortalSessionAuthVerifierConfiguration.788d00ad-a1cb-4909-9edd-d553aa43ebed                                    | :org.apache.felix.configadmin.revision:=L"1"
+checkCSRFToken=B"false"
+enabled=B"true"
+felix.fileinstall.filename="com.liferay.portal.security.auth.verifier.internal.portal.session.configuration.PortalSessionAuthVerifierConfiguration-default.config"
+service.bundleLocation="?"
+service.factoryPid="com.liferay.portal.security.auth.verifier.internal.portal.session.configuration.PortalSessionAuthVerifierConfiguration"
+service.pid="com.liferay.portal.security.auth.verifier.internal.portal.session.configuration.PortalSessionAuthVerifierConfiguration.788d00ad-a1cb-4909-9edd-d553aa43ebed"
+urlsIncludes="/api/json*,/api/jsonws*,/c/portal/json_service*"
+                                                                                                                                                                                                                                                                                                                                                                                 |
+| com.liferay.portal.security.auth.verifier.internal.tunnel.configuration.TunnelAuthVerifierConfiguration.46967927-da15-416e-a990-cc00187f5dbe                                                   | :org.apache.felix.configadmin.revision:=L"1"
+enabled=B"true"
+felix.fileinstall.filename="com.liferay.portal.security.auth.verifier.internal.tunnel.configuration.TunnelAuthVerifierConfiguration-default.config"
+hostsAllowed="127.0.0.1,SERVER_IP"
+service.bundleLocation="?"
+service.factoryPid="com.liferay.portal.security.auth.verifier.internal.tunnel.configuration.TunnelAuthVerifierConfiguration"
+service.pid="com.liferay.portal.security.auth.verifier.internal.tunnel.configuration.TunnelAuthVerifierConfiguration.46967927-da15-416e-a990-cc00187f5dbe"
+serviceAccessPolicyName="SYSTEM_USER_PASSWORD"
+urlsIncludes="/api/liferay/do"
+                                                                                                                                                                                                                                                                                                                                                                                                   |
+| com.liferay.portal.security.ldap.authenticator.configuration.LDAPAuthConfiguration.cd4f52b7-1c10-4f7c-b147-fac2d8c29dfc                                                                        | :org.apache.felix.configadmin.revision:=L"1"
+companyId=L"20102"
+enabled=B"true"
+method="bind"
+passwordEncryptionAlgorithm="NONE"
+passwordPolicyEnabled=B"true"
+required=B"false"
+service.bundleLocation="?"
+service.factoryPid="com.liferay.portal.security.ldap.authenticator.configuration.LDAPAuthConfiguration"
+service.pid="com.liferay.portal.security.ldap.authenticator.configuration.LDAPAuthConfiguration.cd4f52b7-1c10-4f7c-b147-fac2d8c29dfc"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| com.liferay.portal.security.ldap.configuration.LDAPServerConfiguration.e20ae9bd-cf61-4fe6-a95b-d25c6426de79                                                                                    | :org.apache.felix.configadmin.revision:=L"1"
+authSearchFilter="(cn\=@screen_name@)"
+baseDN="dc\=DSGV,dc\=NET"
+baseProviderURL="ldap://172.19.8.108:389"
+companyId=L"20102"
+contactCustomMappings=[ \
+  ]
+contactMappings=[ \
+  "birthday\=", \
+  "facebookSn\=", \
+  "jabberSn\=", \
+  "skypeSn\=", \
+  "smsSn\=", \
+  "twitterSn\=", \
+  ]
+groupDefaultObjectClasses=[ \
+  ]
+groupMappings=[ \
+  "description\=sAMAccountName", \
+  "groupName\=cn", \
+  "user\=member", \
+  ]
+groupSearchFilter="(objectClass\=group)"
+groupsDN="dc\=example,dc\=com"
+ldapServerId=L"39201"
+securityCredential="dmsservice"
+securityPrincipal="diplexa"
+serverName="DSGVDC01"
+service.bundleLocation="?"
+service.factoryPid="com.liferay.portal.security.ldap.configuration.LDAPServerConfiguration"
+service.pid="com.liferay.portal.security.ldap.configuration.LDAPServerConfiguration.e20ae9bd-cf61-4fe6-a95b-d25c6426de79"
+userCustomMappings=[ \
+  ]
+userDefaultObjectClasses=[ \
+  ]
+userMappings=[ \
+  "emailAddress\=mail", \
+  "firstName\=givenName", \
+  "fullName\=cn", \
+  "group\=memberOf", \
+  "lastName\=sn", \
+  "middleName\=middleName", \
+  "password\=userPassword", \
+  "screenName\=cn", \
+  "uuid\=sAMAccountName", \
+  ]
+userSearchFilter="(objectClass\=person)"
+usersDN="dc\=example,dc\=com"
+ |
+| com.liferay.portal.security.sso.token.internal.configuration.TokenConfiguration                                                                                                                | :org.apache.felix.configadmin.revision:=L"1"
+authenticationCookies=[ \
+  "SMIDENTITY", \
+  "SMSESSION", \
+  ]
+enabled=B"true"
+importFromLDAP=B"true"
+logoutRedirectURL=""
+service.bundleLocation="?"
+service.pid="com.liferay.portal.security.sso.token.internal.configuration.TokenConfiguration"
+tokenLocation="REQUEST_HEADER"
+userTokenName="X-User-Global-ID"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| com.liferay.portal.upload.internal.configuration.UploadServletRequestConfiguration                                                                                                             | :org.apache.felix.configadmin.revision:=L"1"
+maxSize=L"104857600"
+service.bundleLocation="?"
+service.pid="com.liferay.portal.upload.internal.configuration.UploadServletRequestConfiguration"
+tempDir=""
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| com.liferay.portal.vulcan.internal.configuration.VulcanConfiguration.6631d33b-4fa4-420b-b062-000bcb95e1bc                                                                                      | :org.apache.felix.configadmin.revision:=L"1"
+felix.fileinstall.filename="com.liferay.portal.vulcan.internal.configuration.VulcanConfiguration-bulk.config"
+graphQLEnabled=B"false"
+path="/bulk"
+service.bundleLocation="?"
+service.factoryPid="com.liferay.portal.vulcan.internal.configuration.VulcanConfiguration"
+service.pid="com.liferay.portal.vulcan.internal.configuration.VulcanConfiguration.6631d33b-4fa4-420b-b062-000bcb95e1bc"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| com.liferay.user.associated.data.web.internal.configuration.AnonymousUserConfiguration.ec5c6446-55ed-4e54-a729-dbfd03c24d5b                                                                    | :org.apache.felix.configadmin.revision:=L"1"
+companyId=L"20102"
+service.bundleLocation="?"
+service.factoryPid="com.liferay.user.associated.data.web.internal.configuration.AnonymousUserConfiguration"
+service.pid="com.liferay.user.associated.data.web.internal.configuration.AnonymousUserConfiguration.ec5c6446-55ed-4e54-a729-dbfd03c24d5b"
+userId=L"34008"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| org.apache.aries.jax.rs.jackson                                                                                                                                                                | :org.apache.felix.configadmin.revision:=L"1"
+felix.fileinstall.filename="org.apache.aries.jax.rs.jackson.config"
+osgi.jaxrs.application.select="(osgi.jaxrs.extension.select\=\\(osgi.jaxrs.name\=jaxb-json\\))"
+service.bundleLocation="?"
+service.pid="org.apache.aries.jax.rs.jackson"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| org.apache.aries.jax.rs.whiteboard.default                                                                                                                                                     | :org.apache.felix.configadmin.revision:=L"1"
+application.ready.service.filter="(module.service.lifecycle\=system.check)"
+default.application.base="/rest"
+default.web=B"false"
+felix.fileinstall.filename="org.apache.aries.jax.rs.whiteboard.default.config"
+service.bundleLocation="?"
+service.pid="org.apache.aries.jax.rs.whiteboard.default"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| org.dsgv.portal.keycat.web.configuration.asset.AssetConfiguration                                                                                                                              | :org.apache.felix.configadmin.revision:=L"1"
+assetTypes=[ \
+  "33807", \
+  ]
+service.bundleLocation="?"
+service.pid="org.dsgv.portal.keycat.web.configuration.asset.AssetConfiguration"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| org.dsgv.portal.keycat.web.configuration.xmlimport.XmlImportConfiguration                                                                                                                      | :org.apache.felix.configadmin.revision:=L"9"
+createFeedback=B"false"
+deleteOnSuccess=B"true"
+interval=I"24"
+path="/opt/liferay/in/ALLXMLFUERIMPORTLIFERAY"
+service.bundleLocation="?"
+service.pid="org.dsgv.portal.keycat.web.configuration.xmlimport.XmlImportConfiguration"
+unit="HOURS"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+23 rows in set (0.01 sec)
+
+mysql> 
+mysql> \q
