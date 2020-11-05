@@ -39,7 +39,7 @@ struct HTTPHeader {
 };
 
 struct HTTPParameter {
-    std::string key;
+    std::string name;
     std::string value;
 };
 
